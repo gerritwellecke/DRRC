@@ -1,0 +1,97 @@
+Transformation: "pca" # which transform should be applied for dimension reduction (pca, fft, identity)
+
+Parameters:
+  reservoir_leakage: 1 #leakage the strength of memory a reservoir state remembers old excitations with (0.0 only driven from new data no memory, 1.0 no update of rs)
+  reservoir_nodes: 8000 #number of nodes in each reservoir ESN
+
+  # setup of adjacency matrix
+  adjacency_degree: 2
+  adjacency_dense: False
+  adjacency_spectralradius: 0.316228
+  
+  input_scaling: 0.017783                 # input scaling the maximal absolute value of entries in the input matrix
+  input_bias: 0.01                     # null #scaling of the bias strength double the maximal absolute value of the bias input to a reservoir node, None defaults to inscale
+  
+  dimensionreduction_fraction: 0.5    # fraction of variables that actually enters the reservoir after dimension reduction
+
+  parallelreservoirs_grid_shape: [4] # the amount of reservoirs per dimension that should be used together as a multi-reservoir (for ex. [2,1] in 2D case for 2 reservoirs in x direction)
+  spatial_shape: [128]             # the amount of reservoirs per dimension that should be used together as a multi-reservoir (for ex. [2,1] in 2D case for 2 reservoirs in x direction)
+  system_variables: 1                 # number of spatiotemporal variables used by the reservoir, needs to be smaler than actual system variables
+  parallelreservoirs_ghosts: 10        # number of variables that a reservoir sees from outside the region where its predicting for sync.
+  boundary_condition: "Periodic"      # either "Periodic" or "no flux"
+
+  identical_inputmatrix: True # whether we use identical input matrices for each reservoir
+  identical_adjacencymatrix: True # whether we use identical adjacency matrices for each reservoir
+  identical_outputmatrix: [1] # False or tuple or 'combine' whether we train each domain with a separate reservoir (False) or one reservoir on all domains ('combign_data') or one reservoir on one domain (tuple of indices)
+
+  training_includeinput: True         # whether to also fit the input signal for predicting the next timestep
+  training_regularization: 0.000001     # regularization strength for the ridge regression
+  training_output_bias: 0.01 # scaling of the output bias
+
+Jobscript:                            # Parameters of the Submission script (might be more on slurm)
+  Type: "sbatch"
+  max_job_count: 2000
+  tasks_per_job: 4
+  cores_per_task: 2
+  mem_per_task: 12
+  cluster: "GWDG"
+  time: "20:00:00"
+
+# use ParamScan: null for a single run with constant parameters
+ParamScan:                            # Parameters of the Hyperparameter Scan
+  training_data_index:
+    - "list"
+    - [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+#  reservoir_nodes: 
+#    - "list"
+#    - [1000, 2000, 4000, 8000]
+#  reservoir_leakage:
+#    - "list"
+#    - [1, 0.9]
+#  adjacency_spectralradius:
+#    - "geomspace"
+#    - [0.1, 10, 3]
+#  input_scaling:
+#    - "geomspace"
+#    - [0.1, 10, 3]
+#  training_regularization: 
+#    - "geomspace"
+#    - [1.0e-2, 1.0e-4, 3]
+#  dimensionreduction_fraction:
+#    - "list"
+#    - [0.25, 1]
+
+
+############################################################################################################
+## KuramotoSivashinsky System
+############################################################################################################
+Data:                          # Parameters of the System Data
+  model_name: 'KuramotoSivashinsky'         # Name of the model 
+  model_dimension: 1                  # Spatial dimension of the model 
+  Usage:                       # Data is saved at "gitroot/Data/'model_dimension'D'model_name'/" and named "TrainingData" and "EvaluationData" with appended number and format.
+    evaluation_datasets: 50           # Number of datasets reservoirs are evaluated on
+    training_datasets: 50             # Number of datasets reservoirs are trained on
+    tansient_length: 250              # Length of transient of reservoir
+    training_length: 20000             # Length of TrainingTrajectory (in time units)
+    evaluation_length: 500            # maximum length of evaluation trajectory (in time units)
+    fileformat: ".npy"                # Format of the data files
+    error_stop: 0.5                     # valid time stop criterion: NRMSE/meanvariation<ErrorStop
+    mean_norm: 14.77             # valid time stop criterion: NRMSE/meanvariation<ErrorStop
+    lyapunov_exponent: 'unknown'      # rescales valid time
+  Creation:                    # Parameters of the Data Creation
+    datasets: 50
+    SystemParameters:
+      Name: "KuramotoSivashinsky"
+      nu: 1             # parameter as in equation
+      L: 60             # length of spatial domain, i.e. x(t) in [0, L]
+      nx: 128           # number of grid points in spatial domain [0, L]
+      dt: 0.25          # discretisation in time
+    TemporalParameter:
+      dt: 0.25
+      training_length: 50000      # Temporal length (not steps!) of saved Trainingdata 
+      training_transient: 2000    # Temporal length (not steps!) of integrated and not saved transient
+      evaluation_length: 5000     # Temporal length (not steps!) of saved Evaluationdata 
+      evaluation_transient: 2000  # Temporal length (not steps!) of integrated and not saved transient
+    Method: "spectral"  # spectral or py-pde
+    BoundaryCondition:        # Parameters of the Boundary Condition (could set the parameter in the DRRC model)
+      type: 'Periodic'

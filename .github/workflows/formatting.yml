@@ -1,0 +1,35 @@
+name: Formatting
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Src/**/*
+      - Tests/**/*
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+    paths:
+      - Src/**/*
+      - Tests/**/*
+      - Docs/source/**/*
+      - CHANGELOG.md
+
+jobs:
+  isort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install -r requirements.txt
+          pip install .
+      - name: Run black
+        run: black --check --diff Src/ Scripts/ Analysis/ Tests/
+      - name: Run isort
+        run: isort --check --diff Src/ Scripts/ Analysis/ Tests/

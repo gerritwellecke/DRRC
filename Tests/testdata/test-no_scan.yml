@@ -1,0 +1,14 @@
+# this is mainly for testing. In the current state it contains everything that we once had.
+# further functionality might still have to be implemented.
+Name: "TestYAML"
+Date: '18.12.2023' # date of when this yaml was last touched
+
+Jobscript:
+  Cores: 32
+
+System:
+  Type: 
+    Equation: "KS"
+
+
+ParamScan: null

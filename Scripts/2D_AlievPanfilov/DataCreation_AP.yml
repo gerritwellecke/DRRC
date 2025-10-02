@@ -1,0 +1,59 @@
+############################################################################################################
+## AlievPanfilov System
+############################################################################################################
+
+Data:                          # Parameters of the System Data
+  model_name: 'AlievPanfilov'         # Name of the model 
+  model_dimension: 2                  # Spatial dimension of the model 
+  Usage:                       # Data is saved at "gitroot/Data/'model_dimension'D'model_name'/" and named "TrainingData" and "EvaluationData" with appended number and format.
+    evaluation_datasets: 50           # Number of datasets reservoirs are evaluated on
+    training_datasets: 50             # Number of datasets reservoirs are trained on
+    tansient_length: 250              # Length of transient of reservoir (in time units)
+    training_length: 7500             # Length of TrainingTrajectory (in time units)
+    evaluation_length: 500            # maximum length of evaluation trajectory (in time units)
+    fileformat: ".npz"                # Format of the data files
+    error_stop: 2                     # valid time stop criterion: NRMSE/mean_norm<ErrorStop
+    mean_norm: 12.17                  # valid time stop criterion: NRMSE/mean_norm<ErrorStop
+    lyapunov_exponent: 'unknown'      # rescales valid time
+  Creation:                    # Parameters of the Data Creation
+    datasets: 50                      # Number of training and evaluation datasets created
+    SystemParameters:
+      Name: 'Aliev-Panfilov'
+      LocalModel:              # Parameters of the Local activation model (in difference to spatial cuppling)
+        Parameter:
+          a: 0.05 
+          b: 0.05 
+          eps: 0.002 
+          mu1: 0.2
+          mu2: 0.3
+          k: 8 
+        NrVariables: 2
+      Diffusion:              # Parameters of the Diffusion model
+        stencil: 'NinePoint'
+        constant: 0.2
+      SpatialParameter:
+        spatial_dimension: 128
+        physical_length: 128
+        dx: 1
+        dy: 1
+      BoundaryCondition:        # Parameters of the Boundary Condition (could set the parameter in the DRRC model)
+        type: 'NoFlux'
+      initial_condition: 'RandomChaos'
+    TemporalParameter:
+      dt: 0.5
+      integration_dt: 0.1
+      training_length: 10000                # Temporal length of saved Trainingdata 
+      training_transient: 1000 #1000        # Temporal length of integrated and not saved transient
+      evaluation_length: 1000 #1000         # Temporal length of saved Evaluationdata 
+      evaluation_transient: 1000 #1000      # Temporal length of integrated and not saved transient
+    AnimationSaving:  
+      T_out: 10
+      fps: 20
+
+# Only used to init Config
+Jobscript:                            # Parameters of the Submission script (might be more on slurm)
+  Type: "slurm"
+  max_length: 2000
+  Cores: 4
+  RAM: "12G"
+  partition: "medium"

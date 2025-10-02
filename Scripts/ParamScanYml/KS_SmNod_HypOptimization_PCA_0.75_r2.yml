@@ -1,0 +1,74 @@
+Name: "KS_PCA075_r2"
+Date: '07.02.2024'
+Reservoir:
+  winsize: 10 #number of variables that a reservoir sees from outside the region where its predicting for sync.
+  fracin: 0.75 #fraction of variables that actually enters the reservoir after dimension reduction
+  degree: 2 #average degree of the adjacency matrix
+  transform: "pca" #which transform should be applied for dimension reduction
+  trainonly: False #whether the script should train the system only or also write metrics
+  replicas: [2] #the amount of reservoirs per dimension that should be used together as a multi-reservoir (for ex. [2,1] in 2D case for 2 reservoirs in x direction)
+  combine: False #whether we train each domain with a separate reservoir (False) or one reservoir on all domains (true)
+  inputadjdiff: False #whether we use different input matrices and adjacency matrices for each reservoir
+  dense: False #whether the adjacency matrix is sparse (False) or dense (True)
+  overwrite: False #instead of trying to load a model from file learns a model anew if True
+  biasscale: null #scaling of the bias strength double the maximal absolute value of the bias input to a reservoir node, None defaults to inscale
+  fitsignal: True #whether to also fit the input signal for predicting the next timestep
+  dtype: "float" #datatype to use for encoding everything from reservoir state to training data
+Training: 
+  FilePath: "Data/1D_KuramotoSivashinsky/TrainingData" #Trainingevaluation Number and Format is appended.
+  FileFormat: ".npy"
+  Transient: 250
+  Length: 20000
+  dt: 0.25
+  Datasets: 10
+Evaluation: 
+  FilePath: "Data/1D_KuramotoSivashinsky/EvaluationData" #Evaluationdata Number and Format is appended.
+  FileFormat: ".npy"
+  Transient: 250
+  Length: 5000
+  dt: 0.25
+  LyapunovExponent: 0.1
+  Datasets: 50
+  ErrorStop: 0.5
+  MeanVariation: 14.77
+System:
+    Name: "KuramotoSivashinsky"
+    Datasets: 50
+    Parameters:
+      nu: 1             # parameter as in equation
+      L: 60             # length of spatial domain, i.e. x(t) in [0, L]
+      nx: 128           # number of grid points in spatial domain [0, L]
+      dt: 0.25          # discretisation in time
+    IntegrationLength:
+      Training_t0: 2000    # trainingdata initial time point, before is transient to generate independent states
+      Training_tN: 52000   # trainingdata final time point
+      Evaluation_t0: 2000     # evaluationdata initial time point, before is transient to generate independent states
+      Evaluation_tN: 7000     # evaluationdata final time point  
+    Method: "spectral"  # spectral or py-pde
+Saving: 
+  OutputDirectory: "Data/Reservoir/SmNod_HypOptimization_PCA_0.75_2/"
+  # suffix: "multi"
+  # subfolder: "realspace"
+  # TODO: add whatever other parameters are needed for this to run fine. 
+  # note that default arguments should usually be included here.
+
+Jobscript:
+  Cores: 2
+
+# TODO: implement lists in ParamScan argument!
+ParamScan:
+  nodes: 
+    - "range"
+    - [100, 1000, 100]
+  spectral:
+    - "geomspace"
+    - [0.01, 10, 13]
+  inscale:
+    - "geomspace"
+    - [0.01, 10, 13]
+  leakage:
+    - "linspace"
+    - [0.1, 1, 10]
+  regularization:
+    - "geomspace"
+    - [1.0e-6, 1.0e-3, 4]

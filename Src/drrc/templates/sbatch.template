@@ -1,0 +1,64 @@
+#!/bin/bash -l
+
+# Standard name of the job (if none is given on the command line)
+#SBATCH --job-name={{ JOB_NAME }}
+
+# Preserve environment variables
+#SBATCH --export=ALL
+
+# Set max. runtime
+#SBATCH --time={{ TIME }}
+
+# Array job 
+#SBATCH --array=1-{{ JOB_LENGTH }}
+
+{% if CLUSTER == "GWDG" %}
+# set constraints for GWDG
+#SBATCH --partition=medium
+#SBATCH --constraint="scratch&cascadelake"
+{% endif %}
+
+# Logging filenames stdout & stderr
+# this fails if the path does not yet exist
+#SBATCH -o {{ OUTPUT_PATH }}/{{ JOB_NAME }}_%A_%a.out
+
+# memory constraints
+# I'm actually not sure which of these two is better...
+# #SBATCH --mem={{ MEM }}G
+#SBATCH --mem-per-cpu={{ MEM_PER_CPU }}G
+
+# resource constraints
+#SBATCH --ntasks={{ NTASKS }}
+#SBATCH --cpus-per-task={{ NCORES }}
+
+# Some diagnostic messages for the output
+echo "Started: `date -d @${SLURM_JOB_START_TIME}`"
+echo "expected completion: `date -d @${SLURM_JOB_END_TIME}`"
+echo "running on partition: ${SLURM_JOB_PARTITION}"
+echo "TID: ${SLURM_ARRAY_TASK_ID} of ${SLURM_ARRAY_TASK_MAX}"
+echo "--------------------------------------------------------------------------------"
+
+# restrict cores per job
+export MKL_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+export NUMEXPR_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+export OPENBLAS_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+export NUMBA_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+
+# activate python venv
+# CAVEAT: make sure all packages are installed before running this!
+source {{ GIT_ROOT }}/.venv/bin/activate || exit 1
+
+cd {{ GIT_ROOT }}
+
+# start job steps with one task each
+for n in `seq 1 ${SLURM_NTASKS}`; do
+    idx=$(( ($SLURM_ARRAY_TASK_ID - 1) * $SLURM_NTASKS + $n ))
+    if (( $idx <= $(( {{ JOB_LENGTH }} * $SLURM_NTASKS )) )); then
+        srun -N 1 -n 1 -c ${SLURM_CPUS_PER_TASK} --exclusive python {{ EXECUTABLE }} {{ YAMLPATH }} $idx &
+    fi
+done
+wait
+
+echo "--------------------------------------------------------------------------------"
+echo "Stopped: `date`"
