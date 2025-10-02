@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>drrc.reservoircomputer &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/drrc.html">2. drrc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">drrc.reservoircomputer</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for drrc.reservoircomputer</h1><div class="highlight"><pre>
+<span></span><span class="c1"># import logging as log</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">log</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.sparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">eigs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">drrc.tools.logger_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">drrc_logger</span> <span class="k">as</span> <span class="n">logger</span>
+
+<span class="c1"># NOTE: Generally the reservoir computer gets data of the shape (time, dims), i.e. len(shape)==2 always is true</span>
+<span class="c1"># NOTE: hstack should be removed from the predict_single_step function, as it is slow, if there is not a preallocated array for the output. Allocating an arrow for the esv might be a good idea.</span>
+
+<span class="c1"># get logging levels</span>
+<span class="n">loglevel_debug_RC</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="s2">&quot;DEBUG_RC&quot;</span><span class="p">)</span>
+
+<span class="n">loglevel_info_single_run</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="s2">&quot;INFO_1RUN&quot;</span><span class="p">)</span>
+<span class="n">loglevel_info_multiple_run</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="s2">&quot;INFO_nRUN&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ReservoirComputer">
+<a class="viewcode-back" href="../../packages/drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ReservoirComputer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to model dynamics using a single reservoir.</span>
+<span class="sd">    The class provides a function to train the reservoirs redout, propagate the reservoir state or perform a prediction.</span>
+<span class="sd">    Further, private methods exist to collect the reservoir state or construct the input and adjacency matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+    <span class="n">input_from_bias</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+    <span class="n">adjacency_matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span>
+    <span class="n">output_ridgemodel</span><span class="p">:</span> <span class="n">Ridge</span>
+    <span class="n">nodes</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">degree</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">leakage</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">modified_leakage</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">spectral_radius</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">input_scaling</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">input_length</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">input_bias</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">output_bias</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">regularization</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">training_includeinput</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">esv_lenght</span><span class="p">:</span> <span class="nb">int</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">degree</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">leakage</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">spectral_radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">input_scaling</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">input_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">input_bias</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">output_bias</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">regularization</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">training_includeinput</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">identical_inputmatrix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">identical_adjacencymatrix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">identical_outputmatrix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">tuple</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">reset_matrices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes a single reservoir based on an echo state network.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            nodes (int):</span>
+<span class="sd">                amount of nodes within the reservoir</span>
+<span class="sd">            degree (int):</span>
+<span class="sd">                degree of the adjacency matrix of the echo-state network</span>
+<span class="sd">            leakage (float):</span>
+<span class="sd">                describes how fast the reservoir forgets old data</span>
+<span class="sd">                (0 fixed reservoir state, 1 no memory only driven by inputs)</span>
+<span class="sd">            spectral_radius (float):</span>
+<span class="sd">                spectral radius of the adjacency matrix</span>
+<span class="sd">            input_scaling (float):</span>
+<span class="sd">                scaling of the input data or weights</span>
+<span class="sd">            input_length (int):</span>
+<span class="sd">                length of the input data</span>
+<span class="sd">            input_bias (float):</span>
+<span class="sd">                bias added to the input data</span>
+<span class="sd">            output_bias (float):</span>
+<span class="sd">                bias added to the output data</span>
+<span class="sd">            regularization (float):</span>
+<span class="sd">                regularization parameter for the ridge regression</span>
+<span class="sd">            training_includeinput (bool):</span>
+<span class="sd">                if True the input data is included in the extended state vector, i.e. used in the ridge regression</span>
+<span class="sd">            identical_inputmatrix (bool):</span>
+<span class="sd">                if True the input matrix is the same for all :code:`ReservoirComputer` instances</span>
+<span class="sd">            identical_adjacencymatrix (bool):</span>
+<span class="sd">                if True the adjacency matrix is the same for all :code:`ReservoirComputer` instances</span>
+<span class="sd">            identical_outputmatrix (bool | tuple | str):</span>
+<span class="sd">                if False the output matrix is different for all :code:`ReservoirComputer` instances, else it is the same.</span>
+<span class="sd">            reset_matrices (bool):</span>
+<span class="sd">                if True the matrices are reset, else they are kept if they are identical for all parallel reservoirs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># set reservoir class variables</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">degree</span> <span class="o">=</span> <span class="n">degree</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">leakage</span> <span class="o">=</span> <span class="n">leakage</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">modified_leakage</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">leakage</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">spectral_radius</span> <span class="o">=</span> <span class="n">spectral_radius</span>
+
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">input_scaling</span> <span class="o">=</span> <span class="n">input_scaling</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">input_length</span> <span class="o">=</span> <span class="n">input_length</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">input_bias</span> <span class="o">=</span> <span class="n">input_bias</span>
+
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">output_bias</span> <span class="o">=</span> <span class="n">output_bias</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">regularization</span> <span class="o">=</span> <span class="n">regularization</span>
+        <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">training_includeinput</span> <span class="o">=</span> <span class="n">training_includeinput</span>
+
+        <span class="k">if</span> <span class="n">training_includeinput</span><span class="p">:</span>
+            <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">esv_lenght</span> <span class="o">=</span> <span class="n">nodes</span> <span class="o">+</span> <span class="n">input_length</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">esv_lenght</span> <span class="o">=</span> <span class="n">nodes</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">esv_lenght</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esv</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_bias</span>
+
+        <span class="c1"># deprecated variables (just in case)</span>
+        <span class="c1"># self.nodes_effective = self.nodes + 1</span>
+        <span class="c1"># self.state_expand = state_expand</span>
+        <span class="c1"># self.dtype = dtype</span>
+
+        <span class="c1"># initialize output matrix, untrained</span>
+        <span class="c1"># either use one for all or individual Ridge instances</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">identical_outputmatrix</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">str</span><span class="p">)))</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;output_ridgemodel&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">reset_matrices</span>
+        <span class="p">):</span>
+            <span class="c1"># only if not done before set the class variable</span>
+            <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">output_ridgemodel</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">regularization</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">identical_outputmatrix</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_ridgemodel</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">regularization</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">identical_outputmatrix</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">str</span><span class="p">)))</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="n">identical_outputmatrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Identical output matrix must be False, a tuple specifying the training or &#39;Combine&#39;, but is </span><span class="si">{</span><span class="n">identical_outputmatrix</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># set input matrix &amp; the contribution of the input bias</span>
+        <span class="c1"># either use one for all or individual input matrices</span>
+        <span class="k">if</span> <span class="n">identical_inputmatrix</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;input_matrix&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">reset_matrices</span>
+        <span class="p">):</span>
+            <span class="c1"># only if not done before set the class variable</span>
+            <span class="p">(</span>
+                <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">input_matrix</span><span class="p">,</span>
+                <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">input_from_bias</span><span class="p">,</span>
+            <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_input_matrix</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">identical_inputmatrix</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_matrix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_from_bias</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_input_matrix</span><span class="p">()</span>
+
+        <span class="c1"># set adjacency matrix</span>
+        <span class="c1"># either use one for all or individual adjacency matrices</span>
+        <span class="k">if</span> <span class="n">identical_adjacencymatrix</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;adjacency_matrix&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">reset_matrices</span>
+        <span class="p">):</span>
+            <span class="c1"># only if not done before set the class variable</span>
+            <span class="n">ReservoirComputer</span><span class="o">.</span><span class="n">adjacency_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_adjacency_matrix</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">identical_adjacencymatrix</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adjacency_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_adjacency_matrix</span><span class="p">()</span>
+
+        <span class="c1"># initialise memory for reservoir state with random values in [0, 1)</span>
+        <span class="c1"># TODO: If RC is used without ParallelReservoirs, this is without seeds!</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ReservoirComputer.train">
+<a class="viewcode-back" href="../../packages/drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer.train">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">input</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">output</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">transient_steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Train a reservoir with given training data :code:`input, output` of shape :code:`(training_steps+transient_steps, variables_in), (training_steps, variables_out)`, respectively.</span>
+
+<span class="sd">        For a training input time series :math:`\vec{u}(t)` the reservoir is updated and its states :math:`\vec{r}(t)` are collected in the extended interior state vector :math:`\vec{x}(t)=[\vec{r}(t), \vec{u}(t), b_{\mathrm{in}}]`.</span>
+
+<span class="sd">        The output matrix :math:`\boldsymbol{W}_{\mathrm{out}}` is trained to preform :math:`\vec{y}(t)=\boldsymbol{W}_{\mathrm{out}}\vec{x}(t)`, where :math:`\vec{y}(t)` is the desired output time series.</span>
+<span class="sd">        The training uses Tikhonov regularisation:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \boldsymbol{W}_{\mathrm{out}}=\boldsymbol{Y}\boldsymbol{X}^T\left(\boldsymbol{X}\boldsymbol{X}^T+\beta\boldsymbol{I}\right)^{-1}</span>
+
+
+<span class="sd">        , which analytically minimizes</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \sum_m\|\vec{y}^{\mathrm{true}}(m)-\boldsymbol{W}_{\mathrm{out}}\vec{x}_m\|^2+\beta\|\boldsymbol{W}_{\mathrm{out}}\|_2^2\quad.</span>
+
+<span class="sd">        The output matrix :math:`\boldsymbol{W}_{\mathrm{out}}` is saved as a ridge regression model :code:`sklearn.linear_model.Ridge` and the data on which the fit is performed (training data and reservoir states) is returned for testing purposes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            np.ndarray[float]:</span>
+<span class="sd">                Input data following shape as :code:`(time_steps, variables_in)`, where :code:`time_steps` is the number of timesteps (including transient steps) and :code:`variables_in` is the number of input variables</span>
+<span class="sd">            np.ndarray[float]:</span>
+<span class="sd">                Output data following shape as :code:`(time_steps, variables_out)`, where :code:`time_steps` is the number of timesteps (excluding transient steps) and :code:`variables_out` is the number of output variables</span>
+<span class="sd">            transient_steps (int):</span>
+<span class="sd">                Number of transient steps to adjust the reservoir state to the input data. These reservoir states are not used in the fit.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple[np.ndarray[float]]:</span>
+<span class="sd">                Time series of the extended interior state vector :math:`\vec{x}(t)`  and corresponding output data :math:`\vec{y}(t)` used for training.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">transient_steps</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Input and output training data must have different length (only input includes transient).&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># transient/ warmup: adjust reservoir state to input data</span>
+        <span class="k">for</span> <span class="n">input_t</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">[:</span><span class="n">transient_steps</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">propagate_reservoir_state</span><span class="p">(</span><span class="n">input_t</span><span class="p">)</span>
+
+        <span class="c1"># init extended interior state vector</span>
+        <span class="n">esv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">esv_lenght</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_includeinput</span><span class="p">:</span>
+            <span class="n">esv</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">transient_steps</span><span class="p">:]</span>
+        <span class="n">esv</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_bias</span>
+        <span class="n">esv</span><span class="p">[:,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collect_reservoir_state</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="n">transient_steps</span><span class="p">:])</span>
+        <span class="c1"># Symmetry breaking</span>
+        <span class="n">esv</span><span class="p">[:,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="n">esv</span><span class="p">[:,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+            <span class="n">loglevel_debug_RC</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;ReservoirComputer.train</span><span class="se">\t\t\t\t</span><span class="s2">Training esv shape: </span><span class="si">{</span><span class="n">esv</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># fit ridge regression model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_ridgemodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">esv</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+
+        <span class="c1"># return training data for testing purposes</span>
+        <span class="k">return</span> <span class="n">esv</span><span class="p">,</span> <span class="n">output</span></div>
+
+
+<div class="viewcode-block" id="ReservoirComputer.train_on_multiple_datasets">
+<a class="viewcode-back" href="../../packages/drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer.train_on_multiple_datasets">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">train_on_multiple_datasets</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">outputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">transient_steps</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Train a reservoir on lists of with given training data :code:`inputs, outputs`. Where the :code:`i`-th list entry is of shape :code:`(training_steps_i+transient_steps, variables_in), (training_steps_i, variables_out)`, respectively.</span>
+
+<span class="sd">        For each element in :code:`inputs`, i.e. training time series :math:`\vec{u}(t)` the reservoir is updated and its states :math:`\vec{r}(t)` are collected in the extended interior state vector :math:`\vec{x}(t)=[\vec{r}(t), \vec{u}(t), b_{\mathrm{in}}]`.</span>
+
+<span class="sd">        The output matrix :math:`\boldsymbol{W}_{\mathrm{out}}` is trained to preform :math:`\vec{y}(t)=\boldsymbol{W}_{\mathrm{out}}\vec{x}(t)` for all elements in the lists :code:`inputs, outputs`, where :math:`\vec{y}(t)` is the desired output time series.</span>
+<span class="sd">        The training uses Tikhonov regularisation:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \boldsymbol{W}_{\mathrm{out}}=\boldsymbol{Y}\boldsymbol{X}^T\left(\boldsymbol{X}\boldsymbol{X}^T+\beta\boldsymbol{I}\right)^{-1}</span>
+
+
+<span class="sd">        , which analytically minimizes</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \sum_m\|\vec{y}^{\mathrm{true}}(m)-\boldsymbol{W}_{\mathrm{out}}\vec{x}_m\|^2+\beta\|\boldsymbol{W}_{\mathrm{out}}\|_2^2\quad.</span>
+
+<span class="sd">        The output matrix :math:`\boldsymbol{W}_{\mathrm{out}}` is saved as a ridge regression model :code:`sklearn.linear_model.Ridge` and the data on which the fit is performed (training data and reservoir states) is returned for testing purposes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            inputs (list[np.ndarray[float]]):</span>
+<span class="sd">                List of input training data, each following the shape :code:`(time_steps, variables_in)`, where :code:`time_steps` is the number of timesteps (including transient steps) and :code:`variables_in` is the number of input variables</span>
+<span class="sd">            outputs (list[np.ndarray[float]]):</span>
+<span class="sd">                List of training output data, each following the shape :code:`(time_steps, variables_out)`, where :code:`time_steps` is the number of timesteps (excluding transient steps) and :code:`variables_out` is the number of output variables</span>
+<span class="sd">            transient_steps (int):</span>
+<span class="sd">                Number of transient steps to adjust the reservoir state to the input data. These reservoir states are not used in the fit.        Returns:</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            tuple[np.ndarray[float]]:</span>
+<span class="sd">                Over all list elements :code:`inputs, outputs` appended time series of the extended interior state vector :math:`\vec{x}(t)`  and corresponding output data :math:`\vec{y}(t)` used for training.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Testing and gethering length of training samples</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Input and output training data must have the same length.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">for</span> <span class="nb">input</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">transient_steps</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Input and output training data must have different length (only input includes transient).&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;All input data must have the same number of variables.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="c1"># get number of samples and cumulative samples for indexing</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">]</span>
+        <span class="n">cum_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">))</span>
+
+        <span class="c1"># init extended interior state vector</span>
+        <span class="n">esv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">esv_lenght</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_includeinput</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">input_data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+                <span class="n">esv</span><span class="p">[</span><span class="n">cum_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">:</span> <span class="n">cum_samples</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span>
+                    <span class="n">transient_steps</span><span class="p">:</span>
+                <span class="p">]</span>
+        <span class="n">esv</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_bias</span>
+
+        <span class="c1"># collect reservoir states</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">input_data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">input_t</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">[:</span><span class="n">transient_steps</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">propagate_reservoir_state</span><span class="p">(</span><span class="n">input_t</span><span class="p">)</span>
+            <span class="n">esv</span><span class="p">[</span>
+                <span class="n">cum_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">:</span> <span class="n">cum_samples</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collect_reservoir_state</span><span class="p">(</span><span class="n">input_data</span><span class="p">[</span><span class="n">transient_steps</span><span class="p">:])</span>
+
+        <span class="c1"># Symmetry breaking</span>
+        <span class="n">esv</span><span class="p">[:,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="n">esv</span><span class="p">[:,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+
+        <span class="c1"># fit ridge regression model</span>
+        <span class="n">output_concatenated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_ridgemodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">esv</span><span class="p">,</span> <span class="n">output_concatenated</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">esv</span><span class="p">,</span> <span class="n">output_concatenated</span></div>
+
+
+<div class="viewcode-block" id="ReservoirComputer.predict_single_step">
+<a class="viewcode-back" href="../../packages/drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer.predict_single_step">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict_single_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Predict a single time step.</span>
+
+<span class="sd">        Uses the input data to updata the reservoir state following</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \vec{s}(t+1) = (1-\alpha) \vec{s}(t) + \alpha \tanh(\nu \boldsymbol{W}_{\mathrm{in}} [\vec{u}(t), b_{\mathrm{in}}] + \rho \boldsymbol{W} s(t))</span>
+
+<span class="sd">        and predict the following time step with</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \vec{u}(t + \Delta t) = \boldsymbol{W}_{\mathrm{out}} [\vec{s}(t), \vec{u}(t), b_{\mathrm{out}}] \,.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            np.ndarray[float]:</span>
+<span class="sd">                Input data containing one timestep, of shape: :code:`(1, ReservoirComputer.input_length)`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray[float]:</span>
+<span class="sd">                Predicted output data for the next timestep, of shape :code:`(1, ReservoirComputer.input_length)`.</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            This function uses an hstack, which is slow, if there is not a preallocated array for the output. Allocating an arrow for the esv might be a good idea.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+            <span class="n">loglevel_debug_RC</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;ReservoirComputer.predict_single_step</span><span class="se">\t\t</span><span class="s2">Input shape: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># propagate reservoir state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propagate_reservoir_state</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># create extended state vector</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esv</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esv</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">esv</span><span class="p">[</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="p">]</span>  <span class="c1"># Symmetry breaking</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_includeinput</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esv</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># last component is not changed always set to output_bias</span>
+
+        <span class="c1"># predict output</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_ridgemodel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">esv</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ReservoirComputer.propagate_reservoir_state">
+<a class="viewcode-back" href="../../packages/drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer.propagate_reservoir_state">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">propagate_reservoir_state</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">input</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Propagates a reservoir state to the next timestep using an :code:`input` time series  :math:`\vec{u}(t)` following</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \vec{s}(t+1) = (1-\alpha) \vec{s}(t) + \alpha \tanh(\nu \boldsymbol{W}_{\mathrm{in}} [\vec{u}(t), b_{\mathrm{in}}] + \rho \boldsymbol{W} s(t))</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            np.ndarray[float]:</span>
+<span class="sd">                Input (transient) time series :math:`\vec{u}(t)` of shape :code:`(variables,)`.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            This function returns a reference, hence modifying the return value directly modifies the reseroir state.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modified_leakage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">leakage</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adjacency_matrix</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_matrix</span> <span class="o">@</span> <span class="nb">input</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_from_bias</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ReservoirComputer._collect_reservoir_state">
+<a class="viewcode-back" href="../../packages/drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer._collect_reservoir_state">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_collect_reservoir_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Collects the reservoir states, which are updated following</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \vec{s}(t+1) = (1-\alpha) \vec{s}(t) + \alpha \tanh(\nu \boldsymbol{W}_{\mathrm{in}} [\vec{u}(t), b_{\mathrm{in}}] + \rho \boldsymbol{W} s(t))</span>
+
+<span class="sd">        for a given input :code:`input_data`, i.e. a time series :math:`\vec{u}(t)`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_data (np.ndarray[float]):</span>
+<span class="sd">                Input time series :math:`\vec{u}(t)` of shape :code:`(time_steps, variables)`.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray[float]:</span>
+<span class="sd">                Reservoir time series :math:`\vec{s}(t)` of shape :code:`(time_steps, self.nodes)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">collected_states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">input_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">input_t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">input_data</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">propagate_reservoir_state</span><span class="p">(</span><span class="n">input_t</span><span class="p">)</span>
+            <span class="n">collected_states</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+        <span class="k">return</span> <span class="n">collected_states</span></div>
+
+
+<div class="viewcode-block" id="ReservoirComputer._get_input_matrix">
+<a class="viewcode-back" href="../../packages/drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer._get_input_matrix">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_input_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return :math:`\boldsymbol{W}_{\mathrm{in}}`, which maps the input to reservoir nodes.</span>
+
+<span class="sd">        Use the shape of input data and nnumber of nodes to determine the matrix.</span>
+
+<span class="sd">        Returns the input matrix for the input data and separately the input</span>
+<span class="sd">        contribution of the input bias</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">input_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_scaling</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span>
+            <span class="n">low</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_length</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">input_from_bias</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_scaling</span>
+            <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_bias</span>
+            <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">input_matrix</span><span class="p">,</span> <span class="n">input_from_bias</span></div>
+
+
+<div class="viewcode-block" id="ReservoirComputer._get_adjacency_matrix">
+<a class="viewcode-back" href="../../packages/drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer._get_adjacency_matrix">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_adjacency_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the adjacency matrix :math:`\boldsymbol{W}` of the reservoir. This is the cuppeling matrix of the inner nodes.</span>
+<span class="sd">        The spectral radius of the adjacency matrix is set to one and is multiplied in the update step :code:`propagate_reservoir_state`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># set adjacency matrix, as degree is low compared to dimension use sparse matrix</span>
+        <span class="n">adjacency</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">random</span><span class="p">(</span>
+            <span class="n">m</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+            <span class="n">n</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+            <span class="n">density</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># ensure spectral radius to be one</span>
+        <span class="n">max_eigenvalue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span>
+            <span class="n">eigs</span><span class="p">(</span><span class="n">adjacency</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;LM&quot;</span><span class="p">,</span> <span class="n">return_eigenvectors</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spectral_radius</span> <span class="o">/</span> <span class="n">max_eigenvalue</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">adjacency</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

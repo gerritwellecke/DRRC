@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.1.4. drrc.tools.visualization module &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. drrc.analysis module" href="drrc.analysis.html" />
+    <link rel="prev" title="2.1.3. drrc.tools.plot_config module" href="drrc.tools.plot_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="drrc.html">2. drrc</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="drrc.tools.html">2.1. drrc.tools package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="drrc.html"><span class="section-number">2. </span>drrc</a></li>
+          <li class="breadcrumb-item"><a href="drrc.tools.html"><span class="section-number">2.1. </span>drrc.tools package</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.1.4. </span>drrc.tools.visualization module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/packages/drrc.tools.visualization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-drrc.tools.visualization">
+<span id="drrc-tools-visualization-module"></span><h1><span class="section-number">2.1.4. </span>drrc.tools.visualization module<a class="headerlink" href="#module-drrc.tools.visualization" title="Link to this heading"></a></h1>
+<p><em>Code author: Luk Fleddermann</em></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.tools.visualization.visualization">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visualization</span></span><a class="reference internal" href="../_modules/drrc/tools/visualization.html#visualization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.tools.visualization.visualization" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Visualtizations of temporally extended two-dimensional data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.tools.visualization.visualization.produce_animation">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">produce_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_out</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['test_animation']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plt_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/home/runner/work/DRRC/DRRC/Figures/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figure_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prog_feedback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_cbar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/tools/visualization.html#visualization.produce_animation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.tools.visualization.visualization.produce_animation" title="Link to this definition"></a></dt>
+<dd><p>Produces an animation of arbitrary length and resolution from the given data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>np.ndarray</em>) – Time array.</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Physical total length.</p></li>
+<li><p><strong>dx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Infinitesimal length.</p></li>
+<li><p><strong>fps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Frames per second of the animation.</p></li>
+<li><p><strong>T_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Length of the animation.</p></li>
+<li><p><strong>animation_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><em>np.ndarray</em><em>]</em>) – List of Data of excitation over time. The first dimension is temporal. Different list elements are shown in different figures.</p></li>
+<li><p><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em><em>] </em><em>| </em><em>None</em><em>, </em><em>optional</em>) – Bounds of the range in the heatmap. Defaults to None. Different list elements are used in different figures.</p></li>
+<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em><em>, </em><em>optional</em>) – Names of the animation. Defaults to [“test_animation”]. Different list elements are used in different figures.</p></li>
+<li><p><strong>plt_shape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em><em>, </em><em>optional</em>) – Shape of the plot: (nrows, ncols). Defaults to (1, 1).</p></li>
+<li><p><strong>Path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – Path to the directory where the file is saved. Defaults to f”{Config.get_git_root()}/Figures/”.</p></li>
+<li><p><strong>figure_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Name of the figure. Defaults to None.</p></li>
+<li><p><strong>prog_feedback</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to show progress feedback. Defaults to True.</p></li>
+<li><p><strong>one_cbar</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to show only one colorbar. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>mp4 data</p>
+</dd>
+</dl>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>The function has limited application so far and shall be extended to optionally produce multiple plots next to each other.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.13)"><strong>TypeError</strong></a> – If animation_data and animation_data2 have different shapes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.tools.visualization.visualization.produce_series_of_snapshots">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">produce_series_of_snapshots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">animation_data_u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_nrs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_tot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1x4_only_u'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_data_w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_heat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/tools/visualization.html#visualization.produce_series_of_snapshots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.tools.visualization.visualization.produce_series_of_snapshots" title="Link to this definition"></a></dt>
+<dd><p>The function produces series of snapshots (heatmaps) for different possibilities
+of numbers of images, formats, and possibly from different data sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>animation_data</strong> – Data of excitation over time. First dimension is temporal (three dim np array)</p></li>
+<li><p><strong>frame_nrs</strong> – A list of the numbers of frams which shall be included in the saved figure (array)</p></li>
+<li><p><strong>T_tot</strong> – Physical temporal length of animation (float)</p></li>
+<li><p><strong>bounds</strong> – bounds of the range in heatmap (float array of shape (2,))</p></li>
+<li><p><strong>format</strong> – Specification of the format (Str)</p></li>
+<li><p><strong>name</strong> – name of file, and title of plot (Str)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Output:</dt><dd><p>image</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not maintained! And very old.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="drrc.tools.plot_config.html" class="btn btn-neutral float-left" title="2.1.3. drrc.tools.plot_config module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drrc.analysis.html" class="btn btn-neutral float-right" title="2.2. drrc.analysis module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

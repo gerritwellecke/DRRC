@@ -1,0 +1,8 @@
+drrc.spatially\_extended\_systems module
+========================================
+
+.. automodule:: drrc.spatially_extended_systems
+   :members:
+   :no-undoc-members:
+   :private-members:
+   :show-inheritance:

@@ -1,0 +1,8 @@
+drrc.tools.general\_methods module
+==================================
+
+.. automodule:: drrc.tools.general_methods
+   :members:
+   :no-undoc-members:
+   :private-members:
+   :show-inheritance:

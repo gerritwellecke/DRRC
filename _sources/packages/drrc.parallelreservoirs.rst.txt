@@ -1,0 +1,8 @@
+drrc.parallelreservoirs module
+==============================
+
+.. automodule:: drrc.parallelreservoirs
+   :members:
+   :no-undoc-members:
+   :private-members:
+   :show-inheritance:

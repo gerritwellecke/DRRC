@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.6. drrc.reservoircomputer module &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.7. drrc.spatially_extended_systems module" href="drrc.spatially_extended_systems.html" />
+    <link rel="prev" title="2.5. drrc.parallelreservoirs module" href="drrc.parallelreservoirs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="drrc.html">2. drrc</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="drrc.html"><span class="section-number">2. </span>drrc</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.6. </span>drrc.reservoircomputer module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/packages/drrc.reservoircomputer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-drrc.reservoircomputer">
+<span id="drrc-reservoircomputer-module"></span><h1><span class="section-number">2.6. </span>drrc.reservoircomputer module<a class="headerlink" href="#module-drrc.reservoircomputer" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.reservoircomputer.ReservoirComputer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ReservoirComputer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">leakage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectral_radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_scaling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_includeinput</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identical_inputmatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identical_adjacencymatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identical_outputmatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_matrices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/reservoircomputer.html#ReservoirComputer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.reservoircomputer.ReservoirComputer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class to model dynamics using a single reservoir.
+The class provides a function to train the reservoirs redout, propagate the reservoir state or perform a prediction.
+Further, private methods exist to collect the reservoir state or construct the input and adjacency matrix.</p>
+<p>Initializes a single reservoir based on an echo state network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – amount of nodes within the reservoir</p></li>
+<li><p><strong>degree</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – degree of the adjacency matrix of the echo-state network</p></li>
+<li><p><strong>leakage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – describes how fast the reservoir forgets old data
+(0 fixed reservoir state, 1 no memory only driven by inputs)</p></li>
+<li><p><strong>spectral_radius</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – spectral radius of the adjacency matrix</p></li>
+<li><p><strong>input_scaling</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – scaling of the input data or weights</p></li>
+<li><p><strong>input_length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – length of the input data</p></li>
+<li><p><strong>input_bias</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – bias added to the input data</p></li>
+<li><p><strong>output_bias</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – bias added to the output data</p></li>
+<li><p><strong>regularization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – regularization parameter for the ridge regression</p></li>
+<li><p><strong>training_includeinput</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – if True the input data is included in the extended state vector, i.e. used in the ridge regression</p></li>
+<li><p><strong>identical_inputmatrix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – if True the input matrix is the same for all <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code> instances</p></li>
+<li><p><strong>identical_adjacencymatrix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – if True the adjacency matrix is the same for all <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code> instances</p></li>
+<li><p><strong>identical_outputmatrix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – if False the output matrix is different for all <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code> instances, else it is the same.</p></li>
+<li><p><strong>reset_matrices</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – if True the matrices are reset, else they are kept if they are identical for all parallel reservoirs.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.reservoircomputer.ReservoirComputer.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">transient_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/reservoircomputer.html#ReservoirComputer.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.reservoircomputer.ReservoirComputer.train" title="Link to this definition"></a></dt>
+<dd><p>Train a reservoir with given training data <code class="code docutils literal notranslate"><span class="pre">input,</span> <span class="pre">output</span></code> of shape <code class="code docutils literal notranslate"><span class="pre">(training_steps+transient_steps,</span> <span class="pre">variables_in),</span> <span class="pre">(training_steps,</span> <span class="pre">variables_out)</span></code>, respectively.</p>
+<p>For a training input time series <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span> the reservoir is updated and its states <span class="math notranslate nohighlight">\(\vec{r}(t)\)</span> are collected in the extended interior state vector <span class="math notranslate nohighlight">\(\vec{x}(t)=[\vec{r}(t), \vec{u}(t), b_{\mathrm{in}}]\)</span>.</p>
+<p>The output matrix <span class="math notranslate nohighlight">\(\boldsymbol{W}_{\mathrm{out}}\)</span> is trained to preform <span class="math notranslate nohighlight">\(\vec{y}(t)=\boldsymbol{W}_{\mathrm{out}}\vec{x}(t)\)</span>, where <span class="math notranslate nohighlight">\(\vec{y}(t)\)</span> is the desired output time series.
+The training uses Tikhonov regularisation:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{W}_{\mathrm{out}}=\boldsymbol{Y}\boldsymbol{X}^T\left(\boldsymbol{X}\boldsymbol{X}^T+\beta\boldsymbol{I}\right)^{-1}\]</div>
+<p>, which analytically minimizes</p>
+<div class="math notranslate nohighlight">
+\[\sum_m\|\vec{y}^{\mathrm{true}}(m)-\boldsymbol{W}_{\mathrm{out}}\vec{x}_m\|^2+\beta\|\boldsymbol{W}_{\mathrm{out}}\|_2^2\quad.\]</div>
+<p>The output matrix <span class="math notranslate nohighlight">\(\boldsymbol{W}_{\mathrm{out}}\)</span> is saved as a ridge regression model <code class="code docutils literal notranslate"><span class="pre">sklearn.linear_model.Ridge</span></code> and the data on which the fit is performed (training data and reservoir states) is returned for testing purposes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>np.ndarray</strong><strong>[</strong><strong>float</strong><strong>]</strong> – Input data following shape as <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables_in)</span></code>, where <code class="code docutils literal notranslate"><span class="pre">time_steps</span></code> is the number of timesteps (including transient steps) and <code class="code docutils literal notranslate"><span class="pre">variables_in</span></code> is the number of input variables</p></li>
+<li><p><strong>np.ndarray</strong><strong>[</strong><strong>float</strong><strong>]</strong> – Output data following shape as <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables_out)</span></code>, where <code class="code docutils literal notranslate"><span class="pre">time_steps</span></code> is the number of timesteps (excluding transient steps) and <code class="code docutils literal notranslate"><span class="pre">variables_out</span></code> is the number of output variables</p></li>
+<li><p><strong>transient_steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of transient steps to adjust the reservoir state to the input data. These reservoir states are not used in the fit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series of the extended interior state vector <span class="math notranslate nohighlight">\(\vec{x}(t)\)</span>  and corresponding output data <span class="math notranslate nohighlight">\(\vec{y}(t)\)</span> used for training.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[np.ndarray[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.reservoircomputer.ReservoirComputer.train_on_multiple_datasets">
+<span class="sig-name descname"><span class="pre">train_on_multiple_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transient_steps</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/reservoircomputer.html#ReservoirComputer.train_on_multiple_datasets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.reservoircomputer.ReservoirComputer.train_on_multiple_datasets" title="Link to this definition"></a></dt>
+<dd><p>Train a reservoir on lists of with given training data <code class="code docutils literal notranslate"><span class="pre">inputs,</span> <span class="pre">outputs</span></code>. Where the <code class="code docutils literal notranslate"><span class="pre">i</span></code>-th list entry is of shape <code class="code docutils literal notranslate"><span class="pre">(training_steps_i+transient_steps,</span> <span class="pre">variables_in),</span> <span class="pre">(training_steps_i,</span> <span class="pre">variables_out)</span></code>, respectively.</p>
+<p>For each element in <code class="code docutils literal notranslate"><span class="pre">inputs</span></code>, i.e. training time series <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span> the reservoir is updated and its states <span class="math notranslate nohighlight">\(\vec{r}(t)\)</span> are collected in the extended interior state vector <span class="math notranslate nohighlight">\(\vec{x}(t)=[\vec{r}(t), \vec{u}(t), b_{\mathrm{in}}]\)</span>.</p>
+<p>The output matrix <span class="math notranslate nohighlight">\(\boldsymbol{W}_{\mathrm{out}}\)</span> is trained to preform <span class="math notranslate nohighlight">\(\vec{y}(t)=\boldsymbol{W}_{\mathrm{out}}\vec{x}(t)\)</span> for all elements in the lists <code class="code docutils literal notranslate"><span class="pre">inputs,</span> <span class="pre">outputs</span></code>, where <span class="math notranslate nohighlight">\(\vec{y}(t)\)</span> is the desired output time series.
+The training uses Tikhonov regularisation:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{W}_{\mathrm{out}}=\boldsymbol{Y}\boldsymbol{X}^T\left(\boldsymbol{X}\boldsymbol{X}^T+\beta\boldsymbol{I}\right)^{-1}\]</div>
+<p>, which analytically minimizes</p>
+<div class="math notranslate nohighlight">
+\[\sum_m\|\vec{y}^{\mathrm{true}}(m)-\boldsymbol{W}_{\mathrm{out}}\vec{x}_m\|^2+\beta\|\boldsymbol{W}_{\mathrm{out}}\|_2^2\quad.\]</div>
+<p>The output matrix <span class="math notranslate nohighlight">\(\boldsymbol{W}_{\mathrm{out}}\)</span> is saved as a ridge regression model <code class="code docutils literal notranslate"><span class="pre">sklearn.linear_model.Ridge</span></code> and the data on which the fit is performed (training data and reservoir states) is returned for testing purposes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><em>np.ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em><em>]</em>) – List of input training data, each following the shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables_in)</span></code>, where <code class="code docutils literal notranslate"><span class="pre">time_steps</span></code> is the number of timesteps (including transient steps) and <code class="code docutils literal notranslate"><span class="pre">variables_in</span></code> is the number of input variables</p></li>
+<li><p><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><em>np.ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em><em>]</em>) – List of training output data, each following the shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables_out)</span></code>, where <code class="code docutils literal notranslate"><span class="pre">time_steps</span></code> is the number of timesteps (excluding transient steps) and <code class="code docutils literal notranslate"><span class="pre">variables_out</span></code> is the number of output variables</p></li>
+<li><p><strong>transient_steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of transient steps to adjust the reservoir state to the input data. These reservoir states are not used in the fit.        Returns:</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Over all list elements <code class="code docutils literal notranslate"><span class="pre">inputs,</span> <span class="pre">outputs</span></code> appended time series of the extended interior state vector <span class="math notranslate nohighlight">\(\vec{x}(t)\)</span>  and corresponding output data <span class="math notranslate nohighlight">\(\vec{y}(t)\)</span> used for training.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[np.ndarray[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.reservoircomputer.ReservoirComputer.predict_single_step">
+<span class="sig-name descname"><span class="pre">predict_single_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/reservoircomputer.html#ReservoirComputer.predict_single_step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.reservoircomputer.ReservoirComputer.predict_single_step" title="Link to this definition"></a></dt>
+<dd><p>Predict a single time step.</p>
+<p>Uses the input data to updata the reservoir state following</p>
+<div class="math notranslate nohighlight">
+\[\vec{s}(t+1) = (1-\alpha) \vec{s}(t) + \alpha \tanh(\nu \boldsymbol{W}_{\mathrm{in}} [\vec{u}(t), b_{\mathrm{in}}] + \rho \boldsymbol{W} s(t))\]</div>
+<p>and predict the following time step with</p>
+<div class="math notranslate nohighlight">
+\[\vec{u}(t + \Delta t) = \boldsymbol{W}_{\mathrm{out}} [\vec{s}(t), \vec{u}(t), b_{\mathrm{out}}] \,.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>np.ndarray</strong><strong>[</strong><strong>float</strong><strong>]</strong> – Input data containing one timestep, of shape: <code class="code docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">ReservoirComputer.input_length)</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predicted output data for the next timestep, of shape <code class="code docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">ReservoirComputer.input_length)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a>]</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function uses an hstack, which is slow, if there is not a preallocated array for the output. Allocating an arrow for the esv might be a good idea.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.reservoircomputer.ReservoirComputer.propagate_reservoir_state">
+<span class="sig-name descname"><span class="pre">propagate_reservoir_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/reservoircomputer.html#ReservoirComputer.propagate_reservoir_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.reservoircomputer.ReservoirComputer.propagate_reservoir_state" title="Link to this definition"></a></dt>
+<dd><p>Propagates a reservoir state to the next timestep using an <code class="code docutils literal notranslate"><span class="pre">input</span></code> time series  <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span> following</p>
+<div class="math notranslate nohighlight">
+\[\vec{s}(t+1) = (1-\alpha) \vec{s}(t) + \alpha \tanh(\nu \boldsymbol{W}_{\mathrm{in}} [\vec{u}(t), b_{\mathrm{in}}] + \rho \boldsymbol{W} s(t))\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>np.ndarray</strong><strong>[</strong><strong>float</strong><strong>]</strong> – Input (transient) time series <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span> of shape <code class="code docutils literal notranslate"><span class="pre">(variables,)</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>This function returns a reference, hence modifying the return value directly modifies the reseroir state.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.reservoircomputer.ReservoirComputer._collect_reservoir_state">
+<span class="sig-name descname"><span class="pre">_collect_reservoir_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/reservoircomputer.html#ReservoirComputer._collect_reservoir_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.reservoircomputer.ReservoirComputer._collect_reservoir_state" title="Link to this definition"></a></dt>
+<dd><p>Collects the reservoir states, which are updated following</p>
+<div class="math notranslate nohighlight">
+\[\vec{s}(t+1) = (1-\alpha) \vec{s}(t) + \alpha \tanh(\nu \boldsymbol{W}_{\mathrm{in}} [\vec{u}(t), b_{\mathrm{in}}] + \rho \boldsymbol{W} s(t))\]</div>
+<p>for a given input <code class="code docutils literal notranslate"><span class="pre">input_data</span></code>, i.e. a time series <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_data</strong> (<em>np.ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – Input time series <span class="math notranslate nohighlight">\(\vec{u}(t)\)</span> of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables)</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Reservoir time series <span class="math notranslate nohighlight">\(\vec{s}(t)\)</span> of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">self.nodes)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.reservoircomputer.ReservoirComputer._get_input_matrix">
+<span class="sig-name descname"><span class="pre">_get_input_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/reservoircomputer.html#ReservoirComputer._get_input_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.reservoircomputer.ReservoirComputer._get_input_matrix" title="Link to this definition"></a></dt>
+<dd><p>Return <span class="math notranslate nohighlight">\(\boldsymbol{W}_{\mathrm{in}}\)</span>, which maps the input to reservoir nodes.</p>
+<p>Use the shape of input data and nnumber of nodes to determine the matrix.</p>
+<p>Returns the input matrix for the input data and separately the input
+contribution of the input bias</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.reservoircomputer.ReservoirComputer._get_adjacency_matrix">
+<span class="sig-name descname"><span class="pre">_get_adjacency_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html#scipy.sparse.coo_matrix" title="(in SciPy v1.16.2)"><span class="pre">coo_matrix</span></a></span></span><a class="reference internal" href="../_modules/drrc/reservoircomputer.html#ReservoirComputer._get_adjacency_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.reservoircomputer.ReservoirComputer._get_adjacency_matrix" title="Link to this definition"></a></dt>
+<dd><p>Returns the adjacency matrix <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> of the reservoir. This is the cuppeling matrix of the inner nodes.
+The spectral radius of the adjacency matrix is set to one and is multiplied in the update step <code class="code docutils literal notranslate"><span class="pre">propagate_reservoir_state</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="drrc.parallelreservoirs.html" class="btn btn-neutral float-left" title="2.5. drrc.parallelreservoirs module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drrc.spatially_extended_systems.html" class="btn btn-neutral float-right" title="2.7. drrc.spatially_extended_systems module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

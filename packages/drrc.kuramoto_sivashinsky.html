@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4. drrc.kuramoto_sivashinsky module &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.5. drrc.parallelreservoirs module" href="drrc.parallelreservoirs.html" />
+    <link rel="prev" title="2.3. drrc.config module" href="drrc.config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="drrc.html">2. drrc</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="drrc.html"><span class="section-number">2. </span>drrc</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4. </span>drrc.kuramoto_sivashinsky module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/packages/drrc.kuramoto_sivashinsky.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-drrc.kuramoto_sivashinsky">
+<span id="drrc-kuramoto-sivashinsky-module"></span><h1><span class="section-number">2.4. </span>drrc.kuramoto_sivashinsky module<a class="headerlink" href="#module-drrc.kuramoto_sivashinsky" title="Link to this heading"></a></h1>
+<p>Generates training data for a Kuramoto-Sivashinsky system.</p>
+<p><em>Code author: Gerrit Wellecke</em></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.kuramoto_sivashinsky.KuramotoSivashinsky">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KuramotoSivashinsky</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><span class="pre">Config</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tN</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Data/1D_KuramotoSivashinsky/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/kuramoto_sivashinsky.html#KuramotoSivashinsky"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.kuramoto_sivashinsky.KuramotoSivashinsky" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The Kuramoto-Sivashinsky-equation as</p>
+<div class="math notranslate nohighlight">
+\[\partial_t u(x,t) = -\frac{1}{2} \nabla\left[ u^2(x,t)\right] - \nabla^2 u(x,t)
+    - \nu \nabla^4 u(x,t)\,,\]</div>
+<p>where <span class="math notranslate nohighlight">\(u\)</span> is a one-dimensional field.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Update documentation!</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><em>Config</em></a>) – configuration YAML object referring to the KS system</p></li>
+<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – method of integration.</p></li>
+<li><p><strong>nu</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – prefactor of 4th derivative in KS equation</p></li>
+<li><p><strong>L</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – domain length, i.e. domain is [0, L]</p></li>
+<li><p><strong>nx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – number of gridpoints in spatial domain</p></li>
+<li><p><strong>dt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – time step size</p></li>
+<li><p><strong>t0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – time before is integrated but discarded</p></li>
+<li><p><strong>tN</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – final time point</p></li>
+<li><p><strong>task_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – SGE_TASK_ID of the current execution</p></li>
+<li><p><strong>cluster_save</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Set to true if you wish to save data with an absolute path.
+In this case Jobscript-Datadir is interpreted absolute, which is useful
+when you want to use the cluster’s data server.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>This best used by dictionary unpacking, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">KuramotoSivashinsky</span><span class="p">(</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">conf</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Parameters&quot;</span><span class="p">],</span>
+    <span class="o">**</span><span class="n">conf</span><span class="o">.</span><span class="n">param_scan_list</span><span class="p">(</span><span class="n">task_id</span><span class="p">),</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">drrc.config.Config</span></code></a> for this look as follows:</p>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">System</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;KuramotoSivashinsky&quot;</span>
+<span class="w">  </span><span class="nt">Parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># nu: 1</span>
+<span class="w">    </span><span class="nt">L</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="w">    </span><span class="nt">nx</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">    </span><span class="nt">t0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">tN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="w">    </span><span class="nt">dt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="w">  </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spectral&quot;</span><span class="w">  </span><span class="c1"># spectral or py-pde</span>
+
+<span class="nt">Saving</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># this must be absolute paths with respect to the repository root</span>
+<span class="w">  </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;KS_t&quot;</span>
+<span class="w">  </span><span class="nt">PlotPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Figures/&quot;</span>
+
+<span class="nt">Jobscript</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Example-2023&quot;</span>
+<span class="w">  </span><span class="nt">Datadir</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~&quot;</span><span class="w">  </span><span class="c1"># this has to be an absolute path on the executing system</span>
+<span class="w">  </span><span class="nt">Cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+
+<span class="nt">ParamScan</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nu</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.2</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.kuramoto_sivashinsky.KuramotoSivashinsky.generate_timeseries">
+<span class="sig-name descname"><span class="pre">generate_timeseries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/kuramoto_sivashinsky.html#KuramotoSivashinsky.generate_timeseries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.kuramoto_sivashinsky.KuramotoSivashinsky.generate_timeseries" title="Link to this definition"></a></dt>
+<dd><p>Integrate KS system with the integrator specified in the config YAML</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – <p>Can include and overwrite</p>
+<dl class="simple">
+<dt>t0 (float):</dt><dd><p>time before is integrated but discarded</p>
+</dd>
+<dt>tN (float):</dt><dd><p>final time point</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.kuramoto_sivashinsky.KuramotoSivashinsky.generate_timeseries_spectral">
+<span class="sig-name descname"><span class="pre">generate_timeseries_spectral</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/kuramoto_sivashinsky.html#KuramotoSivashinsky.generate_timeseries_spectral"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.kuramoto_sivashinsky.KuramotoSivashinsky.generate_timeseries_spectral" title="Link to this definition"></a></dt>
+<dd><p>Integrate the KS system using a spectral method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.kuramoto_sivashinsky.KuramotoSivashinsky.generate_timeseries_pypde">
+<span class="sig-name descname"><span class="pre">generate_timeseries_pypde</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/kuramoto_sivashinsky.html#KuramotoSivashinsky.generate_timeseries_pypde"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.kuramoto_sivashinsky.KuramotoSivashinsky.generate_timeseries_pypde" title="Link to this definition"></a></dt>
+<dd><p>Integrate the KS system using <code class="code docutils literal notranslate"><span class="pre">py-pde</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="code docutils literal notranslate"><span class="pre">py-pde</span></code> is much better tested than the code of
+<a class="reference internal" href="#drrc.kuramoto_sivashinsky.KuramotoSivashinsky.generate_timeseries_spectral" title="drrc.kuramoto_sivashinsky.KuramotoSivashinsky.generate_timeseries_spectral"><code class="xref py py-func docutils literal notranslate"><span class="pre">generate_timeseries_spectral()</span></code></a>.
+Also it solves the system in real space.
+However, this comes at a much slower speed!</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.kuramoto_sivashinsky.KuramotoSivashinsky.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/kuramoto_sivashinsky.html#KuramotoSivashinsky.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.kuramoto_sivashinsky.KuramotoSivashinsky.save" title="Link to this definition"></a></dt>
+<dd><p>Save time series to .npy file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – If specified, this is the resulting file without the extension.
+Otherwise the filename from the config YAML is used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.kuramoto_sivashinsky.KuramotoSivashinsky.plot_conservation">
+<span class="sig-name descname"><span class="pre">plot_conservation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/kuramoto_sivashinsky.html#KuramotoSivashinsky.plot_conservation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.kuramoto_sivashinsky.KuramotoSivashinsky.plot_conservation" title="Link to this definition"></a></dt>
+<dd><p>Plot field conversation for quick sanity checks</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This method does not yet allow for writing the resulting plot to file.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.kuramoto_sivashinsky.KuramotoSivashinsky.plot_kymograph">
+<span class="sig-name descname"><span class="pre">plot_kymograph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SavingPath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/kuramoto_sivashinsky.html#KuramotoSivashinsky.plot_kymograph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.kuramoto_sivashinsky.KuramotoSivashinsky.plot_kymograph" title="Link to this definition"></a></dt>
+<dd><p>Plot kymograph of the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>save</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – If set the result are not shown but instead saved to a png at the given location.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="drrc.config.html" class="btn btn-neutral float-left" title="2.3. drrc.config module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drrc.parallelreservoirs.html" class="btn btn-neutral float-right" title="2.5. drrc.parallelreservoirs module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

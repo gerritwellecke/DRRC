@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.3. drrc.config module &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.4. drrc.kuramoto_sivashinsky module" href="drrc.kuramoto_sivashinsky.html" />
+    <link rel="prev" title="2.2. drrc.analysis module" href="drrc.analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="drrc.html">2. drrc</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="drrc.html"><span class="section-number">2. </span>drrc</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.3. </span>drrc.config module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/packages/drrc.config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-drrc.config">
+<span id="drrc-config-module"></span><h1><span class="section-number">2.3. </span>drrc.config module<a class="headerlink" href="#module-drrc.config" title="Link to this heading"></a></h1>
+<p>Wrapper class for YAML configurations.</p>
+<p>Use logger.INFO_1RUN for verbose output of this module’s functionality.</p>
+<p><em>Code author: Gerrit Wellecke</em></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.config.IndentDumper">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IndentDumper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_flow_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">canonical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_unicode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_break</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/config.html#IndentDumper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.IndentDumper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dumper</span></code></p>
+<p>YAML dumper needed for correct printing of config</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.config.Config">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proj_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Configuration of a system from a YAML file</p>
+<p>Initializes the config from a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proj_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – absolute path from the git repository’s root</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="drrc.config.Config.path">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#drrc.config.Config.path" title="Link to this definition"></a></dt>
+<dd><p>Absolute path to the configuration YAML file for the current
+system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)">pathlib.Path</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="drrc.config.Config.max_length">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_length</span></span><a class="headerlink" href="#drrc.config.Config.max_length" title="Link to this definition"></a></dt>
+<dd><p>Maximum length of param_scan_list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.get_git_root">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_git_root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.get_git_root"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.get_git_root" title="Link to this definition"></a></dt>
+<dd><p>Get root of the current git repository</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>absolute path to the git-root for the current system</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This does not really belong in this class.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.get_data_dir">
+<span class="sig-name descname"><span class="pre">get_data_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.get_data_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.get_data_dir" title="Link to this definition"></a></dt>
+<dd><p>Get absolute path to the current systems data directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>absolute path to the data directory for the current system</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.load_training_dataset">
+<span class="sig-name descname"><span class="pre">load_training_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.load_training_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.load_training_dataset" title="Link to this definition"></a></dt>
+<dd><p>Load and return the training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> – The index of the training data set to load.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>One training data set with minimal temporal length needed for iterative timeseries predictions, i.e. <code class="code docutils literal notranslate"><span class="pre">temporal_length=(transient_steps</span> <span class="pre">+</span> <span class="pre">training_steps</span> <span class="pre">+</span> <span class="pre">1)</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be modified to load only the amount of variables needed, to save memory.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.load_evalaluation_datasets">
+<span class="sig-name descname"><span class="pre">load_evalaluation_datasets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.load_evalaluation_datasets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.load_evalaluation_datasets" title="Link to this definition"></a></dt>
+<dd><p>Load and return the evaluation data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> – The configuration object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of numpy arrays containing the first evaluation data sets.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be modified to load only the amount of variables needed, to save memory.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.parse_YAML">
+<span class="sig-name descname"><span class="pre">parse_YAML</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.parse_YAML"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.parse_YAML" title="Link to this definition"></a></dt>
+<dd><p>Parse the config.yml file to get systems parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>representation of the config as given in the YAML file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.write_metadata_HDF">
+<span class="sig-name descname"><span class="pre">write_metadata_HDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">File</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">keylist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['Simulation']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_task_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.write_metadata_HDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.write_metadata_HDF" title="Link to this definition"></a></dt>
+<dd><p>Write parameters to an open HDF5-file’s attributes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> (<a class="reference external" href="https://docs.h5py.org/en/latest/high/file.html#h5py.File" title="(in h5py v3.14)"><em>h5py.File</em></a>) – HDF file in which metadata is to be written</p></li>
+<li><p><strong>keylist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – list of keys to be written (default: Simulation)</p></li>
+<li><p><strong>task_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – if a task_id is given, the corresponding cluster params are also written</p></li>
+<li><p><strong>sub_task_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – if a sub_task_id is given, only the corresponding cluster params are written</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.param_scan_list">
+<span class="sig-name descname"><span class="pre">param_scan_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.param_scan_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.param_scan_list" title="Link to this definition"></a></dt>
+<dd><p>Return set of parameters for a cluster run</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of lists of dictionaries or dictionary, where each sublist is to be
+understood as a single job in a job array</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to run a simulation as a parameter scan, supply the Config YAML
+with the following block:</p>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">ParamScan</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">A</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;range&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">B</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;range&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">C</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;range&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">100</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">D</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;list&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">13</span><span class="p p-Indicator">]</span>
+
+<span class="c1"># useful shorthand for the above config:</span>
+<span class="nt">ParamScan</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">A</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;range&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3</span><span class="p p-Indicator">]]</span>
+<span class="w">    </span><span class="nt">B</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;range&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">]]</span>
+<span class="w">    </span><span class="nt">C</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;range&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">100</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">]]</span>
+<span class="w">    </span><span class="nt">D</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">13</span><span class="p p-Indicator">]]</span>
+</pre></div>
+</div>
+<p>The arguments to the parameters must be lists where the first entry
+specifies the type of parameters to expect and the second specifies the
+values.
+If the specified as <code class="code docutils literal notranslate"><span class="pre">&quot;list&quot;</span></code> then the values will simply be taken as
+specified.
+If instead specified as <code class="code docutils literal notranslate"><span class="pre">&quot;range&quot;</span></code> the values are passed to
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html#numpy.arange" title="(in NumPy v2.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.arange()</span></code></a> by list unpacking, e.g. <code class="code docutils literal notranslate"><span class="pre">np.arange(*B)</span></code>.
+Similar commands with <code class="code docutils literal notranslate"><span class="pre">linspace,</span> <span class="pre">geomspace</span></code> are available, then the
+specified values would have to be <code class="code docutils literal notranslate"><span class="pre">start,</span> <span class="pre">stop,</span> <span class="pre">number</span></code>.</p>
+<p>The above example would mean that</p>
+<div class="math notranslate nohighlight">
+\[A \in \{0, 1, 2\} \,,
+B \in \{5, 6, 7, 8, 9\} \,,
+C \in \{0, 10, 20, \ldots, 90\} \,,
+D \in \{1, 5, 13\} \,.\]</div>
+<p>A job will then be started for each permutation of <span class="math notranslate nohighlight">\(A,B,C,D\)</span>.</p>
+<p>If you intend to run a single execution of a fixed set of parameters, you
+may set the following within the YAML</p>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">ParamScan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.param_scan_len">
+<span class="sig-name descname"><span class="pre">param_scan_len</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.param_scan_len"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.param_scan_len" title="Link to this definition"></a></dt>
+<dd><p>Total iterations of a cluster run</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is <strong>deprecated</strong>! Use <code class="code docutils literal notranslate"><span class="pre">len(conf.param_scan_list())</span></code> instead</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.jobscript_datadir">
+<span class="sig-name descname"><span class="pre">jobscript_datadir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.jobscript_datadir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.jobscript_datadir" title="Link to this definition"></a></dt>
+<dd><p>Path to raw data as defined in YAML</p>
+<p>The cluster will expect data to be within a YAML format like such:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output_type</strong> – The output type (:codes: <cite>‘ValidTimes’, ‘RunTimes’, ‘Memory’</cite>), which defines the folder to be written into.</p>
+</dd>
+</dl>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Saving</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">OutputDirectory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;path/to/data&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.make_jobscript_datadir">
+<span class="sig-name descname"><span class="pre">make_jobscript_datadir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_yaml</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.make_jobscript_datadir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.make_jobscript_datadir" title="Link to this definition"></a></dt>
+<dd><p>Create datadir as specified in Config if it doesn’t exist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The output type (:codes: <cite>‘ValidTimes’, ‘RunTimes’, ‘Memory’</cite>), which defines the folder to be written into.</p></li>
+<li><p><strong>copy_yaml</strong> – If set to True, the YAML will be copied to the directory created</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the directory already exists, an error will be raised to avoid
+overwriting previous data.
+The recommended procedure is to either delete old data or rename the YAML
+such that new data is written in a new directory.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.config.Config.generate_submission_script_from_YAML">
+<span class="sig-name descname"><span class="pre">generate_submission_script_from_YAML</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="../_modules/drrc/config.html#Config.generate_submission_script_from_YAML"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.config.Config.generate_submission_script_from_YAML" title="Link to this definition"></a></dt>
+<dd><p>Creates a shell script that can then be passed to qsub based on the
+information contained in the Config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The output type (<code class="code docutils literal notranslate"><span class="pre">'ValidTimes',</span> <span class="pre">'RunTimes',</span> <span class="pre">'Memory'</span></code>), which defines the folder to be written into.</p></li>
+<li><p><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a> or None) – Optional path to a different template than
+<code class="code docutils literal notranslate"><span class="pre">drrc/templates/qsub.template</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For this to work, the configuration YAML must contain the following block:</p>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">Jobscript</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># for qsub</span>
+<span class="w">  </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;qsub&quot;</span><span class="w">                 </span><span class="c1"># specify to run at MPI-DS</span>
+<span class="w">  </span><span class="nt">Cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">                     </span><span class="c1"># number of cores per job (should be divisor of 32)</span>
+<span class="w">  </span><span class="nt">max_job_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w">          </span><span class="c1"># array job will have 1000 jobs</span>
+<span class="w">  </span><span class="c1"># optional:</span>
+<span class="w">  </span><span class="nt">force_parallel_queue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w">  </span><span class="c1"># force job to run on teutates-mvapich2.q (optional)</span>
+
+<span class="w">  </span><span class="c1"># for slurm</span>
+<span class="w">  </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sbatch&quot;</span><span class="w">         </span><span class="c1"># specify submission command (template must have matching name!)</span>
+<span class="w">  </span><span class="nt">max_job_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span><span class="w">    </span><span class="c1"># 2000 jobs will be submitted as an array</span>
+<span class="w">  </span><span class="nt">tasks_per_job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">       </span><span class="c1"># each job will have 4 job steps</span>
+<span class="w">  </span><span class="nt">cores_per_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">      </span><span class="c1"># each job step will use 4 cores</span>
+<span class="w">  </span><span class="nt">mem_per_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24</span><span class="w">       </span><span class="c1"># and 24GB of memory</span>
+<span class="w">  </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GWDG&quot;</span><span class="w">        </span><span class="c1"># use specific cluster options</span>
+<span class="w">  </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00:05:00&quot;</span><span class="w">       </span><span class="c1"># each task will run at most 5 minutes</span>
+</pre></div>
+</div>
+<p>This will create a parallel jobs with 4 cores per task.
+On qsub this will always fill nodes of 32 cores.
+When using SLURM this additionally allows to set how many tasks should be
+run in each job (potentially allowing for smaller jobs / faster queueing).</p>
+<p>The resulting shell script will always be placed in the data directory as
+returned by <a class="reference internal" href="#drrc.config.Config.jobscript_datadir" title="drrc.config.Config.jobscript_datadir"><code class="xref py py-func docutils literal notranslate"><span class="pre">Config.jobscript_datadir()</span></code></a> to ensure data is kept with the
+submission script.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There seems to be some configuration in place for <code class="code docutils literal notranslate"><span class="pre">cluster:</span> <span class="pre">&quot;raven&quot;</span></code>
+and <code class="code docutils literal notranslate"><span class="pre">cluster:</span> <span class="pre">&quot;viper&quot;</span></code> such that total memory must always be defined.
+I’m not quite sure yet how to write scripts for that.
+<strong>So right now this only works &#64;GWDG!</strong></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>If using</strong> <code class="code docutils literal notranslate"><span class="pre">Type:</span> <span class="pre">&quot;qsub&quot;</span></code>:</p>
+<p>Currently this is set up such that a single cluster node of 32 cores will
+receive as many jobs as it can fit. For optimal use of the cluster
+<code class="code docutils literal notranslate"><span class="pre">Cores</span></code> should be a divisor of 32.</p>
+<p>When choosing this, keep in mind that per cluster node there are 192GB RAM.</p>
+<p>If <code class="code docutils literal notranslate"><span class="pre">Cores</span></code> is set to 1, this function assumes that the job will be
+submitted to the serial cluster and thus adapt the submission script.
+However, one may set the optional argument
+<code class="code docutils literal notranslate"><span class="pre">force_parallel_queue:</span> <span class="pre">True</span></code> to run 32 single-core jobs per node in
+the parallel queue.</p>
+<p>Jobs are submitted using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub<span class="w"> </span>Submit-job.sh
+</pre></div>
+</div>
+<p><strong>If using</strong> <code class="code docutils literal notranslate"><span class="pre">Type:</span> <span class="pre">&quot;slurm&quot;</span></code>:</p>
+<p>In this case <code class="code docutils literal notranslate"><span class="pre">RAM,</span> <span class="pre">partition</span></code> must be defined in the YAML.
+Note that this is the RAM per CPU core. So the in the above example SLURM
+will allocate <span class="math notranslate nohighlight">\(4\cdot12\mathrm{GB}=48\mathrm{GB}\)</span> of RAM.</p>
+<p>The job can then be submitted using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>Submit-job.sh
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="drrc.analysis.html" class="btn btn-neutral float-left" title="2.2. drrc.analysis module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drrc.kuramoto_sivashinsky.html" class="btn btn-neutral float-right" title="2.4. drrc.kuramoto_sivashinsky module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

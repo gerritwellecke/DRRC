@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>drrc.tools.general_methods &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packages/drrc.html">2. drrc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../packages/drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../packages/drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../packages/drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../packages/drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../packages/drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../packages/drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../packages/drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../packages/drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../packages/drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../packages/drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../packages/drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">drrc.tools.general_methods</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for drrc.tools.general_methods</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. codeauthor:: Luk Fleddermann</span>
+
+<span class="sd">This file contains general (usefull) classes and functions,</span>
+<span class="sd">which can be used in a more general application than the</span>
+<span class="sd">simulation and prediction of spatially extended systems.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">argparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArgumentParser</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">h5py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShapeError</span>
+
+<span class="c1"># TODO this module does not have one clear purpose -&gt; clean up</span>
+<span class="c1"># TODO unify yaml, hdf with Config</span>
+
+
+<div class="viewcode-block" id="progress_feedback">
+<a class="viewcode-back" href="../../../packages/drrc.tools.general_methods.html#drrc.tools.general_methods.progress_feedback">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">progress_feedback</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The class includes different featback functions which can be used to obtain featback</span>
+<span class="sd">    for itterative aplications of similar steps.</span>
+<span class="sd">    Some of which are reused from userbased function definitions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="progress_feedback.printProgressBar">
+<a class="viewcode-back" href="../../../packages/drrc.tools.general_methods.html#drrc.tools.general_methods.progress_feedback.printProgressBar">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">printProgressBar</span><span class="p">(</span>
+        <span class="n">iteration</span><span class="p">,</span>
+        <span class="n">total</span><span class="p">,</span>
+        <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">decimals</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;█&quot;</span><span class="p">,</span>
+        <span class="n">printEnd</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            iteration: current iteration (Int)</span>
+<span class="sd">            total: total iterations (Int)</span>
+<span class="sd">            prefix: prefix string (Str)</span>
+<span class="sd">            suffix: suffix string (Str)</span>
+<span class="sd">            decimals: positive number of decimals in percent complete (Int)</span>
+<span class="sd">            length: character length of bar (Int)</span>
+<span class="sd">            fill: bar fill character (Str)</span>
+<span class="sd">            printEnd: end character (e.g. &quot;\r&quot;, &quot;\r\n&quot;) (Str)</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            - The function returns in the last step simultaneously 100% and 100%-10^(-decimals)*1%.</span>
+<span class="sd">            - The function is a modified version of the function from the source:</span>
+<span class="sd">              https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console (last visited 30.11.21).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">percent</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;{0:.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;f}&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">iteration</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">total</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="n">filledLength</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="n">iteration</span> <span class="o">//</span> <span class="n">total</span><span class="p">)</span>
+        <span class="n">bar</span> <span class="o">=</span> <span class="n">fill</span> <span class="o">*</span> <span class="n">filledLength</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">length</span> <span class="o">-</span> <span class="n">filledLength</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="se">\t</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> |</span><span class="si">{</span><span class="n">bar</span><span class="si">}</span><span class="s2">| </span><span class="si">{</span><span class="n">percent</span><span class="si">}</span><span class="s2">% </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">printEnd</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> |</span><span class="si">{</span><span class="n">bar</span><span class="si">}</span><span class="s2">| </span><span class="si">{</span><span class="n">percent</span><span class="si">}</span><span class="s2">% </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">printEnd</span><span class="p">)</span>
+        <span class="c1"># Print New Line on Complete</span>
+        <span class="k">if</span> <span class="n">iteration</span> <span class="o">==</span> <span class="n">total</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">percent</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;{0:.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;f}&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">filledLength</span> <span class="o">=</span> <span class="n">length</span>
+            <span class="n">bar</span> <span class="o">=</span> <span class="n">fill</span> <span class="o">*</span> <span class="n">filledLength</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">length</span> <span class="o">-</span> <span class="n">filledLength</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="se">\t</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> |</span><span class="si">{</span><span class="n">bar</span><span class="si">}</span><span class="s2">| </span><span class="si">{</span><span class="n">percent</span><span class="si">}</span><span class="s2">% </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> |</span><span class="si">{</span><span class="n">bar</span><span class="si">}</span><span class="s2">| </span><span class="si">{</span><span class="n">percent</span><span class="si">}</span><span class="s2">% </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="progress_feedback.print_percent_of_saved_frames">
+<a class="viewcode-back" href="../../../packages/drrc.tools.general_methods.html#drrc.tools.general_methods.progress_feedback.print_percent_of_saved_frames">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_percent_of_saved_frames</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">printEnd</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            iteration: current iteration (Int)</span>
+<span class="sd">            total: total iterations (Int)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">i</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="si">}</span><span class="s2"> % of the frames.&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">printEnd</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># TODO join this with Config</span>
+<span class="c1"># - migrate whatever functionality from here is missing in Config to Config</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">yml</span><span class="p">:</span>
+    <span class="c1"># TODO this is a fairly useless wrapper</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="n">PATH</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Opens a yaml file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            PATH: Path of file to be loaded (str)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            yaml_file if PATH variable is Path to yaml file, else raises Typeerror</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">yaml_file</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+                <span class="n">PATH</span> <span class="o">+</span> <span class="s2">&quot; not found. Provide a path to an existing &#39;.yml&#39; File&quot;</span>
+            <span class="p">)</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">yaml_file</span>
+
+    <span class="c1"># TODO Not such a bad idea, but PATH is never checked if it&#39;s actually a YAML...</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a yaml file from a dictionary</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            PATH: Path (with name) where the yaml file is saved(str)</span>
+<span class="sd">            dict: Data to store in $PATH/$NAME.yml(dict)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="s2">&quot; not found. Provide an existing Path.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># TODO the elif chain in this hurts my head... there has to be a better way</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span>
+        <span class="n">PATH</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">replacement</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">NewSavingPath</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        changes an existing yaml file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            PATH:</span>
+<span class="sd">                Path of file to be loaded and edited</span>
+<span class="sd">            action:</span>
+<span class="sd">                &#39;c&#39; : change an existing variable</span>
+<span class="sd">                &#39;a&#39; : add new variable</span>
+<span class="sd">                &#39;rm&#39;: remove existing variable</span>
+<span class="sd">            variable:</span>
+<span class="sd">                Ordered Array of names to the variable to work on. (str array)</span>
+<span class="sd">            replacement:</span>
+<span class="sd">                For add or change the entrie will be written in dict[variable]</span>
+<span class="sd">                recommended type: dict or value (Int,float,str)</span>
+<span class="sd">            NewSavingPath:</span>
+<span class="sd">                If not None, the changes are saved in a new file with the here saved</span>
+<span class="sd">                path (+name)</span>
+
+
+<span class="sd">        Returns:</span>
+<span class="sd">            yaml_file if PATH variable is Path to yaml file, else raises Typeerror</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            possibly way faster, files are overwritten with new format</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">yaml_file</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="ow">or</span> <span class="n">PATH</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span> <span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.yml&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+                <span class="n">PATH</span> <span class="o">+</span> <span class="s2">&quot; not found. Provide a path to an existing &#39;.yml&#39; File&quot;</span>
+            <span class="p">)</span>
+            <span class="k">pass</span>
+        <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,):</span>
+                <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">replacement</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,):</span>
+                <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">replacement</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
+                <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="n">replacement</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,):</span>
+                <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]][</span>
+                    <span class="n">variable</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="n">replacement</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;Possible Errors follow:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;&#39;variable&#39; and &#39;replacement&#39; need to be defined for this action.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;&#39;variable&#39; must be of type &#39;str array&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;Only for levels of substructures have been added in the code. More can be included in yamlutils.py&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">NewSavingPath</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">yml</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">yaml_file</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">yml</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">NewSavingPath</span><span class="p">,</span> <span class="n">yaml_file</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">yaml_file</span>
+
+        <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,):</span>
+                <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;The variable exitst already. Use &#39;c&#39; to change it&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">replacement</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,):</span>
+                <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="s2">&quot;The variable exitst already. Use &#39;c&#39; to change it&quot;</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">replacement</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">replacement</span><span class="p">}</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
+                <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span>
+                        <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                                <span class="s2">&quot;The variable exitst already. Use &#39;c&#39; to change it&quot;</span>
+                            <span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span>
+                                <span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                            <span class="p">]</span> <span class="o">=</span> <span class="n">replacement</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">replacement</span><span class="p">}</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="p">{</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">replacement</span><span class="p">}}</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,):</span>
+                <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span>
+                        <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]]:</span>
+                            <span class="k">if</span> <span class="p">(</span>
+                                <span class="n">variable</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                                <span class="ow">in</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+                            <span class="p">):</span>
+                                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                                    <span class="s2">&quot;The variable exitst already. Use &#39;c&#39; to change it&quot;</span>
+                                <span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]][</span>
+                                    <span class="n">variable</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                                <span class="p">]</span> <span class="o">=</span> <span class="n">replacement</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+                                <span class="n">variable</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">replacement</span>
+                            <span class="p">}</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+                            <span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="p">{</span><span class="n">variable</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">replacement</span><span class="p">}</span>
+                        <span class="p">}</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="p">{</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="p">{</span><span class="n">variable</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">replacement</span><span class="p">}}</span>
+                    <span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;Possible Errors follow:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;&#39;variable&#39; and &#39;replacement&#39; need to be defined for this action.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;&#39;variable&#39; must be of type &#39;str array&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;Only for levels of substructures have been added in the code. More can be included in general_methods.py&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">NewSavingPath</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">yml</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">yaml_file</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">yml</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">NewSavingPath</span><span class="p">,</span> <span class="n">yaml_file</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;rm&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,):</span>
+                <span class="k">del</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,):</span>
+                <span class="k">del</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
+                <span class="k">del</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,):</span>
+                <span class="k">del</span> <span class="n">yaml_file</span><span class="p">[</span><span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">2</span><span class="p">]][</span><span class="n">variable</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;Possible Errors follow:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;&#39;variable&#39; and &#39;replacement&#39; need to be defined for this action.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;&#39;variable&#39; must be of type &#39;str array&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;Only for levels of substructures have been added in the code. More can be included in yamlutils.py&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">NewSavingPath</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">yml</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">yaml_file</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">yml</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">NewSavingPath</span><span class="p">,</span> <span class="n">yaml_file</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">&quot;Variable &#39;action&#39; is &#39;&quot;</span>
+                <span class="o">+</span> <span class="n">action</span>
+                <span class="o">+</span> <span class="s2">&quot;&#39; but needs to be &#39;c&#39; to change a variable, &#39;a&#39; to add a variable or &#39;rm&#39; to rm a variable.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">yaml_file</span>
+
+
+<span class="c1"># TODO make this a useful class -&gt; more than just a single method within a class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">hdf5</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">spatiotemp_create</span><span class="p">(</span><span class="n">hdf5Path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ymlPath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">redefine</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a hdf5-File for spatiotemporal data at $hdf5Path</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            hdf5Path: Path where .hdf5 file is saved (str)</span>
+<span class="sd">            ymlPath: Path to .yml file with all information for the system (str)</span>
+<span class="sd">            redefine: If hdf5 file already exists, it can be redifined (bool)</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            hdf5Path: Path tohdf5 file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ymlPath</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;yml file at &quot;</span><span class="p">,</span> <span class="n">ymlPath</span><span class="p">,</span> <span class="s2">&quot; does not exist!&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">hdf5Path</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">redefine</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">hdf5Path</span><span class="p">,</span> <span class="s2">&quot;exists.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Writing to the same directory.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">hdf5Path</span>
+        <span class="n">Par</span> <span class="o">=</span> <span class="n">yml</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ymlPath</span><span class="p">)</span>
+        <span class="n">Int</span> <span class="o">=</span> <span class="n">Par</span><span class="p">[</span><span class="s2">&quot;TemporalIntegration&quot;</span><span class="p">]</span>
+        <span class="n">hdf5file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">hdf5Path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="n">hdf5file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+            <span class="s2">&quot;TotalFrameNumber&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="n">Int</span><span class="p">[</span><span class="s2">&quot;IntegrationSteps&quot;</span><span class="p">]</span> <span class="o">//</span> <span class="n">Int</span><span class="p">[</span><span class="s2">&quot;SaveEach&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="n">hdf5file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+            <span class="s2">&quot;SpatialDimension&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Par</span><span class="p">[</span><span class="s2">&quot;SpatialDiscretization&quot;</span><span class="p">][</span><span class="s2">&quot;SpatialDimension&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">hdf5file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+            <span class="s2">&quot;Warning&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="s2">&quot;Dataset is scaled! u_real = (u+16384)/32768 and w_Real = 10*(w+16384)/32768&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">hdf5file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+            <span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Int</span><span class="p">[</span><span class="s2">&quot;IntegrationSteps&quot;</span><span class="p">]</span> <span class="o">//</span> <span class="n">Int</span><span class="p">[</span><span class="s2">&quot;SaveEach&quot;</span><span class="p">]))</span>
+        <span class="p">)</span>
+
+        <span class="n">u_Hdf5</span> <span class="o">=</span> <span class="n">hdf5file</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+        <span class="n">u_time</span> <span class="o">=</span> <span class="n">u_Hdf5</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;FastTime&quot;</span><span class="p">)</span>
+        <span class="n">u_space</span> <span class="o">=</span> <span class="n">u_Hdf5</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;FastSpace&quot;</span><span class="p">)</span>
+
+        <span class="n">w_Hdf5</span> <span class="o">=</span> <span class="n">hdf5file</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="n">w_time</span> <span class="o">=</span> <span class="n">w_Hdf5</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;FastTime&quot;</span><span class="p">)</span>
+        <span class="n">w_space</span> <span class="o">=</span> <span class="n">w_Hdf5</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;FastSpace&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hdf5file</span><span class="p">[</span><span class="s2">&quot;TotalFrameNumber&quot;</span><span class="p">][()]):</span>
+            <span class="n">u_space</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">),</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">hdf5file</span><span class="p">[</span><span class="s2">&quot;SpatialDimension&quot;</span><span class="p">][()],</span> <span class="n">hdf5file</span><span class="p">[</span><span class="s2">&quot;SpatialDimension&quot;</span><span class="p">][()])</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int16&quot;</span><span class="p">),</span>
+                <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">w_space</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">),</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">hdf5file</span><span class="p">[</span><span class="s2">&quot;SpatialDimension&quot;</span><span class="p">][()],</span> <span class="n">hdf5file</span><span class="p">[</span><span class="s2">&quot;SpatialDimension&quot;</span><span class="p">][()])</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int16&quot;</span><span class="p">),</span>
+                <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Par</span><span class="p">[</span><span class="s2">&quot;SpatialDiscretization&quot;</span><span class="p">][</span><span class="s2">&quot;SpatialDimension&quot;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">u_time</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">),</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Int</span><span class="p">[</span><span class="s2">&quot;IntegrationSteps&quot;</span><span class="p">]</span> <span class="o">//</span> <span class="n">Int</span><span class="p">[</span><span class="s2">&quot;SaveEach&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+                    <span class="s2">&quot;int16&quot;</span>
+                <span class="p">),</span>
+                <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">w_time</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">),</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Int</span><span class="p">[</span><span class="s2">&quot;IntegrationSteps&quot;</span><span class="p">]</span> <span class="o">//</span> <span class="n">Int</span><span class="p">[</span><span class="s2">&quot;SaveEach&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+                    <span class="s2">&quot;int16&quot;</span>
+                <span class="p">),</span>
+                <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">hdf5Path</span>
+
+
+<div class="viewcode-block" id="error_calculation">
+<a class="viewcode-back" href="../../../packages/drrc.tools.general_methods.html#drrc.tools.general_methods.error_calculation">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">error_calculation</span><span class="p">(</span>
+    <span class="n">Prediction</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Truth</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mean_value</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the Mean-Sqauare-Error, Root-Mean-Square-Error and the Normalised-Root-Mean-Square-Error between two given arrays and a mean_value.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Prediction:</span>
+<span class="sd">            Array from which the deviation to the second array is measured.</span>
+<span class="sd">        truth:</span>
+<span class="sd">            The truth from which the deviation is measured.</span>
+<span class="sd">        mean_value:</span>
+<span class="sd">            The temporal mean value of a the truth. Optionally also a mean over</span>
+<span class="sd">            systemdimensions can be taken reducing the mean_value to a float number.</span>
+<span class="sd">            If &#39;None&#39; the mean value of truth (over temp. domain only) is taken.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        - Mean-Sqauare-Error</span>
+<span class="sd">        - Root-Mean-Square-Error</span>
+<span class="sd">        - Normalised-Root-Mean-Square-Error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">Prediction</span><span class="p">)</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">Truth</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ShapeError</span><span class="p">(</span>
+            <span class="s2">&quot; and Prediction and Truth need to have the same shape, but Prediction.shape is </span><span class="si">{}</span><span class="s2"> and Truth.shape is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">Prediction</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Truth</span><span class="o">.</span><span class="n">shape</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mean_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mean_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Truth</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1">########If temporal resolution of the error is required:###########</span>
+        <span class="c1"># DimNr = np.shape(np.shape(Truth))[0]</span>
+        <span class="c1"># ax = tuple(np.arange(1, DimNr))</span>
+        <span class="c1"># MSE_t = (1/np.prod(np.shape(Truth)[1:]))*np.sum((Truth-Prediction)**2, axis=ax)</span>
+        <span class="n">MSE</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">Truth</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">Truth</span> <span class="o">-</span> <span class="n">Prediction</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">RMSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span>
+        <span class="n">MSE_mean</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">Truth</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">Truth</span> <span class="o">-</span> <span class="n">mean_value</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">MSE_mean</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">NRMSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">NRMSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span> <span class="o">/</span> <span class="n">MSE_mean</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">MSE</span><span class="p">,</span> <span class="n">RMSE</span><span class="p">,</span> <span class="n">NRMSE</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="_get_path">
+<a class="viewcode-back" href="../../../packages/drrc.tools.general_methods.html#drrc.tools.general_methods._get_path">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_path</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        current Path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

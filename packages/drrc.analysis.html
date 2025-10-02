@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.2. drrc.analysis module &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. drrc.config module" href="drrc.config.html" />
+    <link rel="prev" title="2.1.4. drrc.tools.visualization module" href="drrc.tools.visualization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="drrc.html">2. drrc</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="drrc.html"><span class="section-number">2. </span>drrc</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.2. </span>drrc.analysis module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/packages/drrc.analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-drrc.analysis">
+<span id="drrc-analysis-module"></span><h1><span class="section-number">2.2. </span>drrc.analysis module<a class="headerlink" href="#module-drrc.analysis" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.analysis.AutomaticPostprocessing">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AutomaticPostprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/analysis.html#AutomaticPostprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AutomaticPostprocessing" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class enables the automatic concatenation of all subtask outputs into a
+single file called “DataFrame.csv”.
+Within the respective job directories this still generates a unique path.</p>
+<p>Initialise automatic concatenation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>root</strong> – most shallow path from which to look for job directories, starting from
+git root</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>make this work with relative paths from the git root</p></li>
+<li><p>either use a root path or supply a yaml for single job post processing</p></li>
+</ul>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.AutomaticPostprocessing.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#AutomaticPostprocessing.summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AutomaticPostprocessing.summary" title="Link to this definition"></a></dt>
+<dd><p>Print summary of the automatic concatenation</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function does not touch any of the files!
+Its main purpose is debugging / checking that
+<code class="xref py py-func docutils literal notranslate"><span class="pre">AutomaticConcatenation.auto_concatenate()</span></code> behaves as expected.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.AutomaticPostprocessing.auto_concatenate">
+<span class="sig-name descname"><span class="pre">auto_concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#AutomaticPostprocessing.auto_concatenate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AutomaticPostprocessing.auto_concatenate" title="Link to this definition"></a></dt>
+<dd><p>Automatically concatenate all raw output files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Delete</strong> – If True, then the raw output files are deleted after concatenation.
+Default is False.</p>
+</dd>
+</dl>
+<p>The result is then saved with the raw output in a file named
+<code class="code docutils literal notranslate"><span class="pre">DataFrame.csv</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.AutomaticPostprocessing._concatenate">
+<span class="sig-name descname"><span class="pre">_concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.3)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#AutomaticPostprocessing._concatenate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AutomaticPostprocessing._concatenate" title="Link to this definition"></a></dt>
+<dd><p>Concatenate a single cluster job</p>
+<p>This takes all numbered <code class="code docutils literal notranslate"><span class="pre">.csv</span></code> DataFrames and concatenates them into one.
+It checks if the number of lines agrees with what is expected from the config. Else it raises a warning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> – path to output of cluster job</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> which contains all data from a single job</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.AutomaticPostprocessing._read_test_csv">
+<span class="sig-name descname"><span class="pre">_read_test_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.3)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#AutomaticPostprocessing._read_test_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AutomaticPostprocessing._read_test_csv" title="Link to this definition"></a></dt>
+<dd><p>Read a single csv file, test if it has the expected number of results and return the DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – path to csv file</p></li>
+<li><p><strong>jobs</strong> – list of number of jobs per task</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> which contains all data from a single job</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.AutomaticPostprocessing.auto_statisticsgeneration">
+<span class="sig-name descname"><span class="pre">auto_statisticsgeneration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#AutomaticPostprocessing.auto_statisticsgeneration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AutomaticPostprocessing.auto_statisticsgeneration" title="Link to this definition"></a></dt>
+<dd><p>Generate statistics from the concatenated DataFrame</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.AutomaticPostprocessing._generate_statistics">
+<span class="sig-name descname"><span class="pre">_generate_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.3)"><span class="pre">DataFrame</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.3)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#AutomaticPostprocessing._generate_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AutomaticPostprocessing._generate_statistics" title="Link to this definition"></a></dt>
+<dd><p>Generate statistics from the concatenated DataFrame</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.analysis.AnalyseClusterRunBase">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnalyseClusterRunBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><span class="pre">Config</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/analysis.html#AnalyseClusterRunBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AnalyseClusterRunBase" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<p>Base class for all analysis types we will run later.</p>
+<p>This includes all basic functionality that will be used later, such as IO.</p>
+<p>Initialize a cluster run object for analysis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>conf</strong> (<a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><em>Config</em></a>) – A config object that has previously been run on the cluster.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.AnalyseClusterRunBase.process">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.3)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#AnalyseClusterRunBase.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AnalyseClusterRunBase.process" title="Link to this definition"></a></dt>
+<dd><p>Read output of cluster run as defined by self.conf</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.AnalyseClusterRunBase.save">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#AnalyseClusterRunBase.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.AnalyseClusterRunBase.save" title="Link to this definition"></a></dt>
+<dd><p>Save processed data in a file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.analysis.HyperPostProcessing">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HyperPostProcessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><span class="pre">Config</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'score_'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/analysis.html#HyperPostProcessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.HyperPostProcessing" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#drrc.analysis.AnalyseClusterRunBase" title="drrc.analysis.AnalyseClusterRunBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnalyseClusterRunBase</span></code></a></p>
+<p>Post-processing of our hyperparameter scans</p>
+<p>This class is meant to take in raw data and generate the desired DataFrame</p>
+<p>Initialize post-processing</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This class assumes that output files contain a numerical (1-based) index
+between <code class="code docutils literal notranslate"><span class="pre">data_name</span></code> and <code class="code docutils literal notranslate"><span class="pre">data_type</span></code>!</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conf</strong> (<a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><em>Config</em></a>) – Config of the corresponding clusterrun</p></li>
+<li><p><strong>data_dir</strong> (<em>strPath</em>) – Path to raw data</p></li>
+<li><p><strong>out_dir</strong> (<em>Path</em>) – Path for saving dataframe</p></li>
+<li><p><strong>data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File name, e.g. <code class="code docutils literal notranslate"><span class="pre">&quot;score_&quot;</span></code></p></li>
+<li><p><strong>data_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File extension, e.g. <code class="code docutils literal notranslate"><span class="pre">&quot;.txt&quot;</span></code></p></li>
+<li><p><strong>num_cores</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of cores available for processing</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.HyperPostProcessing._get_raw_file">
+<span class="sig-name descname"><span class="pre">_get_raw_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#HyperPostProcessing._get_raw_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.HyperPostProcessing._get_raw_file" title="Link to this definition"></a></dt>
+<dd><p>Generate filename for the n-th raw data file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of the file using zero-based indexing</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to requested file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>)</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Make this method return a Path instead of str</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.HyperPostProcessing._generate_statistics">
+<span class="sig-name descname"><span class="pre">_generate_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/analysis.html#HyperPostProcessing._generate_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.HyperPostProcessing._generate_statistics" title="Link to this definition"></a></dt>
+<dd><p>Internal function to generate the statistics of <code class="xref py py-func docutils literal notranslate"><span class="pre">self.process()</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function will not return any statistics if the numpy array contains any
+NaNs. Numpy has functions for this, but right now we don’t use them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.HyperPostProcessing.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.3.3)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#HyperPostProcessing.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.HyperPostProcessing.process" title="Link to this definition"></a></dt>
+<dd><p>Extract Validtime data and seeds from <code class="code docutils literal notranslate"><span class="pre">.txt</span></code> files stored in
+<code class="code docutils literal notranslate"><span class="pre">conf['Saving']['OutputDirectory']</span></code> into a <code class="xref py py-class docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>.</p>
+<p>To accelerate pre-processing of raw data this function runs on half the system’s
+cores by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conf</strong> (<a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><em>Config</em></a>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code> with ClusterRun information.</p></li>
+<li><p><strong>DataDir</strong> (<em>Path</em>) – Passed to Data, might deviate from Path in conf depending on user.</p></li>
+<li><p><strong>DataName</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of files with Validtime data up to iterator number.
+Default <code class="code docutils literal notranslate"><span class="pre">score_</span></code>.</p></li>
+<li><p><strong>DataType</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File type of files with Validtime data. Default <code class="code docutils literal notranslate"><span class="pre">.txt</span></code>.</p></li>
+<li><p><strong>NumberSeeds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of seeds/ different networks drawn. Default 10.</p></li>
+<li><p><strong>num_cores</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of CPU cores to use for the preprocessing.
+Default is half the system’s cores.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>Each row corresponds to a single set of hyperparameters.
+Statistics are given for the following:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">mean_t</span></code></p></td>
+<td><p>Mean valid time over all executions of the hyperparameter set</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">std_t</span></code></p></td>
+<td><p>Standard variance of <code class="code docutils literal notranslate"><span class="pre">mean_t</span></code> over all executions of the
+hyperparameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">max_t</span></code></p></td>
+<td><p>Maximum valid time over all executions of the hyperparameter set</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">avg_std_seed</span></code></p></td>
+<td><p>Average standard deviation per training seed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">avg_std_data</span></code></p></td>
+<td><p>Average standard deviation per training dataset</p></td>
+</tr>
+</tbody>
+</table>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(pd.DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.HyperPostProcessing.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#HyperPostProcessing.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.HyperPostProcessing.save" title="Link to this definition"></a></dt>
+<dd><p>Save dataframe to csv</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.HyperPostProcessing.fix_raw_data">
+<span class="sig-name descname"><span class="pre">fix_raw_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/analysis.html#HyperPostProcessing.fix_raw_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.HyperPostProcessing.fix_raw_data" title="Link to this definition"></a></dt>
+<dd><p>Fix bad output raw data and save to new file with prefix <code class="code docutils literal notranslate"><span class="pre">fn_mod</span></code></p>
+<p>This function also modifies the expected filename.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fn_mod</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Modified prefix of the input file. Default is <code class="code docutils literal notranslate"><span class="pre">&quot;rf&quot;</span></code>, such that,
+e.g. <code class="code docutils literal notranslate"><span class="pre">&quot;score_0.txt&quot;</span> <span class="pre">--&gt;</span> <span class="pre">&quot;rf-score_0.txt&quot;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.analysis.HyperPostProcessing._reformat_single_file">
+<span class="sig-name descname"><span class="pre">_reformat_single_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/analysis.html#HyperPostProcessing._reformat_single_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.analysis.HyperPostProcessing._reformat_single_file" title="Link to this definition"></a></dt>
+<dd><p>Takes a filename and creates the reformatted file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Index of the file to be reformatted, starting at 0.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="drrc.tools.visualization.html" class="btn btn-neutral float-left" title="2.1.4. drrc.tools.visualization module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drrc.config.html" class="btn btn-neutral float-right" title="2.3. drrc.config module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

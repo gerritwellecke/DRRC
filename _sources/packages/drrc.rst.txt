@@ -1,0 +1,25 @@
+drrc
+====
+
+.. automodule:: drrc
+   :members:
+   :no-undoc-members:
+   :private-members:
+   :show-inheritance:
+
+
+
+.. toctree::
+   :maxdepth: 4
+
+   drrc.tools
+
+.. toctree::
+   :maxdepth: 4
+
+   drrc.analysis
+   drrc.config
+   drrc.kuramoto_sivashinsky
+   drrc.parallelreservoirs
+   drrc.reservoircomputer
+   drrc.spatially_extended_systems

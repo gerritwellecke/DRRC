@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>drrc.config &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/drrc.html">2. drrc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">drrc.config</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for drrc.config</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Wrapper class for YAML configurations.</span>
+
+<span class="sd">Use logger.INFO_1RUN for verbose output of this module&#39;s functionality.</span>
+
+<span class="sd">.. codeauthor:: Gerrit Wellecke</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">log</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shutil</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">h5py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">git</span><span class="w"> </span><span class="kn">import</span> <span class="n">Repo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">more_itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">divide</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">drrc.tools.logger_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">drrc_logger</span> <span class="k">as</span> <span class="n">logger</span>
+
+<span class="n">CLUSTER_CORES</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="c1"># get logger levels</span>
+<span class="n">loglevel_info_single_run</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="s2">&quot;INFO_1RUN&quot;</span><span class="p">)</span>
+<span class="n">loglevel_info_multiple_run</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="s2">&quot;INFO_nRUN&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="IndentDumper">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.IndentDumper">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">IndentDumper</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">Dumper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;YAML dumper needed for correct printing of config&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">increase_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndentDumper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">increase_indent</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="n">indentless</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Config">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration of a system from a YAML file&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proj_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the config from a path</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            proj_path (str): absolute path from the git repository&#39;s root</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">proj_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_YAML</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">stem</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;max_job_count&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;pathlib.Path: Absolute path to the configuration YAML file for the current</span>
+<span class="sd">        system.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path</span>
+
+    <span class="nd">@path</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proj_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;prepend git root&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_git_root</span><span class="p">()</span> <span class="o">/</span> <span class="n">proj_path</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;int: Maximum length of param_scan_list&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_length</span>
+
+    <span class="nd">@max_length</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">max_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_job_count</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if each job runs multiple parallel tasks&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_max_length</span> <span class="o">=</span> <span class="n">min_job_count</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;tasks_per_job&quot;</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_max_length</span> <span class="o">=</span> <span class="n">min_job_count</span>
+
+<div class="viewcode-block" id="Config.get_git_root">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.get_git_root">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_git_root</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get root of the current git repository</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :class:`pathlib.Path`: absolute path to the git-root for the current system</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            This does not really belong in this class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+            <span class="n">Repo</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">search_parent_directories</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">git</span><span class="o">.</span><span class="n">rev_parse</span><span class="p">(</span><span class="s2">&quot;--show-toplevel&quot;</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">path</span></div>
+
+
+<div class="viewcode-block" id="Config.get_data_dir">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.get_data_dir">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get absolute path to the current systems data directory.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :class:`pathlib.Path`: absolute path to the data directory for the current system</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_git_root</span><span class="p">()</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Data/</span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">][</span><span class="s1">&#39;model_dimension&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">D_</span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">][</span><span class="s1">&#39;model_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Config.load_training_dataset">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.load_training_dataset">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_training_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load and return the training data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            index: The index of the training data set to load.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            One training data set with minimal temporal length needed for iterative timeseries predictions, i.e. :code:`temporal_length=(transient_steps + training_steps + 1)`.</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            This function should be modified to load only the amount of variables needed, to save memory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">loglevel_info_single_run</span><span class="p">,</span> <span class="s2">&quot;Loading training data.&quot;</span><span class="p">)</span>
+        <span class="n">transient_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;tansient_length&quot;</span><span class="p">]</span>
+            <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">training_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;training_length&quot;</span><span class="p">]</span>
+            <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Check if the number of training steps is larger than the length of the training data</span>
+        <span class="k">if</span> <span class="n">transient_steps</span> <span class="o">+</span> <span class="n">training_steps</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;training_length&quot;</span><span class="p">]</span>
+            <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+        <span class="p">):</span>
+            <span class="n">training_steps</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="p">(</span>
+                    <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;training_length&quot;</span><span class="p">]</span>
+                    <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="o">-</span> <span class="n">transient_steps</span>
+                <span class="o">-</span> <span class="mi">1</span>
+            <span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Transient steps + training steps + 1 is larger than the length of training data. Reducing the number of training steps to </span><span class="si">{</span><span class="n">training_steps</span><span class="si">}</span><span class="s2"> (the largest possible).&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Load the training data</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;fileformat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.npz&quot;</span><span class="p">:</span>
+            <span class="n">training_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_data_dir</span><span class="p">()</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TrainingData</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">)</span>
+            <span class="p">)[</span><span class="s2">&quot;vars&quot;</span><span class="p">][:</span> <span class="p">(</span><span class="n">transient_steps</span> <span class="o">+</span> <span class="n">training_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;fileformat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.npy&quot;</span><span class="p">:</span>
+            <span class="n">training_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_data_dir</span><span class="p">()</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TrainingData</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.npy&quot;</span><span class="p">)</span>
+            <span class="p">)[:</span> <span class="p">(</span><span class="n">transient_steps</span> <span class="o">+</span> <span class="n">training_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;config[&#39;Data&#39;][&#39;Usage&#39;][&#39;fileformat&#39;] needs to be either &#39;.npz&#39; or &#39;.npy&#39; but is </span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">][</span><span class="s1">&#39;Usage&#39;</span><span class="p">][</span><span class="s1">&#39;fileformat&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">loglevel_info_single_run</span><span class="p">,</span> <span class="s2">&quot;Done.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">training_data</span></div>
+
+
+<div class="viewcode-block" id="Config.load_evalaluation_datasets">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.load_evalaluation_datasets">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_evalaluation_datasets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load and return the evaluation data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config: The configuration object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A list of numpy arrays containing the first evaluation data sets.</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            This function should be modified to load only the amount of variables needed, to save memory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">loglevel_info_single_run</span><span class="p">,</span> <span class="s2">&quot;Loading evaluation data.&quot;</span><span class="p">)</span>
+        <span class="n">transient_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;tansient_length&quot;</span><span class="p">]</span>
+            <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">evaluation_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;evaluation_length&quot;</span><span class="p">]</span>
+            <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Check if the number of evaluation steps is larger than the length of the evaluation data</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;model_name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;AlievPanfilov&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">transient_steps</span> <span class="o">+</span> <span class="n">evaluation_steps</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;evaluation_length&quot;</span><span class="p">]</span>
+                <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+            <span class="p">):</span>
+                <span class="n">training_steps</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span>
+                            <span class="s2">&quot;evaluation_length&quot;</span>
+                        <span class="p">]</span>
+                        <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="o">-</span> <span class="n">transient_steps</span>
+                    <span class="o">-</span> <span class="mi">1</span>
+                <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Transient steps + training steps + 1 is larger than the length of training data. Reducing the number of training steps to </span><span class="si">{</span><span class="n">training_steps</span><span class="si">}</span><span class="s2"> (the largest possible).&quot;</span>
+                <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;model_name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;KuramotoSivashinsky&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">transient_steps</span> <span class="o">+</span> <span class="n">evaluation_steps</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;evaluation_length&quot;</span><span class="p">]</span>
+                <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+            <span class="p">):</span>
+                <span class="n">training_steps</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span>
+                            <span class="s2">&quot;evaluation_length&quot;</span>
+                        <span class="p">]</span>
+                        <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Creation&quot;</span><span class="p">][</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="o">-</span> <span class="n">transient_steps</span>
+                    <span class="o">-</span> <span class="mi">1</span>
+                <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Transient steps + training steps + 1 is larger than the length of training data. Reducing the number of training steps to </span><span class="si">{</span><span class="n">training_steps</span><span class="si">}</span><span class="s2"> (the largest possible).&quot;</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Load the evaluation data</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;fileformat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.npz&quot;</span><span class="p">:</span>
+            <span class="n">eval_data</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data_dir</span><span class="p">()</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EvaluationData</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))[</span><span class="s2">&quot;vars&quot;</span><span class="p">][</span>
+                    <span class="p">:</span> <span class="n">transient_steps</span> <span class="o">+</span> <span class="n">evaluation_steps</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="p">]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;evaluation_datasets&quot;</span><span class="p">])</span>
+            <span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;fileformat&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.npy&quot;</span><span class="p">:</span>
+            <span class="n">eval_data</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data_dir</span><span class="p">()</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EvaluationData</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.npy&quot;</span><span class="p">))[</span>
+                    <span class="p">:</span> <span class="n">transient_steps</span> <span class="o">+</span> <span class="n">evaluation_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:</span>
+                <span class="p">]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">][</span><span class="s2">&quot;Usage&quot;</span><span class="p">][</span><span class="s2">&quot;evaluation_datasets&quot;</span><span class="p">])</span>
+            <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;config[&#39;Data&#39;][&#39;Usage&#39;][&#39;fileformat&#39;] needs to be either &#39;.npz&#39; or &#39;.npy&#39; but is </span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">][</span><span class="s1">&#39;Usage&#39;</span><span class="p">][</span><span class="s1">&#39;fileformat&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">loglevel_info_single_run</span><span class="p">,</span> <span class="s2">&quot;Done.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">eval_data</span></div>
+
+
+<div class="viewcode-block" id="Config.parse_YAML">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.parse_YAML">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse_YAML</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse the config.yml file to get systems parameters</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :class:`dict`: representation of the config as given in the YAML file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">params</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return configuration as string, e.g. for printing&quot;&quot;&quot;</span>
+        <span class="n">conf_file</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">IndentDumper</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">conf_file</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subscript access to config dict params&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Config.write_metadata_HDF">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.write_metadata_HDF">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write_metadata_HDF</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">f</span><span class="p">:</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">keylist</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Simulation&quot;</span><span class="p">],</span>
+        <span class="n">task_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">sub_task_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write parameters to an open HDF5-file&#39;s attributes</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            f (h5py.File):</span>
+<span class="sd">                HDF file in which metadata is to be written</span>
+<span class="sd">            keylist (list[str]):</span>
+<span class="sd">                list of keys to be written (default: Simulation)</span>
+<span class="sd">            task_id (int):</span>
+<span class="sd">                if a task_id is given, the corresponding cluster params are also written</span>
+<span class="sd">            sub_task_id (int):</span>
+<span class="sd">                if a sub_task_id is given, only the corresponding cluster params are written</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># write constant parameters</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keylist</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="c1"># if cluster index is given, write cluster parameters as well</span>
+        <span class="k">if</span> <span class="n">task_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sub_task_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_scan_list</span><span class="p">()[</span><span class="n">task_id</span><span class="p">][</span><span class="n">sub_task_id</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_scan_list</span><span class="p">()[</span><span class="n">task_id</span><span class="p">])):</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_scan_list</span><span class="p">()[</span><span class="n">task_id</span><span class="p">][</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="Config.param_scan_list">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.param_scan_list">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">param_scan_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return set of parameters for a cluster run</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list of lists of dictionaries or dictionary, where each sublist is to be</span>
+<span class="sd">            understood as a single job in a job array</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            In order to run a simulation as a parameter scan, supply the Config YAML</span>
+<span class="sd">            with the following block:</span>
+
+<span class="sd">            .. code:: YAML</span>
+
+<span class="sd">                ParamScan:</span>
+<span class="sd">                    A:</span>
+<span class="sd">                        - &quot;range&quot;</span>
+<span class="sd">                        - [3]</span>
+<span class="sd">                    B:</span>
+<span class="sd">                        - &quot;range&quot;</span>
+<span class="sd">                        - [5, 10]</span>
+<span class="sd">                    C:</span>
+<span class="sd">                        - &quot;range&quot;</span>
+<span class="sd">                        - [0, 100, 10]</span>
+<span class="sd">                    D:</span>
+<span class="sd">                        - &quot;list&quot;</span>
+<span class="sd">                        - [1, 5, 13]</span>
+
+<span class="sd">                # useful shorthand for the above config:</span>
+<span class="sd">                ParamScan:</span>
+<span class="sd">                    A: [&quot;range&quot;, [3]]</span>
+<span class="sd">                    B: [&quot;range&quot;, [5, 10]]</span>
+<span class="sd">                    C: [&quot;range&quot;, [0, 100, 10]]</span>
+<span class="sd">                    D: [&quot;list&quot;, [1, 5, 13]]</span>
+
+<span class="sd">            The arguments to the parameters must be lists where the first entry</span>
+<span class="sd">            specifies the type of parameters to expect and the second specifies the</span>
+<span class="sd">            values.</span>
+<span class="sd">            If the specified as :code:`&quot;list&quot;` then the values will simply be taken as</span>
+<span class="sd">            specified.</span>
+<span class="sd">            If instead specified as :code:`&quot;range&quot;` the values are passed to</span>
+<span class="sd">            :func:`numpy.arange` by list unpacking, e.g. :code:`np.arange(*B)`.</span>
+<span class="sd">            Similar commands with :code:`linspace, geomspace` are available, then the</span>
+<span class="sd">            specified values would have to be :code:`start, stop, number`.</span>
+
+<span class="sd">            The above example would mean that</span>
+
+<span class="sd">            .. math::</span>
+<span class="sd">                A \in \{0, 1, 2\} \,,</span>
+<span class="sd">                B \in \{5, 6, 7, 8, 9\} \,,</span>
+<span class="sd">                C \in \{0, 10, 20, \ldots, 90\} \,,</span>
+<span class="sd">                D \in \{1, 5, 13\} \,.</span>
+
+<span class="sd">            A job will then be started for each permutation of :math:`A,B,C,D`.</span>
+
+<span class="sd">            If you intend to run a single execution of a fixed set of parameters, you</span>
+<span class="sd">            may set the following within the YAML</span>
+
+<span class="sd">            .. code:: YAML</span>
+
+<span class="sd">                ParamScan: null</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">param_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># parse constant variables</span>
+        <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Parameters&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">param_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+
+        <span class="c1"># if no ParamScan parameters are defined simply run a single execution</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;ParamScan&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[[</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Parameters&quot;</span><span class="p">]]]</span>
+
+        <span class="c1"># parse parameter scan variables</span>
+        <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">specs</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;ParamScan&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">param_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;list&quot;</span><span class="p">:</span>
+                <span class="n">param_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">]</span> <span class="o">=</span> <span class="n">specs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;range&quot;</span><span class="p">:</span>
+                <span class="n">param_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">*</span><span class="n">specs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;linspace&quot;</span><span class="p">:</span>
+                <span class="n">param_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">specs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">specs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;geomspace&quot;</span><span class="p">:</span>
+                <span class="n">param_dict</span><span class="p">[</span><span class="n">parameter</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">geomspace</span><span class="p">(</span><span class="o">*</span><span class="n">specs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Must specify the type of parameter </span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># generate all permutations of parameter scan values and write a list of</span>
+        <span class="c1"># parameters wherein each entry is a single job of the simulation</span>
+        <span class="n">workload_permutations</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">param_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">workload_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">workload_permutations</span><span class="p">))</span>
+        <span class="c1"># ensure that no sublist is empty</span>
+        <span class="k">if</span> <span class="n">workload_length</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">workload_length</span>
+        <span class="c1"># get a list of sublists, each being one job on the cluster</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">param_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">divide</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">,</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">param_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">params</span></div>
+
+
+<div class="viewcode-block" id="Config.param_scan_len">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.param_scan_len">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">param_scan_len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Total iterations of a cluster run</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            This is **deprecated**! Use :code:`len(conf.param_scan_list())` instead</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;use len(Config.param_scan_list()) instead&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_scan_list</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="Config.jobscript_datadir">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.jobscript_datadir">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">jobscript_datadir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Path to raw data as defined in YAML</span>
+
+<span class="sd">        The cluster will expect data to be within a YAML format like such:</span>
+
+<span class="sd">        args:</span>
+<span class="sd">            output_type: The output type (:codes: `&#39;ValidTimes&#39;, &#39;RunTimes&#39;, &#39;Memory&#39;`), which defines the folder to be written into.</span>
+
+<span class="sd">        .. code:: yaml</span>
+
+<span class="sd">            Saving:</span>
+<span class="sd">                OutputDirectory: &quot;path/to/data&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">output_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ValidTimes&quot;</span><span class="p">,</span> <span class="s2">&quot;RunTimes&quot;</span><span class="p">,</span> <span class="s2">&quot;Memory&quot;</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;outputs must be one of &#39;ValidTimes&#39;, &#39;RunTimes&#39;, &#39;Memory&#39;, but is </span><span class="si">{</span><span class="n">output_type</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="n">outpath</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data/</span><span class="si">{</span><span class="n">output_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">][</span><span class="s1">&#39;model_dimension&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">D_</span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">][</span><span class="s1">&#39;model_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_git_root</span><span class="p">()</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="n">outpath</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Config.make_jobscript_datadir">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.make_jobscript_datadir">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">make_jobscript_datadir</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">output_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">copy_yaml</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create datadir as specified in Config if it doesn&#39;t exist</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output_type (str): The output type (:codes: `&#39;ValidTimes&#39;, &#39;RunTimes&#39;, &#39;Memory&#39;`), which defines the folder to be written into.</span>
+<span class="sd">            copy_yaml: If set to True, the YAML will be copied to the directory created</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            If the directory already exists, an error will be raised to avoid</span>
+<span class="sd">            overwriting previous data.</span>
+<span class="sd">            The recommended procedure is to either delete old data or rename the YAML</span>
+<span class="sd">            such that new data is written in a new directory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">output_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ValidTimes&quot;</span><span class="p">,</span> <span class="s2">&quot;RunTimes&quot;</span><span class="p">,</span> <span class="s2">&quot;Memory&quot;</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;outputs must be one of &#39;ValidTimes&#39;, &#39;RunTimes&#39;, &#39;Memory&#39;, but is </span><span class="si">{</span><span class="n">output_type</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+            <span class="n">loglevel_info_multiple_run</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;Generating ouput directory (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">jobscript_datadir</span><span class="p">(</span><span class="n">output_type</span><span class="p">)</span><span class="si">}</span><span class="s2">)...&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">jobscript_datadir</span><span class="p">(</span><span class="n">output_type</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">copy_yaml</span><span class="p">:</span>
+            <span class="n">new_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobscript_datadir</span><span class="p">(</span><span class="n">output_type</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">new_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Config.generate_submission_script_from_YAML">
+<a class="viewcode-back" href="../../packages/drrc.config.html#drrc.config.Config.generate_submission_script_from_YAML">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_submission_script_from_YAML</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">output_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Creates a shell script that can then be passed to qsub based on the</span>
+<span class="sd">        information contained in the Config.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            output_type (str): The output type (:code:`&#39;ValidTimes&#39;, &#39;RunTimes&#39;, &#39;Memory&#39;`), which defines the folder to be written into.</span>
+<span class="sd">            template (:class:`pathlib.Path` or None):</span>
+<span class="sd">                Optional path to a different template than</span>
+<span class="sd">                :code:`drrc/templates/qsub.template`</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            For this to work, the configuration YAML must contain the following block:</span>
+
+<span class="sd">            .. code:: YAML</span>
+
+<span class="sd">                Jobscript:</span>
+<span class="sd">                  # for qsub</span>
+<span class="sd">                  Type: &quot;qsub&quot;                 # specify to run at MPI-DS</span>
+<span class="sd">                  Cores: 4                     # number of cores per job (should be divisor of 32)</span>
+<span class="sd">                  max_job_count: 1000          # array job will have 1000 jobs</span>
+<span class="sd">                  # optional:</span>
+<span class="sd">                  force_parallel_queue: False  # force job to run on teutates-mvapich2.q (optional)</span>
+
+<span class="sd">                  # for slurm</span>
+<span class="sd">                  Type: &quot;sbatch&quot;         # specify submission command (template must have matching name!)</span>
+<span class="sd">                  max_job_count: 2000    # 2000 jobs will be submitted as an array</span>
+<span class="sd">                  tasks_per_job: 4       # each job will have 4 job steps</span>
+<span class="sd">                  cores_per_task: 4      # each job step will use 4 cores</span>
+<span class="sd">                  mem_per_task: 24       # and 24GB of memory</span>
+<span class="sd">                  cluster: &quot;GWDG&quot;        # use specific cluster options</span>
+<span class="sd">                  time: &quot;00:05:00&quot;       # each task will run at most 5 minutes</span>
+
+<span class="sd">            This will create a parallel jobs with 4 cores per task.</span>
+<span class="sd">            On qsub this will always fill nodes of 32 cores.</span>
+<span class="sd">            When using SLURM this additionally allows to set how many tasks should be</span>
+<span class="sd">            run in each job (potentially allowing for smaller jobs / faster queueing).</span>
+
+<span class="sd">            The resulting shell script will always be placed in the data directory as</span>
+<span class="sd">            returned by :func:`Config.jobscript_datadir` to ensure data is kept with the</span>
+<span class="sd">            submission script.</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            There seems to be some configuration in place for :code:`cluster: &quot;raven&quot;`</span>
+<span class="sd">            and :code:`cluster: &quot;viper&quot;` such that total memory must always be defined.</span>
+<span class="sd">            I&#39;m not quite sure yet how to write scripts for that.</span>
+<span class="sd">            **So right now this only works @GWDG!**</span>
+
+<span class="sd">        Important:</span>
+<span class="sd">            **If using** :code:`Type: &quot;qsub&quot;`:</span>
+
+<span class="sd">            Currently this is set up such that a single cluster node of 32 cores will</span>
+<span class="sd">            receive as many jobs as it can fit. For optimal use of the cluster</span>
+<span class="sd">            :code:`Cores` should be a divisor of 32.</span>
+
+<span class="sd">            When choosing this, keep in mind that per cluster node there are 192GB RAM.</span>
+
+<span class="sd">            If :code:`Cores` is set to 1, this function assumes that the job will be</span>
+<span class="sd">            submitted to the serial cluster and thus adapt the submission script.</span>
+<span class="sd">            However, one may set the optional argument</span>
+<span class="sd">            :code:`force_parallel_queue: True` to run 32 single-core jobs per node in</span>
+<span class="sd">            the parallel queue.</span>
+
+<span class="sd">            Jobs are submitted using:</span>
+
+<span class="sd">            .. code:: bash</span>
+
+<span class="sd">                qsub Submit-job.sh</span>
+
+
+<span class="sd">            **If using** :code:`Type: &quot;slurm&quot;`:</span>
+
+<span class="sd">            In this case :code:`RAM, partition` must be defined in the YAML.</span>
+<span class="sd">            Note that this is the RAM per CPU core. So the in the above example SLURM</span>
+<span class="sd">            will allocate :math:`4\cdot12\mathrm{GB}=48\mathrm{GB}` of RAM.</span>
+
+<span class="sd">            The job can then be submitted using</span>
+
+<span class="sd">            .. code:: bash</span>
+
+<span class="sd">                sbatch Submit-job.sh</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">jinja2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Template</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">loglevel_info_single_run</span><span class="p">,</span> <span class="s2">&quot;Generating submission script...&quot;</span><span class="p">)</span>
+
+        <span class="n">script_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">jobscript_datadir</span><span class="p">(</span><span class="n">output_type</span><span class="p">)</span><span class="si">}</span><span class="s2">/Submit-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.sh&quot;</span>
+
+        <span class="c1"># allow for different workload managers</span>
+        <span class="n">template_name</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span>
+
+        <span class="c1"># read template</span>
+        <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">template_path</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;templates&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">template_name</span><span class="si">}</span><span class="s2">.template&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">template_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">loglevel_info_multiple_run</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;found template at </span><span class="si">{</span><span class="n">template_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">template_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">script_template</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="c1"># template variables</span>
+        <span class="k">if</span> <span class="n">template_name</span> <span class="o">==</span> <span class="s2">&quot;qsub&quot;</span><span class="p">:</span>
+            <span class="c1"># get optional parameters from YAML</span>
+            <span class="n">fpq_value</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;force_parallel_queue&quot;</span><span class="p">)</span>
+            <span class="n">fpq</span> <span class="o">=</span> <span class="n">fpq_value</span> <span class="k">if</span> <span class="n">fpq_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">False</span>
+
+            <span class="c1"># collect all placeholder values</span>
+            <span class="n">script_vars</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;JOB_NAME&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;OUTPUT_PATH&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobscript_datadir</span><span class="p">(</span><span class="n">output_type</span><span class="p">),</span>
+                <span class="s2">&quot;GIT_ROOT&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_git_root</span><span class="p">(),</span>
+                <span class="s2">&quot;EXECUTABLE&quot;</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">absolute</span><span class="p">(),</span>
+                <span class="s2">&quot;NUM_CORES&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;Cores&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;YAMLPATH&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                <span class="s2">&quot;JOB_LENGTH&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_scan_len</span><span class="p">(),</span>
+                <span class="s2">&quot;JOB_STRIDE&quot;</span><span class="p">:</span> <span class="n">CLUSTER_CORES</span> <span class="o">//</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;Cores&quot;</span><span class="p">],</span>
+                <span class="c1"># optional arguments</span>
+                <span class="s2">&quot;FORCE_PARALLEL_QUEUE&quot;</span><span class="p">:</span> <span class="n">fpq</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="k">elif</span> <span class="n">template_name</span> <span class="o">==</span> <span class="s2">&quot;sbatch&quot;</span><span class="p">:</span>
+            <span class="c1"># calculate total memory</span>
+            <span class="n">mem_total</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;tasks_per_job&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;mem_per_task&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">mem_per_cpu</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;mem_per_task&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;cores_per_task&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">script_vars</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;JOB_NAME&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;NTASKS&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;tasks_per_job&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;OUTPUT_PATH&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobscript_datadir</span><span class="p">(</span><span class="n">output_type</span><span class="p">),</span>
+                <span class="s2">&quot;GIT_ROOT&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_git_root</span><span class="p">(),</span>
+                <span class="s2">&quot;EXECUTABLE&quot;</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">absolute</span><span class="p">(),</span>
+                <span class="s2">&quot;NCORES&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;cores_per_task&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;YAMLPATH&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+                <span class="s2">&quot;JOB_LENGTH&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;max_job_count&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;MEM&quot;</span><span class="p">:</span> <span class="n">mem_total</span><span class="p">,</span>
+                <span class="s2">&quot;MEM_PER_CPU&quot;</span><span class="p">:</span> <span class="n">mem_per_cpu</span><span class="p">,</span>
+                <span class="s2">&quot;CLUSTER&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;cluster&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;TIME&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;Jobscript&quot;</span><span class="p">][</span><span class="s2">&quot;time&quot;</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;must define a valid template name as &quot;Type&quot;!&#39;</span><span class="p">)</span>
+
+        <span class="c1"># populate template</span>
+        <span class="n">populated</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">script_template</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">script_vars</span><span class="p">)</span>
+
+        <span class="c1"># write to file &amp; make script executable</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">script_name</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">populated</span><span class="p">)</span>
+        <span class="n">Path</span><span class="p">(</span><span class="n">script_name</span><span class="p">)</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="mo">0o755</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">loglevel_info_multiple_run</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Generated </span><span class="si">{</span><span class="n">script_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">script_name</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

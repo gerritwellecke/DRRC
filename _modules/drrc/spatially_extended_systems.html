@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>drrc.spatially_extended_systems &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/drrc.html">2. drrc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../packages/drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../packages/drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">drrc.spatially_extended_systems</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for drrc.spatially_extended_systems</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Solver for spatially extended systems.</span>
+
+<span class="sd">.. codeauthor:: Luk Fleddermann</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.tools.general_methods</span><span class="w"> </span><span class="kn">import</span> <span class="n">progress_feedback</span>
+
+
+<div class="viewcode-block" id="LocalModel">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.LocalModel">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LocalModel</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Local Model of Exitation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Pardict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The init function creates the environment for the different models of the electric excitation,</span>
+<span class="sd">        i.e. it sets parameters for differential equation and a propper Grid-size (Physical and numerical) for the animation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            Pardict: Parameterfile</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Pardict = Pardict[&quot;LocalModel&quot;]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;LocalModel&quot;</span><span class="p">][</span><span class="s2">&quot;Parameter&quot;</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;LocalModel&quot;</span><span class="p">][</span><span class="s2">&quot;Parameter&quot;</span><span class="p">][</span><span class="s2">&quot;b&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;LocalModel&quot;</span><span class="p">][</span><span class="s2">&quot;Parameter&quot;</span><span class="p">][</span><span class="s2">&quot;eps&quot;</span><span class="p">]</span>
+
+        <span class="n">valid_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FitzHugh-Nagumo&quot;</span><span class="p">,</span> <span class="s2">&quot;Aliev-Panfilov&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_names</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Pardict[&#39;Name&#39;] needs to be </span><span class="si">{</span><span class="n">valid_names</span><span class="si">}</span><span class="s2"> but is </span><span class="si">{</span><span class="n">Pardict</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;FitzHugh-Nagumo&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;FitzHugh-Nagumo&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">apply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitzhugh_nagumo_local</span>
+            <span class="k">elif</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Aliev-Panfilov&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Aliev-Panfilov&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu1</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;LocalModel&quot;</span><span class="p">][</span><span class="s2">&quot;Parameter&quot;</span><span class="p">][</span><span class="s2">&quot;mu1&quot;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu2</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;LocalModel&quot;</span><span class="p">][</span><span class="s2">&quot;Parameter&quot;</span><span class="p">][</span><span class="s2">&quot;mu2&quot;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;LocalModel&quot;</span><span class="p">][</span><span class="s2">&quot;Parameter&quot;</span><span class="p">][</span><span class="s2">&quot;k&quot;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">apply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aliev_panfilov_local</span>
+
+<div class="viewcode-block" id="LocalModel.fitzhugh_nagumo_local">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.LocalModel.fitzhugh_nagumo_local">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fitzhugh_nagumo_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">vars</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The local FitzHugh-Nagumo model follows</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \partial_t u(x,y,t) &amp;= au(u-b)(1-u)-w\,,\\</span>
+<span class="sd">            \partial_t w(x,y,t) &amp;= -\varepsilon(u-w)\,,</span>
+
+<span class="sd">        which is extended to the spatially extended FitzHugh-Nagumo model by adding a diffusion term to the u variable.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            vars (np.ndarray): excitation of variables :code:`[u,w] = [vars[0], vars[1]]`</span>
+<span class="sd">        </span>
+<span class="sd">        Return:</span>
+<span class="sd">            np.ndarray: change in excitation of u and w following the fitz_nagumo model.</span>
+<span class="sd">            If :class:`LocalModel` is of wrong type, returns -1.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            The class needs to be initialized, with :code:`model=&#39;fitzhugh_nagumo`,</span>
+<span class="sd">            for the function to work.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dvars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">vars</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">dvars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">*</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">dvars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">*</span> <span class="p">(</span><span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">dvars</span></div>
+
+
+<div class="viewcode-block" id="LocalModel.aliev_panfilov_local">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.LocalModel.aliev_panfilov_local">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">aliev_panfilov_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">vars</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The local Aliev-Panfilov model follows</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \partial_t u(x,y,t) &amp;= ku(u-a)(1-u)-uw\,,\\</span>
+<span class="sd">            \partial_t w(x,y,t) &amp;= \left(\varepsilon+\frac{\mu_1 w}{\mu_2 +u}\right)\cdot(-w-ku(u-b-1))\,,</span>
+<span class="sd">        </span>
+<span class="sd">        which is extended to the spatially extended Aliev-Panfilov model by adding a diffusion term to the u variable.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            vars (np.ndarray): excitation of variables</span>
+<span class="sd">        Return:</span>
+<span class="sd">            np.ndarray: change in excitation of u and w following the fitz_nagumo model.</span>
+<span class="sd">            If class.model is of wrong type, returns -1.</span>
+<span class="sd">        Notes:</span>
+<span class="sd">            The class needs to be initialized, with :code:`model=&#39;aliev_panfilov`,</span>
+<span class="sd">            for the function to work.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dvars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">vars</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">dvars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">dvars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu1</span> <span class="o">*</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mu2</span> <span class="o">+</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="o">-</span><span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">dvars</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Diffusion">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.Diffusion">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Diffusion</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Diffusion model, different accuracy (5 point/ 9 point stencil).</span>
+<span class="sd">    May be extended to other methods of implementing diffusion.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Pardict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            model (str):</span>
+<span class="sd">                Specification of the model of partial differential eq. one wants to use</span>
+<span class="sd">            stencil (str):</span>
+<span class="sd">                Specification of the stencil used in the calculation of the Laplacian</span>
+<span class="sd">            stable (bool):</span>
+<span class="sd">                Choice whether stable or chaotic spiral waves are produced with the</span>
+<span class="sd">                Aliev-Panfilov model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid_stencils</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NinePoint&quot;</span><span class="p">,</span> <span class="s2">&quot;FivePoint&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Diffusion&quot;</span><span class="p">][</span><span class="s2">&quot;stencil&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_stencils</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;Diffusion Stencil&#39; needs to be </span><span class="si">{</span><span class="n">valid_stencils</span><span class="si">}</span><span class="s2"> but is </span><span class="si">{</span><span class="n">Pardict</span><span class="p">[</span><span class="s1">&#39;Diffusion&#39;</span><span class="p">][</span><span class="s1">&#39;Stencil&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Diffusion&quot;</span><span class="p">][</span><span class="s2">&quot;constant&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dx</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dx&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Diffusion&quot;</span><span class="p">][</span><span class="s2">&quot;stencil&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;FivePoint&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">apply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_5stencil</span>
+            <span class="k">if</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Diffusion&quot;</span><span class="p">][</span><span class="s2">&quot;stencil&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;NinePoint&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">apply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_9stencil</span>
+
+<div class="viewcode-block" id="Diffusion.apply_5stencil">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.Diffusion.apply_5stencil">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_5stencil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            u: excitation of grid.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            laplacian: Two dimensional array of discrete Laplacian of the excitation of</span>
+<span class="sd">            u, using the five-point stencil.</span>
+<span class="sd">        Notes:</span>
+<span class="sd">            The outer layer of u needs to be a ghost layer s.t. no flux boundary</span>
+<span class="sd">            conditions are inforced.</span>
+<span class="sd">            Without ghost layer periodic boundary conditions are used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">laplacian</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">u</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">*</span> <span class="n">laplacian</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Diffusion.apply_9stencil">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.Diffusion.apply_9stencil">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_9stencil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            u:</span>
+<span class="sd">                excitation of grid.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            laplacian:</span>
+<span class="sd">                Two dimensional array of discrete Laplacian of the excitation of u,</span>
+<span class="sd">                using the five-point stencil.</span>
+<span class="sd">        Notes:</span>
+<span class="sd">            The outer layer of u needs to be a ghost layer s.t. no flux boundary</span>
+<span class="sd">            conditions are inforced.</span>
+<span class="sd">            Without ghost layer periodic boundary conditions are used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">laplacian</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span> <span class="o">*</span> <span class="n">u</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">laplacian</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">/</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">laplacian</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="BoundaryCondition">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.BoundaryCondition">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BoundaryCondition</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Different Typs of Boundary conditions. So far only &#39;no_flux&#39; has a proper meaning.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Pardict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The init function creates the environment for the different models of the</span>
+<span class="sd">        electric excitation, i.e. it sets parameters for differential equation and a</span>
+<span class="sd">        proper Grid-size (Physical and numerical) for the animation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model (str):</span>
+<span class="sd">                Specification of the model of partial differential eq. one wants to use</span>
+<span class="sd">            stencil (str):</span>
+<span class="sd">                Specification of the stencil used in the calculation of the Laplacian</span>
+<span class="sd">            stable (bool):</span>
+<span class="sd">                Choice wether stable or chaotic spiral waves are produced with the</span>
+<span class="sd">                Aliev-Panfilov model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;BoundaryCondition&quot;</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;NoFlux&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SetBoundary&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Periodic&quot;</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="s2">&quot;Error: Initialisation incomplete. &#39;Pardict[&#39;BoundaryCondition&#39;]&#39; needs&quot;</span>
+                <span class="s2">&quot;to be &#39;aliev_panfilov&#39; or &#39;fitzhugh_nagumo&#39; but is&quot;</span><span class="p">,</span>
+                <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;BoundaryCondition&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;BoundaryCondition&quot;</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;NoFlux&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;NoFlux&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">apply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_flux</span>
+            <span class="k">elif</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;BoundaryCondition&quot;</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;SetBoundary&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;SetBoundary&quot;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading Boundary.&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bound_var1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;BoundaryCondition&quot;</span><span class="p">][</span><span class="s2">&quot;Path&quot;</span><span class="p">])[</span><span class="s2">&quot;vars&quot;</span><span class="p">][</span>
+                    <span class="p">:,</span> <span class="mi">0</span>
+                <span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">apply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_bound_u</span>
+
+<div class="viewcode-block" id="BoundaryCondition.no_flux">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.BoundaryCondition.no_flux">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">no_flux</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">vars</span><span class="p">,</span> <span class="n">itterator</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            u: excitation of grid.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            u: excitation of grid with no flux boundary condition enforced for</span>
+<span class="sd">            5-point stencil.</span>
+<span class="sd">        Notes:</span>
+<span class="sd">            The outer layer is turned in a ghost layer with no physical meaning.</span>
+<span class="sd">            The corners of the grid (i.e. u[0,0]) are unimportant for the calculations</span>
+<span class="sd">            of the five point stencil, hence orientation of the four executed steps does</span>
+<span class="sd">            not matter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">vars</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_bound_u</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">vars</span><span class="p">,</span> <span class="n">itterator</span><span class="p">):</span>
+        <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_var1</span><span class="p">[</span><span class="n">itterator</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_var1</span><span class="p">[</span><span class="n">itterator</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_var1</span><span class="p">[</span><span class="n">itterator</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_var1</span><span class="p">[</span><span class="n">itterator</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">vars</span></div>
+
+
+
+<div class="viewcode-block" id="IntegrationMethods">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.IntegrationMethods">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">IntegrationMethods</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Methods of temporal integraion of class &#39;LocalModel&#39; coupled by class &#39;Diffusion&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="IntegrationMethods.exp_euler_itt">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.IntegrationMethods.exp_euler_itt">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">exp_euler_itt</span><span class="p">(</span>
+        <span class="n">dif</span><span class="p">:</span> <span class="n">Diffusion</span><span class="p">,</span>
+        <span class="n">lm</span><span class="p">:</span> <span class="n">LocalModel</span><span class="p">,</span>
+        <span class="n">bc</span><span class="p">:</span> <span class="n">BoundaryCondition</span><span class="p">,</span>
+        <span class="n">Pardict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Iterative application of explicit Euler method.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dif: Diffusion Model</span>
+<span class="sd">            lm: Local Model</span>
+<span class="sd">            bc: Boundary Conditions</span>
+<span class="sd">            Pardict: Parameter File</span>
+<span class="sd">            seed: seed of random initial condition</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            vars: Last time step of integration</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;Transient&quot;</span><span class="p">]</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;integration_dt&quot;</span><span class="p">]</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="n">IntegrationMethods</span><span class="o">.</span><span class="n">_get_initial</span><span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SystemParameters&quot;</span><span class="p">],</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">n_t</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">)):</span>
+            <span class="nb">vars</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">lm</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">vars</span><span class="p">)</span>
+            <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">dif</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="nb">vars</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="n">itterator</span><span class="o">=</span><span class="n">n_t</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">n_t</span><span class="p">)</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n_t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">progress_feedback</span><span class="o">.</span><span class="n">printProgressBar</span><span class="p">(</span>
+                    <span class="nb">int</span><span class="p">((</span><span class="n">n_t</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span> <span class="o">//</span> <span class="n">dt</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Integration without saving:&quot;</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">vars</span></div>
+
+
+<div class="viewcode-block" id="IntegrationMethods.exp_euler_itt_with_save">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.IntegrationMethods.exp_euler_itt_with_save">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">exp_euler_itt_with_save</span><span class="p">(</span>
+        <span class="n">dif</span><span class="p">:</span> <span class="n">Diffusion</span><span class="p">,</span>
+        <span class="n">lm</span><span class="p">:</span> <span class="n">LocalModel</span><span class="p">,</span>
+        <span class="n">bc</span><span class="p">:</span> <span class="n">BoundaryCondition</span><span class="p">,</span>
+        <span class="n">Pardict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="n">vars0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">prog_feetback</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Iterative application of explicit euler method.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dif: Diffusion Model</span>
+<span class="sd">            lm: Local Model</span>
+<span class="sd">            bc: Boundary Conditions</span>
+<span class="sd">            Pardict: Parameter File</span>
+<span class="sd">            vars0: Initial Condition</span>
+<span class="sd">            seed: seed of random initial condition</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            vars: Last time step of integration</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">T</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;T&quot;</span><span class="p">]</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;integration_dt&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">dt</span><span class="p">),</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="n">dt</span><span class="p">,</span>
+                <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">],</span>
+                <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span> <span class="o">%</span> <span class="n">dt</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Saving Resolution needs to be multiple of temporal step.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">save_each</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;TemporalParameter&quot;</span><span class="p">][</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="n">IntegrationMethods</span><span class="o">.</span><span class="n">_get_initial</span><span class="p">(</span><span class="n">Pardict</span><span class="p">,</span> <span class="n">vars0</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+        <span class="n">t_save</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">save_each</span><span class="p">)</span>
+
+        <span class="n">saving_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">t_save</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">vars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">vars</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="mi">2</span>
+        <span class="p">)</span>
+        <span class="n">vars_save</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">saving_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">n_t</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">)):</span>
+            <span class="nb">vars</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">lm</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">vars</span><span class="p">)</span>
+            <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">dif</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="nb">vars</span> <span class="o">=</span> <span class="n">bc</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="n">itterator</span><span class="o">=</span><span class="n">n_t</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">n_t</span><span class="p">)</span> <span class="o">%</span> <span class="n">save_each</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n_t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">vars_save</span><span class="p">[</span><span class="nb">int</span><span class="p">((</span><span class="n">n_t</span><span class="p">)</span> <span class="o">/</span> <span class="n">save_each</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span>
+                    <span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span>
+                <span class="p">]</span>  <span class="c1"># removing boundary</span>
+                <span class="k">if</span> <span class="n">prog_feetback</span><span class="p">:</span>
+                    <span class="n">progress_feedback</span><span class="o">.</span><span class="n">printProgressBar</span><span class="p">(</span>
+                        <span class="nb">int</span><span class="p">((</span><span class="n">n_t</span><span class="p">)</span> <span class="o">/</span> <span class="n">save_each</span><span class="p">),</span>
+                        <span class="n">t_save</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Integration with saving:   &quot;</span><span class="p">,</span>
+                    <span class="p">)</span>
+        <span class="k">return</span> <span class="n">vars_save</span><span class="p">,</span> <span class="n">t_save</span></div>
+
+
+<div class="viewcode-block" id="IntegrationMethods._get_initial">
+<a class="viewcode-back" href="../../packages/drrc.spatially_extended_systems.html#drrc.spatially_extended_systems.IntegrationMethods._get_initial">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_initial</span><span class="p">(</span>
+        <span class="n">Pardict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">vars0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates initial condition (array) from string in dictionary.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            Pardict (dict): initial condition</span>
+<span class="sd">            vars0 (np.ndarray): initial condition</span>
+<span class="sd">            seed (int): seed of random initial condition</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            np.ndarray: initial condition</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            Pardict needs to have keys &#39;LocalModel&#39;, &#39;SpatialParameter&#39; and</span>
+<span class="sd">            &#39;initial_condition&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vars0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">vars0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">vars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+                <span class="p">(</span>
+                    <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;LocalModel&quot;</span><span class="p">][</span><span class="s2">&quot;NrVariables&quot;</span><span class="p">],</span>
+                    <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;initial_condition&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;AllZero&quot;</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;initial_condition&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;InitiateSpiral&quot;</span>
+                <span class="ow">and</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Aliev-Panfilov&quot;</span>
+            <span class="p">):</span>
+                <span class="nb">vars</span><span class="p">[</span>
+                    <span class="mi">0</span><span class="p">,</span>
+                    <span class="mi">1</span> <span class="p">:</span> <span class="nb">round</span><span class="p">(</span>
+                        <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+                    <span class="p">),</span>
+                    <span class="p">:,</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="nb">vars</span><span class="p">[</span>
+                    <span class="mi">1</span><span class="p">,</span>
+                    <span class="mi">1</span> <span class="p">:</span> <span class="nb">round</span><span class="p">(</span>
+                        <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+                    <span class="p">),</span>
+                    <span class="p">:,</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+                <span class="nb">vars</span><span class="p">[</span>
+                    <span class="mi">1</span><span class="p">,</span>
+                    <span class="nb">round</span><span class="p">(</span>
+                        <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+                    <span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span>
+                    <span class="nb">round</span><span class="p">((</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="p">:,</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;initial_condition&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;InitiateSpiral&quot;</span>
+                <span class="ow">and</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;FitzHugh-Nagumo&quot;</span>
+            <span class="p">):</span>
+                <span class="nb">vars</span><span class="p">[</span>
+                    <span class="mi">0</span><span class="p">,</span>
+                    <span class="mi">1</span> <span class="p">:</span> <span class="nb">round</span><span class="p">(</span>
+                        <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+                    <span class="p">),</span>
+                    <span class="p">:,</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="nb">vars</span><span class="p">[</span>
+                    <span class="mi">1</span><span class="p">,</span>
+                    <span class="nb">round</span><span class="p">(</span>
+                        <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+                    <span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span>
+                    <span class="p">:</span> <span class="nb">round</span><span class="p">((</span><span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;initial_condition&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;RandomChaos&quot;</span>
+                <span class="ow">and</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Aliev-Panfilov&quot;</span>
+            <span class="p">):</span>
+                <span class="n">sd</span> <span class="o">=</span> <span class="n">Pardict</span><span class="p">[</span><span class="s2">&quot;SpatialParameter&quot;</span><span class="p">][</span><span class="s2">&quot;spatial_dimension&quot;</span><span class="p">]</span>
+                <span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">:</span> <span class="nb">int</span><span class="p">((</span><span class="n">sd</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+                <span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                <span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">sd</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="p">:,</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">sd</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">2.5</span>
+            <span class="k">return</span> <span class="nb">vars</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

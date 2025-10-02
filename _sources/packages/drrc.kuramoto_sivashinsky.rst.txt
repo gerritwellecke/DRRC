@@ -1,0 +1,8 @@
+drrc.kuramoto\_sivashinsky module
+=================================
+
+.. automodule:: drrc.kuramoto_sivashinsky
+   :members:
+   :no-undoc-members:
+   :private-members:
+   :show-inheritance:

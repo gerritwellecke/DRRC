@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.5. drrc.parallelreservoirs module &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.6. drrc.reservoircomputer module" href="drrc.reservoircomputer.html" />
+    <link rel="prev" title="2.4. drrc.kuramoto_sivashinsky module" href="drrc.kuramoto_sivashinsky.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../manual/index.html">1. User manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../manual/installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/contributing.html">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/contributing.html#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../manual/contributing.html#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../manual/testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../manual/open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="drrc.html">2. drrc</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="drrc.html"><span class="section-number">2. </span>drrc</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.5. </span>drrc.parallelreservoirs module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/packages/drrc.parallelreservoirs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-drrc.parallelreservoirs">
+<span id="drrc-parallelreservoirs-module"></span><h1><span class="section-number">2.5. </span>drrc.parallelreservoirs module<a class="headerlink" href="#module-drrc.parallelreservoirs" title="Link to this heading"></a></h1>
+<p>This module contains the implementation of the ParallelReservoirsBase class, three coresponding subclasses ParallelReservoirs, ParallelReservoirsFFT and ParallelReservoirsPCA and the ParallelReservoirsArguments dataclass.</p>
+<dl class="simple">
+<dt>The Subclasses are used to predict high dimensional (spatially extended) systems using multiple Reservoir Computers in parallel:</dt><dd><ol class="arabic simple">
+<li><p>The ParallelReservoirs class is used for high dimensional systems, without a dimension reduction.</p></li>
+<li><p>The ParallelReservoirsFFT class is used for high dimensional systems, using only a selection of fft modes as a dimension reduction.</p></li>
+<li><p>The ParallelReservoirsPCA class is used for high dimensional systems, using only a selection of pca modes as a dimension reduction.</p></li>
+</ol>
+</dd>
+</dl>
+<p>The base class <code class="code docutils literal notranslate"><span class="pre">ParallelReservoirsBase</span></code> contains everything for parallel reservoir applications that predicts high dimensional (spatially extended) systems using multiple Reservoir Computers in parallel.
+The classes use a class instance of <code class="code docutils literal notranslate"><span class="pre">ParallelReservoirsArguments</span></code>, which is a dataclass that represents the parameters for configuring the (parallel-) reservoirs.</p>
+<p>Author: Luk Fleddermann, Gerrit Wellecke
+Date: 13.06.2024</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsArguments">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ParallelReservoirsArguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjacency_degree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjacency_dense</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjacency_spectralradius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">reservoir_leakage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">reservoir_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_scaling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallelreservoirs_grid_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallelreservoirs_ghosts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensionreduction_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_includeinput</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_regularization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_output_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">identical_inputmatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">identical_adjacencymatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">identical_outputmatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsArguments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Parallel-reservoir parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adjacency_degree</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – average degree of the adjacency matrix</p></li>
+<li><p><strong>adjacency_dense</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether the adjacency matrix is sparse (False) or dense (True)</p></li>
+<li><p><strong>adjacency_spectralradius</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – spectral radius, largest eigenvalue of the adjacency matrix</p></li>
+<li><p><strong>reservoir_leakage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – leakage the strength of memory a reservoir state remembers old
+excitations with (0.0 only driven from new data no memory, 1.0 no update
+of rs)</p></li>
+<li><p><strong>reservoir_nodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – number of nodes in each of the parallel reservoirs</p></li>
+<li><p><strong>input_scaling</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – input scaling the maximal absolute value of entries in the input matrix</p></li>
+<li><p><strong>input_bias</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – scaling of the bias strength double the maximal absolute value of the
+bias input to a reservoir node, None defaults to inscale</p></li>
+<li><p><strong>spatial_shape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>...</em><em>]</em>) – shape of the input data, without boundary condition (for ex. <code class="code docutils literal notranslate"><span class="pre">(128,)</span></code> in 1D case, <code class="code docutils literal notranslate"><span class="pre">(128,128)</span></code> in 2D case)</p></li>
+<li><p><strong>system_variables</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – number of variables in the system (data for one time step is of shape <code class="code docutils literal notranslate"><span class="pre">(system_variables,</span> <span class="pre">*spatial_shape)</span></code>).</p></li>
+<li><p><strong>boundary_condition</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the type of boundary condition to apply to the input data</p></li>
+<li><p><strong>parallelreservoirs_grid_shape</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>...</em><em>]</em>) – the amount of reservoirs per dimension that should be used together as a
+multi-reservoir (for ex. [2,1] in 2D case for 2 reservoirs in
+x direction)</p></li>
+<li><p><strong>parallelreservoirs_ghosts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – number of variables that a reservoir sees from outside the region where
+its predicting for sync.</p></li>
+<li><p><strong>dimensionreduction_fraction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – fraction of variables that actually enters the reservoir after
+dimension reduction</p></li>
+<li><p><strong>training_includeinput</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether to also fit the input signal for predicting the next timestep</p></li>
+<li><p><strong>training_regularization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – regularization strength for the ridge regression</p></li>
+<li><p><strong>training_output_bias</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – scaling of the output bias</p></li>
+<li><p><strong>identical_inputmatrix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether we use different input matrices for each reservoir</p></li>
+<li><p><strong>identical_adjacency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether we use different adjacency matrices for each reservoir</p></li>
+<li><p><strong>identical_outputmatrix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>...</em><em>]</em>) – whether we train each domain with a separate reservoir (False) or one
+reservoir on all domains (‘combine_data’) or one reservoir on one domain (tuple of indices)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsArguments.from_config">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><span class="pre">Config</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsArguments.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsArguments.from_config" title="Link to this definition"></a></dt>
+<dd><p>Make a ParallelReservoirsArguments object from a Config object.</p>
+<p>This method generates a ParallelReservoirsArguments object based on the provided Config object.
+The Config object should have keys that match the names defined in this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conf</strong> (<a class="reference internal" href="drrc.config.html#drrc.config.Config" title="drrc.config.Config"><em>Config</em></a>) – The Config object corresponding to the YAML for the parameter scan.</p></li>
+<li><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The index of the current parameter set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated ParallelReservoirsArguments object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments">ParallelReservoirsArguments</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsArguments.from_dict">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsArguments.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsArguments.from_dict" title="Link to this definition"></a></dt>
+<dd><p>Generate parameters from dictionary</p>
+<p>This function supports passing of a dictionary that contains more than the
+needed keys. In this case any additional information is simply ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_dict</strong> – dictionary containing at least all the needed keys for the
+initialiser.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ParallelReservoirsBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments"><span class="pre">ParallelReservoirsArguments</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<p>Base class for parallel reservoir applications. Implements the use of multiple Reservoir Computers in parallel to predict high dimensional (spatially extended) systems.
+Parallel is to be understood in terms of domain splitting of the input data.</p>
+<ul class="simple">
+<li><p>Base class: Set up reservoir and parallel-reservoir parameters, initialize reservoirs and slices.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments"><em>ParallelReservoirsArguments</em></a>) – All needed arguments in a dataclass object.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_training_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_training_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">transient_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase.train" title="Link to this definition"></a></dt>
+<dd><p>Train the output matrix of all parallel reservoirs using ridge regression.
+Hereby it is differentiated between different methods:</p>
+<ol class="arabic simple">
+<li><p>Each reservoir is trained individually. Works for arbirary systems.</p></li>
+<li><p>One reservoir (used for the predictions of all domains) is trained on one domain only. Works only for homogenious systems.</p></li>
+<li><p>One reservoir (used for the predictions of all domains) is trained on all domains by combigning the data. Works only for homogenious systems.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_training_data</strong> – np.ndarray[float]
+input data for training, without bouncary condition ghostcells. Data needs to be of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables,</span> <span class="pre">*spatial_shape)</span></code>.</p></li>
+<li><p><strong>output_training_data</strong> – np.ndarray[float]
+output data for training, without bouncary condition ghostcells. Data needs to be of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps</span> <span class="pre">-</span> <span class="pre">transient_steps,</span> <span class="pre">variables,</span> <span class="pre">*spatial_shape)</span></code>.</p></li>
+<li><p><strong>transient_steps</strong> – int, optional
+number of transient steps to be used for training (default: 0)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>The training method includes a transient phase, where the reservoirs are driven by the input data without using the results for the training.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase.iterative_predict">
+<span class="sig-name descname"><span class="pre">iterative_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supervision_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase.iterative_predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase.iterative_predict" title="Link to this definition"></a></dt>
+<dd><p>Iteratively predict a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial</strong> (<em>np.ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – Initial condition for the time series prediction.</p></li>
+<li><p><strong>max_steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum number of steps to predict.</p></li>
+<li><p><strong>supervision_data</strong> (<em>np.ndarray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em><em>, </em><em>optional</em>) – Supervision data for evaluating the prediction.
+Defaults to None.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for evaluating the prediction:
+Including an error function <code class="code docutils literal notranslate"><span class="pre">error_function</span></code> of {‘NRMSE’},
+the (temporal) mean of the norm of the data <code class="code docutils literal notranslate"><span class="pre">mean_norm</span></code>,
+a threshhold value for the error function <code class="code docutils literal notranslate"><span class="pre">error_stop</span></code>,
+and the number of extra steps to predict after the error threshold is exceeded <code class="code docutils literal notranslate"><span class="pre">extra_steps</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the predicted time series,
+the prediction errors (if supervision data is provided, else None),
+and the number of steps predicted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[np.ndarray, np.ndarray | None, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a>]</p>
+</dd>
+</dl>
+<p>Notes: Before the prediction the parallel reservoir states need to be adjusted to the state of the system to be predicted by using <code class="code docutils literal notranslate"><span class="pre">reservoir_transient</span></code>.</p>
+<p>Warning: This function with supervision data is not tested nor fully implemented yet.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase.reservoir_transient">
+<span class="sig-name descname"><span class="pre">reservoir_transient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_on_transient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase.reservoir_transient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase.reservoir_transient" title="Link to this definition"></a></dt>
+<dd><p>Transient dynamics of the reservoirs. Updates the reservoir states and optionally predicts one step ahead on the transient dynamics, without reusing the predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> – np.ndarray[float]
+input data for the transient dynamics</p></li>
+<li><p><strong>predict_on_transient</strong> – bool
+if True, one step-ahead predictions are performed on transient data and returned, else only the reservoir states are updated</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase._initialize_reservoirs">
+<span class="sig-name descname"><span class="pre">_initialize_reservoirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer" title="drrc.reservoircomputer.ReservoirComputer"><span class="pre">ReservoirComputer</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase._initialize_reservoirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase._initialize_reservoirs" title="Link to this definition"></a></dt>
+<dd><p>Initialize the reservoirs for the parallel reservoirs using <code class="code docutils literal notranslate"><span class="pre">rc_grid_shape</span></code>, which specifies how many reservoirs in each dimension are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Seed for the random number generator, used for initializing the reservoirs.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of initialized reservoirs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="drrc.reservoircomputer.html#drrc.reservoircomputer.ReservoirComputer" title="drrc.reservoircomputer.ReservoirComputer">ReservoirComputer</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase._initialize_reservoir_slices">
+<span class="sig-name descname"><span class="pre">_initialize_reservoir_slices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.13)"><span class="pre">slice</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase._initialize_reservoir_slices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase._initialize_reservoir_slices" title="Link to this definition"></a></dt>
+<dd><p>Prepare the reservoir slices for different reserovirs. First two dimensions are ignored, because they are <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables)</span></code>/ not spatial.
+In each spatial dimension of length <span class="math notranslate nohighlight">\(dim\)</span>, the slices for reservoir number <span class="math notranslate nohighlight">\(i\)</span> (w.r.t. this dimension) of total number of reservoirs <span class="math notranslate nohighlight">\(n\)</span> is chosen to be <code class="code docutils literal notranslate"><span class="pre">slice(start</span> <span class="pre">:</span> <span class="pre">stop)</span></code>, where</p>
+<div class="math notranslate nohighlight">
+\[\text{start} = i \cdot \left\lfloor\frac{dim}{n}\right\rfloor\quad\text{and}\quad\text{stop} = (i+1) \cdot \left\lfloor\frac{dim}{n}\right\rfloor + 2 \cdot \text{ghosts}.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of slices for each reservoir</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.13)">slice</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase._boundary_condition">
+<span class="sig-name descname"><span class="pre">_boundary_condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_ghostcells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase._boundary_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase._boundary_condition" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>The function enforces boundary conditions on all spatial dimensions and returns the result.</dt><dd><p>Either boundary cells are used as ghost cells or ghost cells are added.
+Ghost cell values depend on the boundary condition.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – Input data in region to be predicted. Shape is <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables,</span> <span class="pre">*spatial_shape)</span></code>.</p></li>
+<li><p><strong>add_ghostcells</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If True, the boundary condition is fullfilled by adding ghostcells, else the outercells of the array are updated to fullfill the boundary condition.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extended array of size <code class="code docutils literal notranslate"><span class="pre">data.shape</span></code> or <code class="code docutils literal notranslate"><span class="pre">data.shape+2*window_size</span></code>, depending on <code class="code docutils literal notranslate"><span class="pre">add_ghostcells</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>The boundary condition is applied to spatial dimensions only. Therefore, the first and second dimension of the input <code class="code docutils literal notranslate"><span class="pre">data</span></code> is ignored.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This has not been tested for arbitrary dimensions. Only up to 2D.
+Might be useful to be precompiled(Numba-JIT), it runs in every time step</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase._evaluate_one_step">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_evaluate_one_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">supervision_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">errrofunction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NRMSE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase._evaluate_one_step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase._evaluate_one_step" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the prediction of one time step using the error function <code class="code docutils literal notranslate"><span class="pre">errorfunction</span></code>.
+If <code class="code docutils literal notranslate"><span class="pre">errorfunction</span> <span class="pre">=&quot;NRMSE&quot;</span></code>, the normalized root mean square error</p>
+<div class="math notranslate nohighlight">
+\[\frac{\|\vec{u}(t)-\vec{u}^{\mathrm{true}}(t)\|_2}{\langle\|\vec{u}^{\mathrm{true}}(t)\|^2\rangle_{\mathrm{t}}^{1/2}}\]</div>
+<p>is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prediction</strong> (<em>np.ndarray</em>) – Prediction of the system at one time step. Shape is <code class="code docutils literal notranslate"><span class="pre">(variables,</span> <span class="pre">*spatial_shape)</span></code>.</p></li>
+<li><p><strong>supervision_data</strong> (<em>np.ndarray</em>) – Supervision data for the prediction. Shape is <code class="code docutils literal notranslate"><span class="pre">(variables,</span> <span class="pre">*spatial_shape)</span></code>.</p></li>
+<li><p><strong>errorfunction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Error function to evaluate the prediction. Only the nomalized root mean square error <code class="code docutils literal notranslate"><span class="pre">&quot;NRMSE&quot;</span></code> is implemented so far.</p></li>
+<li><p><strong>mean_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Mean norm of the supervision data, is used to normalize the error root mean square error.</p></li>
+<li><p><strong>error_stop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Threshold for the error function. Iterative predictions are stopped if the error is above the threshold.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the error is below the threshold <code class="code docutils literal notranslate"><span class="pre">error_stop</span></code>, else False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p>Warning: This method is not tested and might have errors!</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase._get_input_length">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_get_input_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase._get_input_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase._get_input_length" title="Link to this definition"></a></dt>
+<dd><p>Depends on dimension reduction method.</p>
+<p>Get the length of the input data for each parallel object of class <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code>. Depends on Dimension Reduction fraction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The length of the input data for each <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase._transform_data">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase._transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase._transform_data" title="Link to this definition"></a></dt>
+<dd><p>Depends on dimension reduction method.</p>
+<p>Transform the data to the shape used in the reservoirs.
+Data of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables,</span> <span class="pre">*spatial_shape)</span></code> is transformed to <code class="code docutils literal notranslate"><span class="pre">(time,</span> <span class="pre">res_variables)</span></code>, where all variables and spatial shapes are used in the dimension reduction and flatted into one dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – Data to be transformed. First dimension is temporal and not transformed. Second dimension chooses different variables and will be used in dimension reduction. All others are spatial dimensions and are flatted as well.</p></li>
+<li><p><strong>fraction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Fraction of variables that actually enters the reservoir after dimension reduction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transformed data. First dimension is temporal and not transformed. Rest is flattened.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase._inv_transform_data">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_inv_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase._inv_transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase._inv_transform_data" title="Link to this definition"></a></dt>
+<dd><p>Depends on dimension reduction method.</p>
+<p>Inverse dimension reduction transformation of the flatted reservoir data <code class="code docutils literal notranslate"><span class="pre">data</span></code>.
+The output is transformed to the geometric shape of the output prediction.
+First dimension of input <code class="code docutils literal notranslate"><span class="pre">data</span></code> is temporal and not transformed. Second dimension is split into different variables and spatial dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – Data to be transformed. First dimension is temporal and not transformed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Inverse transformed data. First dimension is temporal and not transformed. Rest is reshaped to number of variables and spatial shape.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase.save" title="Link to this definition"></a></dt>
+<dd><p>Save a ParallelReservoir to pkl file</p>
+<p>A possible use case of this is to conserve a trained multi-reservoir for later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – name of file to generate</p>
+</dd>
+</dl>
+<p>Warning: This function might be depracated. Else, might need to be put to derived classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsBase.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsBase.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsBase.load" title="Link to this definition"></a></dt>
+<dd><p>Load a ParallelReservoir from pkl file</p>
+<p>A possible use case of this is to load a trained model and perform further
+predictions without having to do the training again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – name of file to read in</p>
+</dd>
+</dl>
+<p>Warning: This function might be depracated. Else, might need to be put to derived classes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirs">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ParallelReservoirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">Parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments"><span class="pre">ParallelReservoirsArguments</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirs" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsBase" title="drrc.parallelreservoirs.ParallelReservoirsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelReservoirsBase</span></code></a></p>
+<p>Use multiple Reservoir Computers in parallel to predict high dimensional systems without dimensionality reduction.
+Parallel is to be understood in terms of domain splitting of the input data.
+This class uses the base class <code class="code docutils literal notranslate"><span class="pre">ParallelReservoirsBase</span></code>, which initiates Reservoirs of the class <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code> and handles the training and prediction of the parallel reservoirs.</p>
+<p><strong>Initialization</strong>:</p>
+<ul class="simple">
+<li><p>Only base class setup is done. No further initialization is needed.</p></li>
+<li><p>Base class: Set up reservoir and parallel-reservoir parameters, initialize reservoirs and slices.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments"><em>ParallelReservoirsArguments</em></a>) – All needed arguments in a dataclass object.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirs._get_input_length">
+<span class="sig-name descname"><span class="pre">_get_input_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirs._get_input_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirs._get_input_length" title="Link to this definition"></a></dt>
+<dd><p>Get the length of the input data for each parallel object of class <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code>. Without dimension reduction, the input length is</p>
+<div class="math notranslate nohighlight">
+\[\text{input length} = \prod_{i=1}^{d} \left( \frac{N_i}{R_i} + 2 g\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(d\)</span> is the number of spatial dimensions of the predicted system, <span class="math notranslate nohighlight">\(N_i\)</span> is the number of support points in the <span class="math notranslate nohighlight">\(i\)</span>-th dimension, <span class="math notranslate nohighlight">\(R_i\)</span> is the number of parallel reservoirs in the <span class="math notranslate nohighlight">\(i\)</span>-th dimension, <span class="math notranslate nohighlight">\(g\)</span> is the number of ghost cells used aroud the predicted region of each reservoir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The length of the input data for each <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirs._transform_data">
+<span class="sig-name descname"><span class="pre">_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirs._transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirs._transform_data" title="Link to this definition"></a></dt>
+<dd><p>Transform the data to the shape used in the reservoirs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – Data to be transformed. First dimension is temporal and not transformed. Second dimension chooses different variables and will be flattend. All others are spatial dimensions and are flatted as well.</p></li>
+<li><p><strong>fraction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Fraction of variables that actually enters the reservoir after dimension reduction. Should be one. Is not used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transformed data. First dimension is temporal and not transformed. Rest is flattened.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirs._inv_transform_data">
+<span class="sig-name descname"><span class="pre">_inv_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirs._inv_transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirs._inv_transform_data" title="Link to this definition"></a></dt>
+<dd><p>Inverse transformation of the data flatted reservoir data to the geometric shape. First dimension of input is temporal and not transformed. Second dimension is split into different variables and spatial dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – Data to be transformed. First dimension is temporal and not transformed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transformed data. First dimension is temporal and not transformed. Rest is reshaped to number of variables and spatial shape.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsFFT">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ParallelReservoirsFFT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">Parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments"><span class="pre">ParallelReservoirsArguments</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsFFT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsFFT" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsBase" title="drrc.parallelreservoirs.ParallelReservoirsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelReservoirsBase</span></code></a></p>
+<p>Use multiple Reservoir Computers in parallel to predict high dimensional systems using largest modes of an FFT for dimensionality reduction.
+Parallel is to be understood in terms of domain splitting of the input data.
+This class uses the base class <code class="code docutils literal notranslate"><span class="pre">ParallelReservoirsBase</span></code>, which initiates Reservoirs of the class <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code> and handles the training and prediction of the parallel reservoirs.</p>
+<p><strong>Initialization</strong>:</p>
+<ul class="simple">
+<li><p>Calculates or loads the largest FFT modes for the given datatype, i.e. model and parameters, and input and output dimension for each parallel Reservoir Computer.</p></li>
+<li><p>Base class: Set up reservoir and parallel-reservoir parameters, initialize reservoirs and slices.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments"><em>ParallelReservoirsArguments</em></a>) – All needed arguments in a dataclass object.</p></li>
+<li><p><strong>prediction_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the model to be predicted. Used to load or choose FFT modes with largest amplitude.</p></li>
+<li><p><strong>**kwargs</strong> – <p>dict
+nr_fft_datasets (int):</p>
+<blockquote>
+<div><p>The number of training data sets used to train the FFT. If not used all 10 training data sets are used.
+This is useful for computations with not enough memory for the full training.</p>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The same modes are used everywhere and choosen on all training data sets and all domains.
+Hence, the class only works if two conditions are met:
+1. The predicted Systems are homogeneous.
+2. All data sets need to be sampled from the same attractor.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsFFT._get_input_length">
+<span class="sig-name descname"><span class="pre">_get_input_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsFFT._get_input_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsFFT._get_input_length" title="Link to this definition"></a></dt>
+<dd><p>Get the length of the input data for each parallel object of class <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code>. With dimension reduction, the input length is</p>
+<div class="math notranslate nohighlight">
+\[\text{input length} = \left\lfloor f \times \prod_{i=1}^{d} \left( \frac{N_i}{R_i} + 2g \right) \right\rfloor\]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> is the fraction <code class="code docutils literal notranslate"><span class="pre">self.dimensionreduction_fraction</span></code> of the dimensions used, <span class="math notranslate nohighlight">\(d\)</span> is the number of spatial dimensions of the predicted system, <span class="math notranslate nohighlight">\(N_i\)</span> is the number of support points in the <span class="math notranslate nohighlight">\(i\)</span>-th dimension, <span class="math notranslate nohighlight">\(R_i\)</span> is the number of parallel reservoirs in the <span class="math notranslate nohighlight">\(i\)</span>-th dimension, <span class="math notranslate nohighlight">\(g\)</span> is the number of ghost cells used aroud the predicted region of each reservoir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The length of the input data for each <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsFFT._transform_data">
+<span class="sig-name descname"><span class="pre">_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsFFT._transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsFFT._transform_data" title="Link to this definition"></a></dt>
+<dd><p>Transform and reduce the data using the largest modes of the FFT. Flattening all but the first dimension to the shape used in the reservoirs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – Data to be transformed. First dimension is temporal and not transformed. Second dimension chooses different variables, all others are spatial dimensions.</p></li>
+<li><p><strong>fraction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Fraction of variables that actually enters the reservoir after dimension reduction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transformed data. First dimension is temporal and not transformed. Rest is flattened.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p>Warning: Tested only in 1d</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsFFT._inv_transform_data">
+<span class="sig-name descname"><span class="pre">_inv_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsFFT._inv_transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsFFT._inv_transform_data" title="Link to this definition"></a></dt>
+<dd><p>Inverse FFT transformation of the data flatted reservoir output (all components need to be predicted and are realigned to spatial shape). Transformed back to the geometric shape.
+This includes the boundary which will not be used when stitching the reservoir predictions together.
+First dimension of input is temporal and not transformed. Second dimension is split into different variables and spatial dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – Data to be transformed, of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">reservoir_variables)</span></code>. First dimension is temporal and not transformed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transformed data of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables,</span> <span class="pre">*spatial_shape)</span></code>. First dimension is temporal and not transformed. Rest is reshaped to number of variables and spatial shape.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>The input data is the output of one reservoir, which corresponds to one spatial domain.</p>
+</div>
+<p>Warning: Tested only in 1d.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsPCA">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ParallelReservoirsPCA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">Parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments"><span class="pre">ParallelReservoirsArguments</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsPCA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsPCA" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsBase" title="drrc.parallelreservoirs.ParallelReservoirsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelReservoirsBase</span></code></a></p>
+<p>Use multiple Reservoir Computers in parallel to predict high dimensional systems with using a PCA for dimensionality reduction.
+Parallel is to be understood in terms of domain splitting of the input data.
+This class uses the base class <code class="code docutils literal notranslate"><span class="pre">ParallelReservoirsBase</span></code>, which initiates Reservoirs of the class <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code> and handles the training and prediction of the parallel reservoirs.</p>
+<p><strong>Initialization</strong>:</p>
+<ul class="simple">
+<li><p>Trains or loads the PCA object for the given datatype, i.e. model and parameters, and output dimension for each parallel Reservoir Computer.</p></li>
+</ul>
+<p>Due to memory constrains, the pca-training data is taken from 10 training data sets and only each second time step is used. In addition for multiple parallel reservoirs the training data is sampled from all domains. In this case, the number of timesteps per domain is shortened (devided by number of domains) to keep the number of timesteps independet of the number of parallel reservoirs.
+Computational Complexity: <span class="math notranslate nohighlight">\(\mathcal{O}(n\cdot d^2)\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of samples and <span class="math notranslate nohighlight">\(d\)</span> is the number of dimensions.</p>
+<ul class="simple">
+<li><p>Base class: Set up reservoir and parallel-reservoir parameters, initialize reservoirs and slices.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<a class="reference internal" href="#drrc.parallelreservoirs.ParallelReservoirsArguments" title="drrc.parallelreservoirs.ParallelReservoirsArguments"><em>ParallelReservoirsArguments</em></a>) – All needed arguments in a dataclass object.</p></li>
+<li><p><strong>prediction_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the model to be predicted. Used to load or train the PCA object.</p></li>
+<li><p><strong>**kwargs</strong> – <p>dict
+nr_pca_trainings (int):</p>
+<blockquote>
+<div><p>The number of training data sets used to train the PCA. If not used all 10 training data sets are used.
+This is useful for computations with not enough memory for the full training.</p>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The same PCA is used everywhere and trained on all training data sets and all domains.
+Hence, the class only works if two conditions are met:
+1. The predicted Systems are homogeneous.
+2. All data sets need to be sampled from the same attractor.</p>
+</div>
+<dl class="simple">
+<dt>Warining:</dt><dd><p>Training PCAs with many parallel reservoirs and large ghost cells can be memory intensive.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsPCA._get_input_length">
+<span class="sig-name descname"><span class="pre">_get_input_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsPCA._get_input_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsPCA._get_input_length" title="Link to this definition"></a></dt>
+<dd><p>Get the length of the input data for each parallel object of class <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code>. With dimension reduction, the input length is</p>
+<div class="math notranslate nohighlight">
+\[\text{input length} = \left\lfloor f \times \prod_{i=1}^{d} \left( \frac{N_i}{R_i} + 2g \right) \right\rfloor\]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> is the fraction <code class="code docutils literal notranslate"><span class="pre">self.dimensionreduction_fraction</span></code> of the dimensions used, <span class="math notranslate nohighlight">\(d\)</span> is the number of spatial dimensions of the predicted system, <span class="math notranslate nohighlight">\(N_i\)</span> is the number of support points in the <span class="math notranslate nohighlight">\(i\)</span>-th dimension, <span class="math notranslate nohighlight">\(R_i\)</span> is the number of parallel reservoirs in the <span class="math notranslate nohighlight">\(i\)</span>-th dimension, <span class="math notranslate nohighlight">\(g\)</span> is the number of ghost cells used aroud the predicted region of each reservoir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The length of the input data for each <code class="code docutils literal notranslate"><span class="pre">ReservoirComputer</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsPCA._transform_data">
+<span class="sig-name descname"><span class="pre">_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsPCA._transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsPCA._transform_data" title="Link to this definition"></a></dt>
+<dd><p>Transform and reduce the data using the largest explained variances of the PCA. Flattening all but the first dimension to the shape used in the reservoirs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – Data to be transformed. First dimension is temporal and not transformed. Second dimension chooses different variables, all others are spatial dimensions.</p></li>
+<li><p><strong>fraction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Fraction of variables that actually enters the reservoir after dimension reduction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transformed data. First dimension is temporal and not transformed. Rest is flattened.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p>Warning: Not implemented</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="drrc.parallelreservoirs.ParallelReservoirsPCA._inv_transform_data">
+<span class="sig-name descname"><span class="pre">_inv_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../_modules/drrc/parallelreservoirs.html#ParallelReservoirsPCA._inv_transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#drrc.parallelreservoirs.ParallelReservoirsPCA._inv_transform_data" title="Link to this definition"></a></dt>
+<dd><p>Inverse PCA transformation of the data flatted reservoir output (all components need to be predicted). Transformed back to the geometric shape.
+This includes the boundary which will not be used when stitching the reservoir predictions together.
+First dimension of input is temporal and not transformed. Second dimension is split into different variables and spatial dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>np.ndarray</em>) – Data to be transformed, of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">reservoir_variables)</span></code>. First dimension is temporal and not transformed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transformed data of shape <code class="code docutils literal notranslate"><span class="pre">(time_steps,</span> <span class="pre">variables,</span> <span class="pre">*spatial_shape)</span></code>. First dimension is temporal and not transformed. Rest is reshaped to number of variables and spatial shape.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>The input data is the output of one reservoir, which corresponds to one spatial domain.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="drrc.kuramoto_sivashinsky.html" class="btn btn-neutral float-left" title="2.4. drrc.kuramoto_sivashinsky module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drrc.reservoircomputer.html" class="btn btn-neutral float-right" title="2.6. drrc.reservoircomputer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

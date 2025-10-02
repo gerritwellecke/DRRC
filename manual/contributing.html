@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.5. Contributing to DRRC &mdash; drrc  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.6. The Manuscript" href="manuscript.html" />
+    <link rel="prev" title="1.4. Analysing raw cluster output" href="analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            drrc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. User manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">1.1. Installing drrc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#installing-the-needed-packages">1.1.1. Installing the Needed Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#editable-installation-of-development-stage-code">1.1.2. Editable Installation of Development-Stage Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generating_data.html">1.2. Genration of training data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generating_data.html#creating-1d-kuramoto-sivashinsky-data">1.2.1. Creating 1D Kuramoto-Sivashinsky Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generating_data.html#creating-2d-data">1.2.2. Creating 2D Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">1.3. Running a job on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cluster.html#installing-python-on-the-cluster">1.3.1. Installing python on the cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cluster.html#at-mpi-ds">1.3.1.1. At MPI-DS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cluster.html#at-gwdg">1.3.1.2. At GWDG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cluster.html#submission-scripts">1.3.2. Submission Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">1.4. Analysing raw cluster output</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.5. Contributing to DRRC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#automated-documentation">1.5.1. Automated Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#first-steps-to-work-in-this-repository">1.5.2. First steps to work in this repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-in-this-repository">1.5.3. Working in this repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#avoiding-it-works-on-my-machine-like-problems">1.5.3.1. Avoiding “it works on my machine”-like problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formatting-code">1.5.3.2. Formatting Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manuscript.html">1.6. The Manuscript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manuscript.html#generating-plots-for-this-project">1.6.1. Generating Plots for this Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">1.7. Automated Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#workflow-and-local-testing">1.7.1. Workflow and local testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open_questions.html">1.8. Open Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/drrc.html">2. drrc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../packages/drrc.tools.html">2.1. drrc.tools package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../packages/drrc.tools.general_methods.html">2.1.1. drrc.tools.general_methods module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../packages/drrc.tools.logger_config.html">2.1.2. drrc.tools.logger_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../packages/drrc.tools.plot_config.html">2.1.3. drrc.tools.plot_config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../packages/drrc.tools.visualization.html">2.1.4. drrc.tools.visualization module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/drrc.analysis.html">2.2. drrc.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/drrc.config.html">2.3. drrc.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/drrc.kuramoto_sivashinsky.html">2.4. drrc.kuramoto_sivashinsky module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/drrc.parallelreservoirs.html">2.5. drrc.parallelreservoirs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/drrc.reservoircomputer.html">2.6. drrc.reservoircomputer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packages/drrc.spatially_extended_systems.html">2.7. drrc.spatially_extended_systems module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CHANGELOG.html#unpublished-2025-10-02">UNPUBLISHED – 2025/10/02</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">drrc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">1. </span>User manual</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1.5. </span>Contributing to DRRC</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/manual/contributing.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing-to-drrc">
+<h1><span class="section-number">1.5. </span>Contributing to DRRC<a class="headerlink" href="#contributing-to-drrc" title="Link to this heading"></a></h1>
+<p>PRs are welcome any time!
+If you’d like a more general instruction aimed at beginners, keep reading below.</p>
+<section id="automated-documentation">
+<h2><span class="section-number">1.5.1. </span>Automated Documentation<a class="headerlink" href="#automated-documentation" title="Link to this heading"></a></h2>
+<p>This project comes with a Sphinx documentation for all “package” code, i.e. everything that is in <a class="reference internal" href="#/Src/"><span class="xref myst">Src</span></a>.</p>
+<p>If you adhere to <em>Google style</em> docstrings, then sphinx and napoleon will generate an automated documentation.
+There is a pipeline in place that automatically updates after every push / merge to <code class="docutils literal notranslate"><span class="pre">main</span></code> (keep in mind, that the pipeline needs to successfully run once, so it may take a few minutes until a new version is available).</p>
+<p>There is a test in place that exposes the current state of the online documentation in every merge request.
+You can find it when clicking on the respective job in the MR pipeline.
+The READMEs in this repo will only contain developer information.
+All other documentation will be migrated to the online version for usability in due time.</p>
+</section>
+<section id="first-steps-to-work-in-this-repository">
+<h2><span class="section-number">1.5.2. </span>First steps to work in this repository<a class="headerlink" href="#first-steps-to-work-in-this-repository" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Make sure your user name and email address are set correctly on your machine.
+Execute <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">-e</span></code> and add the following to the configuration</p>
+<div class="highlight-gitconfig notranslate"><div class="highlight"><pre><span></span>[user]
+    name = &quot;First Last&quot;
+    email = first.last@ds.mpg.de
+</pre></div>
+</div>
+<p>Just use your name and a working email address.</p>
+</li>
+<li><p>I recommend you set up an <code class="docutils literal notranslate"><span class="pre">ssh</span></code> keypair for easy access to this repository.</p></li>
+</ol>
+</section>
+<section id="working-in-this-repository">
+<h2><span class="section-number">1.5.3. </span>Working in this repository<a class="headerlink" href="#working-in-this-repository" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">main</span></code> branch is protected!
+This means that no user is allowed to push directly to main.
+The proposed workflow is as follows:</p>
+<ol class="arabic">
+<li><p>Create a new branch locally using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">NEW-BRANCH-NAME</span></code>.</p></li>
+<li><p>Then make your changes and commit them.
+Regarding commit messages, think along these lines:</p>
+<ul class="simple">
+<li><p>The first word should be a verb in its infinitive form.
+E.g.: [Add gitignore and some description in README]</p></li>
+<li><p>The commit message should have a title of no more than 72 characters, followed by an empty line.
+Thereafter more details can be written in a body that should be no wider than 80 characters.
+This vastly improves readability of the git log, but does take some practice.
+<strong>No worries, these are guidelines, not laws – as long as it’s clear what the commit does you can deviate from this.</strong></p></li>
+</ul>
+</li>
+<li><p>Push this new branch upstream.
+Usually it’s sufficient to execute <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> and git will tell you the right command to create the upstream branch.</p></li>
+<li><p>Go to the web interface and make a merge request.</p></li>
+<li><p>After review of whatever changes you made your branch can be merged to <code class="docutils literal notranslate"><span class="pre">main</span></code>.
+It is then best practice to delete the new branch remotely (the web interface lets you do that during the merge) as well as locally (use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-d</span> <span class="pre">NEW-BRANCH-NAME</span></code>).
+This prevents that the same history is later submitted to <code class="docutils literal notranslate"><span class="pre">main</span></code> again.
+To get all changed branches, switch back to main &amp; update the same, and finally clean up the branches one can execute the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>fetch<span class="w"> </span>--all
+git<span class="w"> </span>checkout<span class="w"> </span>main<span class="w"> </span>
+git<span class="w"> </span>pull
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>NEW-BRANCH-NAME<span class="w"> </span>
+git<span class="w"> </span>fetch<span class="w"> </span>--prune<span class="w"> </span>origin
+</pre></div>
+</div>
+</li>
+<li><p>For the next change after a merge, make a new branch, as in 1.</p></li>
+</ol>
+<section id="avoiding-it-works-on-my-machine-like-problems">
+<h3><span class="section-number">1.5.3.1. </span>Avoiding “it works on my machine”-like problems<a class="headerlink" href="#avoiding-it-works-on-my-machine-like-problems" title="Link to this heading"></a></h3>
+<p>Upon first use create a virtual environment.
+You can do this in multiple other ways, e.g. with <code class="docutils literal notranslate"><span class="pre">conda</span></code>, but I prefer the built-in method python provides:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</pre></div>
+</div>
+<p>This will create a virtual environment in the current directory (should be <code class="docutils literal notranslate"><span class="pre">/Src/</span></code>) with the name <code class="docutils literal notranslate"><span class="pre">.venv</span></code>, i.e. the full path will be <code class="docutils literal notranslate"><span class="pre">/Src/.venv/</span></code>.
+You then enter the virtual environment with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</pre></div>
+</div>
+<p>Now your prompt should reflect this environment.
+From here you install the packages defined in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>You can also use pip as usual to install new packages.
+To overwrite the current state of packages afterwards execute</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>Then push the new <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> to the git repository.</p>
+<p>To leave the virtual environment simply use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
+</pre></div>
+</div>
+<p>This works from any current working directory.</p>
+</section>
+<section id="formatting-code">
+<h3><span class="section-number">1.5.3.2. </span>Formatting Code<a class="headerlink" href="#formatting-code" title="Link to this heading"></a></h3>
+<p>In order to ensure good style in our <code class="docutils literal notranslate"><span class="pre">python</span></code> code, we commit to using <code class="docutils literal notranslate"><span class="pre">black</span></code> and <code class="docutils literal notranslate"><span class="pre">isort</span></code>.
+Before any Merge Request can be granted the code must be formatted using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>black<span class="w"> </span>Src/
+isort<span class="w"> </span>--profile<span class="w"> </span>black<span class="w"> </span>Src/
+</pre></div>
+</div>
+<p>Alternatively one can use the script <code class="docutils literal notranslate"><span class="pre">format_code.sh</span></code> from the repository’s root.</p>
+<p>If you want to <strong>automate code formatting</strong>, you can use the script <code class="docutils literal notranslate"><span class="pre">create_git_hook.sh</span></code> which will set up a git pre-commit hook, so that the above commands are executed before each commit.
+This is, however, <strong>not recommended</strong> as changing files in a pre-commit hook can introduce breaking changes that then are committed without further review.</p>
+<p>A better approach is to append the <code class="docutils literal notranslate"><span class="pre">--check</span></code> flag to both <code class="docutils literal notranslate"><span class="pre">black</span></code> and <code class="docutils literal notranslate"><span class="pre">isort</span></code>, so that the pre-commit hook only checks for code complicance and rejects the commit, if code is unformatted.</p>
+<p>Generally, the better place for formatting automation is in your <em>editor</em>!
+<code class="docutils literal notranslate"><span class="pre">Vim</span></code> has plugins for that.
+<code class="docutils literal notranslate"><span class="pre">vscode</span></code> does as well.
+I suggest making use of these features.</p>
+<p>There is a pipeline in place, that will demand that all further merge requests agree with the above code formatting standards.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="analysis.html" class="btn btn-neutral float-left" title="1.4. Analysing raw cluster output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="manuscript.html" class="btn btn-neutral float-right" title="1.6. The Manuscript" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Luk Fleddermann, Gerrit Wellecke.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

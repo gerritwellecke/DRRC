@@ -1,0 +1,8 @@
+drrc.tools.logger\_config module
+================================
+
+.. automodule:: drrc.tools.logger_config
+   :members:
+   :no-undoc-members:
+   :private-members:
+   :show-inheritance:
