@@ -1,0 +1,108 @@
+Transformation: "fft" # which transform should be applied for dimension reduction (pca, fft, identity)
+
+Parameters:
+  reservoir_leakage: 0.95 #leakage the strength of memory a reservoir state remembers old excitations with (0.0 only driven from new data no memory, 1.0 no update of rs)
+  reservoir_nodes: 1000 #number of nodes in each reservoir ESN
+
+  # setup of adjacency matrix
+  adjacency_degree: 4
+  adjacency_dense: False
+  adjacency_spectralradius: 0.1
+  
+  input_scaling: 0.01                 # input scaling the maximal absolute value of entries in the input matrix
+  input_bias: 0.01                 # null #scaling of the bias strength double the maximal absolute value of the bias input to a reservoir node, None defaults to inscale
+  
+  dimensionreduction_fraction: 0.5    # fraction of variables that actually enters the reservoir after dimension reduction
+
+  parallelreservoirs_grid_shape: [1,1] # the amount of reservoirs per dimension that should be used together as a multi-reservoir (for ex. [2,1] in 2D case for 2 reservoirs in x direction)
+  spatial_shape: [128,128]             # the amount of reservoirs per dimension that should be used together as a multi-reservoir (for ex. [2,1] in 2D case for 2 reservoirs in x direction)
+  system_variables: 1                 # number of spatiotemporal variables used by the reservoir, needs to be smaler than actual system variables
+  parallelreservoirs_ghosts: 2        # number of variables that a reservoir sees from outside the region where its predicting for sync.
+  boundary_condition: "NoFlux"      # either "Periodic" or "NoFlux"
+
+  identical_inputmatrix: True # whether we use identical input matrices for each reservoir
+  identical_adjacencymatrix: True # whether we use identical adjacency matrices for each reservoir
+  identical_outputmatrix: [0,0] # False or tuple or 'combine' whether we train each domain with a separate reservoir (False) or one reservoir on all domains ('combign_data') or one reservoir on one domain (tuple of indices)
+
+  training_includeinput: True         # whether to also fit the input signal for predicting the next timestep
+  training_regularization: 1.0e-4     # regularization strength for the ridge regression
+  training_output_bias: 1.0 # scaling of the output bias
+
+Jobscript:                            # Parameters of the Submission script (might be more on slurm)
+  Type: "qsub"
+  max_length: 100000
+  Cores: 1
+
+# use ParamScan: null for a single run with constant parameters
+ParamScan:                            # Parameters of the Hyperparameter Scan
+  training_data_index:
+    - "list"
+    - [0]
+  adjacency_degree:
+    - "list"
+    - [2, 4]
+  dimensionreduction_fraction:
+    - "list"
+    - [0.25, 0.5, 0.75, 1]
+  parallelreservoirs_grid_shape:
+    - "list"
+    - [[2,2], [4,4], [8,8]]
+  parallelreservoirs_ghosts:
+    - "list"
+    - [2, 6, 10]
+  reservoir_nodes:
+    - "list"
+    - [125, 250, 500, 1000, 2000, 4000, 8000]
+
+############################################################################################################
+## AlievPanfilov System
+############################################################################################################
+
+Data:                          # Parameters of the System Data
+  model_name: 'AlievPanfilov'         # Name of the model 
+  model_dimension: 2                  # Spatial dimension of the model 
+  Usage:                       # Data is saved at "gitroot/Data/'model_dimension'D'model_name'/" and named "TrainingData" and "EvaluationData" with appended number and format.
+    evaluation_datasets: 1           # Number of datasets reservoirs are evaluated on
+    training_datasets: 1             # Number of datasets reservoirs are trained on
+    tansient_length: 250              # Length of transient of reservoir (in time units)
+    training_length: 9000             # Length of TrainingTrajectory (in time units)
+    evaluation_length: 500            # maximum length of evaluation trajectory (in time units)
+    fileformat: ".npz"                # Format of the data files
+    error_stop: 2                     # valid time stop criterion: NRMSE/mean_norm<ErrorStop
+    mean_norm: 12.17                  # valid time stop criterion: NRMSE/mean_norm<ErrorStop
+    lyapunov_exponent: 'unknown'      # rescales valid time
+  Creation:                    # Parameters of the Data Creation
+    datasets: 50                      # Number of training and evaluation datasets created
+    SystemParameters:
+      Name: 'Aliev-Panfilov'
+      LocalModel:              # Parameters of the Local activation model (in difference to spatial cuppling)
+        Parameter:
+          a: 0.05 
+          b: 0.05 
+          eps: 0.002 
+          mu1: 0.2
+          mu2: 0.3
+          k: 8 
+        NrVariables: 2
+      Diffusion:              # Parameters of the Diffusion model
+        stencil: 'NinePoint'
+        constant: 0.2
+      SpatialParameter:
+        spatial_dimension: 128
+        physical_length: 128
+        dx: 1
+        dy: 1
+      BoundaryCondition:        # Parameters of the Boundary Condition (could set the parameter in the DRRC model)
+        type: 'NoFlux'
+      initial_condition: 'RandomChaos'
+    TemporalParameter:
+      dt: 0.5
+      integration_dt: 0.1
+      training_length: 10000                # Temporal length of saved Trainingdata 
+      training_transient: 1000 #1000        # Temporal length of integrated and not saved transient
+      evaluation_length: 1000 #1000         # Temporal length of saved Evaluationdata 
+      evaluation_transient: 1000 #1000      # Temporal length of integrated and not saved transient
+    AnimationSaving:  
+      T_out: 10
+      fps: 20
+

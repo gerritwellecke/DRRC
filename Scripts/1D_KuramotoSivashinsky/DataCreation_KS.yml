@@ -1,0 +1,43 @@
+############################################################################################################
+## KuramotoSivashinsky System
+############################################################################################################
+Data:                          # Parameters of the System Data
+  model_name: 'KuramotoSivashinsky'         # Name of the model 
+  model_dimension: 1                  # Spatial dimension of the model 
+  Usage:                       # Data is saved at "gitroot/Data/'model_dimension'D'model_name'/" and named "TrainingData" and "EvaluationData" with appended number and format.
+    evaluation_datasets: 50           # Number of datasets reservoirs are evaluated on
+    training_datasets: 50             # Number of datasets reservoirs are trained on
+    tansient_length: 250              # Length of transient of reservoir
+    training_length: 7500             # Length of TrainingTrajectory (in time units)
+    evaluation_length: 500            # maximum length of evaluation trajectory (in time units)
+    fileformat: ".npy"                # Format of the data files
+    error_stop: 0.5                     # valid time stop criterion: NRMSE/meanvariation<ErrorStop
+    mean_norm: 14.77             # valid time stop criterion: NRMSE/meanvariation<ErrorStop
+    lyapunov_exponent: 'unknown'      # rescales valid time
+  Creation:                    # Parameters of the Data Creation
+    datasets: 50
+    SystemParameters:
+      Name: "KuramotoSivashinsky"
+      nu: 1             # parameter as in equation
+      L: 60             # length of spatial domain, i.e. x(t) in [0, L]
+      nx: 128           # number of grid points in spatial domain [0, L]
+      dt: 0.25          # discretisation in time
+    TemporalParameter:
+      dt: 0.25
+      training_length: 50000      # Temporal length (not steps!) of saved Trainingdata 
+      training_transient: 2000    # Temporal length (not steps!) of integrated and not saved transient
+      evaluation_length: 5000     # Temporal length (not steps!) of saved Evaluationdata 
+      evaluation_transient: 2000  # Temporal length (not steps!) of integrated and not saved transient
+    Method: "spectral"  # spectral or py-pde
+    BoundaryCondition:        # Parameters of the Boundary Condition (could set the parameter in the DRRC model)
+      type: 'Periodic'
+
+
+# Only used to init Config
+Jobscript:                            # Parameters of the Submission script (might be more on slurm)
+  Type: "slurm"
+  max_length: 2000
+  Cores: 4
+  RAM: "12G"
+  partition: "medium"
+

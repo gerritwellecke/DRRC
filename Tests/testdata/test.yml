@@ -1,0 +1,27 @@
+# this is mainly for testing. In the current state it contains everything that we once had.
+# further functionality might still have to be implemented.
+Name: "TestYAML"
+Date: '18.12.2023' # date of when this yaml was last touched
+
+Jobscript:
+  Cores: 32
+  RAM: "1G"
+
+System:
+  Type: 
+    Equation: "KS"
+
+
+ParamScan:
+  range: 
+    - "range"
+    - [200, 221, 2]
+  linspace: 
+    - "linspace"
+    - [10, 100, 91]
+  geomspace: 
+    - "geomspace"
+    - [1000, 1000000, 4]
+  list:
+    - "list"
+    - [1, 2, 3, 4, 5]

@@ -1,0 +1,102 @@
+Name: "AP_PCA_R64_Testrun"
+Date: '30.04.2024'
+Reservoir:
+  winsize: 2 #number of variables that a reservoir sees from outside the region where its predicting for sync.
+  #fracin: 0.5 #fraction of variables that actually enters the reservoir after dimension reduction
+  #spectral: 0.1 #spectral radius, largest eigenvalue of the adjacency matrix
+  degree: 3 #average degree of the adjacency matrix
+  #inscale: 0.01 #input scaling the maximal absolute value of entries in the input matrix
+  #leakage: 0.95 #leakage the strength of memory a reservoir state remembers old excitations with (0.0 only driven from new data no memory, 1.0 no update of rs)
+  #regularization: 1.0e-4 #regularization strength for the ridge regression
+  transform: "pca" #which transform should be applied for dimension reduction
+  trainonly: False #whether the script should train the system only (True) or also write metrics (False)
+  replicas: [64,64] #the amount of reservoirs per dimension that should be used together as a multi-reservoir (for ex. [2,1] in 2D case for 2 reservoirs in x direction)
+  combine: False #whether we train each domain with a separate reservoir (False) or one reservoir on all domains (true)
+  inputadjdiff: False #whether we use different input matrices and adjacency matrices for each reservoir
+  dense: False #whether the adjacency matrix is sparse (False) or dense (True)
+  overwrite: False #instead of trying to load a model learns a model anew 
+  biasscale: null #scaling of the bias strength double the maximal absolute value of the bias input to a reservoir node, None defaults to inscale
+  fitsignal: True #whether to also fit the input signal for predicting the next timestep
+  dtype: "float" #datatype to use for encoding everything from reservoir state to training data
+Training: # Deviates from Data Creation.
+  FilePath: "Data/2D_AlievPanfilov/TrainingData" #Trainingevaluation Number and Format is appended.
+  FileFormat: ".npz"
+  Transient: 250
+  Length: 7500  # Length of TrainingTrajectory (in time units)
+  Datasets: 4
+  dt: 0.5
+Evaluation: 
+  FilePath: "Data/2D_AlievPanfilov/EvaluationData" #Evaluationdata Number and Format is appended.
+  FileFormat: ".npz"
+  Transient: 250
+  Length: 500 # maxaimum length of evaluation trajectory (in time units)
+  dt: 0.5
+  LyapunovExponent: 'unknown'
+  Datasets: 50
+  ErrorStop: 2
+  MeanVariation: 12.17
+System: 
+  Datasets: 50
+  LocalModel: 
+    Name: 'Aliev-Panfilov'
+    Parameter:
+      a: 0.05 
+      b: 0.05 
+      eps: 0.002 
+      mu1: 0.2
+      mu2: 0.3
+      k: 8 
+    NrVariables: 2
+  Diffusion: 
+    Stencil: 'NinePoint'
+    Constant: 0.2
+  BoundaryCondition: 
+    Type: 'NoFlux'
+  SpatialParameter:
+    SpatialDimension: 128
+    PhysicalLength: 128
+    dx: 1
+    dy: 1
+  TemporalParameter:
+    save_dt: 0.5
+    int_dt: 0.1
+    Training_T: 10000              # Length of saved Trajectory   
+    Training_Transient: 1000       # Length of previous transient
+    Evaluation_T: 1000             # Length of saved Trajectory  
+    Evaluation_Transient: 1000     # Length of previous transient
+  InitialCondition: 'RandomChaos'
+  Saving:  
+    T_out: 10
+    fps: 20
+Saving: 
+  OutputDirectory: "Data/Reservoir/AP_PCA_r64"
+  # suffix: "multi"
+  # subfolder: "realspace"
+  # TODO: add whatever other parameters are needed for this to run fine. 
+  # note that default arguments should usually be included here.
+
+Jobscript:
+  Cores: 1
+
+ParamScan:
+  nodes: 
+    - "list"
+    - [1000, 2000, 4000, 8000]
+  leakage:
+    - "list"
+    - [1, 0.9]
+  spectral:
+    - "geomspace"
+    - [0.1, 10, 3]
+  inscale:
+    - "geomspace"
+    - [0.1, 10, 3]
+  regularization: 
+    - "geomspace"
+    - [1.0e-2, 1.0e-4, 3]
+  fracin:
+    - "list"
+    - [0.25, 1]
+
+
+# TODO: the Config class right now only supports writing to HDF5 if I remember correctly

@@ -1,0 +1,67 @@
+#!/bin/bash -l
+
+# Use bash as shell
+#$ -S /bin/bash
+
+# Preserve environment variables
+#$ -V
+
+# Merge standard output and standard error into one file
+#$ -j yes
+
+# Standard name of the job (if none is given on the command line)
+#$ -N {{ JOB_NAME }}
+
+# Logging filenames stdout & stderr
+# this fails if the path does not yet exist
+#$ -o {{ OUTPUT_PATH }}
+
+# Batch job 
+{% if ((NUM_CORES == 1) and (not FORCE_PARALLEL_QUEUE)) %}
+#$ -q teutates.q
+#$ -t 1-{{ JOB_LENGTH }}
+{% else %}
+#$ -pe mvapich2-teutates 32
+#$ -q mvapich2-teutates.q
+#$ -t 1-{{ JOB_LENGTH }}:{{ JOB_STRIDE }}
+{% endif %}
+
+# Some diagnostic messages for the output
+echo Started: `date`
+echo on `hostname`
+{% if NUM_CORES == 1 %}
+echo TID: ${SGE_TASK_ID} of ${SGE_TASK_LAST}
+{% else %}
+echo TID: ${SGE_TASK_ID}-$(( ${SGE_TASK_ID} + {{ JOB_STRIDE }} - 1 )) of ${SGE_TASK_LAST}
+{% endif %}
+echo ------------
+
+# restrict cores per job
+export MKL_NUM_THREADS={{ NUM_CORES }}
+export NUMEXPR_NUM_THREADS={{ NUM_CORES }}
+export OMP_NUM_THREADS={{ NUM_CORES }}
+export OPENBLAS_NUM_THREADS={{ NUM_CORES }}
+export NUMBA_NUM_THREADS={{ NUM_CORES }}
+
+# activate python venv
+# CAVEAT: make sure all packages are installed before running this!
+source {{ GIT_ROOT }}/.venv/bin/activate || exit 1
+
+cd {{ GIT_ROOT }}
+
+{% if ((NUM_CORES == 1) and (not FORCE_PARALLEL_QUEUE)) %}
+# start simulation
+python {{ EXECUTABLE }} {{ YAMLPATH }} ${SGE_TASK_ID}
+{% else %}
+# start multiple simulations in background so the run parallel
+for n in `seq 1 {{ JOB_STRIDE }}`; do
+    if (( $SGE_TASK_ID - 1 + $n <= $SGE_TASK_LAST )); then
+        python {{ EXECUTABLE }} {{ YAMLPATH }} $(( ${SGE_TASK_ID} - 1 + n )) &
+    fi
+done
+{% endif %}
+
+wait
+
+echo ------------
+echo Stopped: `date`

@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drrc"
+version = "1.0.0"
+description = "Dimensionality Reduced Reservoir Computing"
+authors = [
+    {name = "Luk Fleddermann"},
+    {name = "Gerrit Wellecke", email="gerrit.wellecke@ds.mpg.de"}
+]
+requires-python = ">=3.10"
+readme = "README.md"
+dependencies = [
+    "numpy >= 1.24.0, < 2",
+    "GitPython >= 3.1.32, < 4",
+    "scikit-learn >= 1.3.1, < 2",
+    # TODO add rest & add version numbers!
+]
+
+[project.optional-dependencies]
+tests = [
+    "pytest >= 7.4.3, < 8",
+]
+docs = [
+    "Sphinx >= 7.2.5, < 8",
+    "sphinx-rtd-theme >= 1.3.0, < 2",
+]
+analysis = [
+    "matplotlib >= 3.7.2",
+]
+
+[tool.setuptools]
+package-dir = {"" = "Src"}
+
+[tool.setuptools.packages.find]
+where = ["Src"]
+namespaces = false
+
+[tool.black]
+target_version = ["py310"]
+extend-exclude = "submodules"
+
+[tool.isort]
+profile = "black"
+src_paths = ["Src", "Scripts"]
+known_self = "drrc"
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "SELF", "LOCALFOLDER"]
